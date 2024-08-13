@@ -5,6 +5,18 @@
 782 -> 8
 918 -> 1
 
+КОД
+
+ int num1 = Convert.ToInt32(Console.ReadLine());
+        int med = 0;
+        if (num1 > 0)
+        {
+            num1 = (num1 / 10)%10;
+        }
+        Console.WriteLine(num1);
+
+
+
 Задача 13: Напишите программу, которая выводит третью цифру
 заданного числа или сообщает, что третьей цифры нет.
 
@@ -15,6 +27,27 @@
 
 Задача 15: Напишите программу, которая принимает на вход цифру? 
 обозначающую день недели, и проверяет, является ли этот день выходным
+
+
+int DayOfWeek = Convert.ToInt32(Console.ReadLine());
+        int Monday = 1;
+        int Tuesday = 2;
+        int Wednesday = 3;
+        int Thursday = 4;
+        int Friday = 5;
+        int Saturday = 6;
+        int Sunday = 7;
+        switch (DayOfWeek)
+        {
+            case 1: Console.WriteLine ("Monday"); break;
+            case 2: Console.WriteLine("Tuesday"); break;
+            case 3: Console.WriteLine("Wensday"); break;
+            case 4: Console.WriteLine("Thursday"); break;
+            case 5: Console.WriteLine("Friday");break;
+            case 6: Console.WriteLine("Satuday");break; 
+            case 7: Console.WriteLine("Sunday");break; 
+
+
 
 6 -> да
 7 -> да
