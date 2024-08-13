@@ -8,28 +8,18 @@ public class MainClass()
     public static void Main()
     {
 
-        int DayOfWeek = Convert.ToInt32(Console.ReadLine());
+       int num1 = Convert.ToInt32(Console.ReadLine());
 
-        if (DayOfWeek == 6)
+        if (num1 >= 100) 
         {
+            num1 = num1 / 10 % 10;
+            Console.WriteLine(num1);
 
-            if (DayOfWeek == 7)
-            {
-
-
-                Console.WriteLine("NO");
-            }
-
-
-
-
-            else
-            {
-                Console.WriteLine("YES");
-
-            }
         }
-   
+        else
+        {
+            Console.WriteLine("NO");
+        }
 
 
 

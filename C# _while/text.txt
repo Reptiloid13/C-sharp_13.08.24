@@ -5,7 +5,7 @@
 782 -> 8
 918 -> 1
 
-КОД
+CODE
 
  int num1 = Convert.ToInt32(Console.ReadLine());
         int med = 0;
@@ -23,6 +23,25 @@
 645 -> 5
 78 -> третьей цифры нет
 32679 -> 6
+
+CODE
+
+int num1 = Convert.ToInt32(Console.ReadLine());
+
+        if (num1 >= 100) 
+        {
+            num1 = num1 / 10 % 10;
+            Console.WriteLine(num1);
+
+        }
+        else
+        {
+            Console.WriteLine("NO");
+        }
+
+
+
+
 
 
 Задача 15: Напишите программу, которая принимает на вход цифру? 
