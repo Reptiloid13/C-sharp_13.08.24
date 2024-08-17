@@ -71,3 +71,30 @@ int DayOfWeek = Convert.ToInt32(Console.ReadLine());
 6 -> да
 7 -> да
 1 -> нет
+
+
+Задача 16   Написать программму, которая принимает X и Y
+         Причем X!= 0 и Y!=0 и выдвает номер четверти плоскости
+        в которой находится эта точка.
+
+        CODE
+
+        int x = Convert.ToInt32(Console.ReadLine());
+        int y = Convert.ToInt32(Console.ReadLine());
+        if (x > 0 && y > 0)
+        {
+            Console.WriteLine("First");
+        }
+        else if (x<0 && y> 0)
+        {
+            Console.WriteLine("Second");
+        }
+        else if ( x<0 && y<0) 
+        {
+            Console.WriteLine("Third");
+           
+        }
+        else
+        {
+            Console.WriteLine("Fourth");
+        }
