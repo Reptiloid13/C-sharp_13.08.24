@@ -1,19 +1,15 @@
-п»їusing System;
-using System.ComponentModel.DataAnnotations;
-using System.Net.Security;
-using System.Runtime.ConstrainedExecution;
-using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.JavaScript;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
-public class MainClass()
-{
-    public static void Main(string[] args)
-    {
-        /* РўРµСЂРЅР°СЂРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ СЂР°Р·РЅРёР·Р° 
+     /* Тернарный оператор разниза 
          */
 
-        Console.WriteLine("РќР°РїРёС€РёС‚Рµ СЃРІРѕР№ Р»СЋР±РёРјС‹Р№ С†РІРµС‚ СЃ РјР°Р»РµРЅСЊРєРѕР№ Р±СѓРєРІС‹");
+        var a = 6;
+        var b = 7;
+
+        var c = a != b ? a + b : b;
+        Console.WriteLine(c);   
+       
+     задача 4.1.15  Программа определение цвета 
+
+          Console.WriteLine("Напишите свой любимый цвет с маленькой буквы");
        
         var color = Console.ReadLine(); 
         
@@ -40,34 +36,3 @@ public class MainClass()
 
             Console.WriteLine("Your color is cyan!");
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-    }
-
-
-
-
-
-
-
-
-
-    }
-
-
-
-
-
-
-

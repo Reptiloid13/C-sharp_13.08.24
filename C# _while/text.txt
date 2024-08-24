@@ -98,3 +98,41 @@ int DayOfWeek = Convert.ToInt32(Console.ReadLine());
         {
             Console.WriteLine("Fourth");
         }
+
+
+         /* ЗАДАЧА 21 Напишите программу, которая принимает на вход 
+         * Координат двух точек и находит рассояние между ними в 2д
+         * пространстве
+         * А(3,6); В(2,1) > 5.09
+         * A(7.5);B(1.-1)>7.21  */
+
+         CODE
+
+        Console.Write("Enter x1 ");
+        double x1 = Convert.ToDouble(Console.ReadLine());
+        Console.Write("Enter y1 ");
+        double y1 = Convert.ToDouble(Console.ReadLine());
+        Console.Write("Enter x2 ");
+        double x2 = Convert.ToDouble(Console.ReadLine());
+        Console.Write("Enter y2 ");
+        double y2 = Convert.ToDouble(Console.ReadLine());
+
+        double distance = Math.Sqrt(Math.Pow((x1 - y1), 2) + Math.Pow((x2 - y2), 2));
+        Console.WriteLine(distance);
+
+
+
+        /* ЗАДАЧА 22 Написать программу, которая принимает число 
+         * N и выдает таблицу квадратов от чисел от 1 до N
+         * 5 - 1.4.9.16.25
+         * 2-1.4*/
+
+         Console.WriteLine("Enter number: ");
+        int num1 = int.Parse(Console.ReadLine());
+        for (int i = 0; i<=num1; i++)
+        {
+            
+            Console.Write(Math.Pow(i,2)  +" ");
+        }
+
+
