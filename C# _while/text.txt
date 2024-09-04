@@ -136,3 +136,219 @@ int DayOfWeek = Convert.ToInt32(Console.ReadLine());
         }
 
 
+        CONTINUE
+
+        /* Пользователь вводит три числа n, m, k.
+         * Программа должна вывести все числа 
+         * которые делятся без остатка на k и находятся
+         * в диапазоне от n до m включительно.
+         * Используйте continue..*/
+
+
+        int n = Convert.ToInt32(Console.ReadLine());
+        int m = Convert.ToInt32(Console.ReadLine());    
+        int k = Convert.ToInt32(Console.ReadLine());
+       
+
+        for (int i = n; i <= m; i++)
+        {
+            
+
+
+            if (i % k != 0)
+            
+                continue;
+            
+                Console.Write($"{i} ");                                        
+
+
+        }
+        
+
+        Возвратный метод 
+             /* Написать программу, которая принимает чцисло А
+         * И выдает сууму чисел от 1 до А  */
+
+       int limit = Convert.ToInt32(Console.ReadLine());
+
+        int GetSumLimit(int limit)
+        {
+            int result = 0;
+            for (int i = 0; i<= limit; i++)
+            {
+                result += i;
+            }
+            return result;
+        }
+        Console.WriteLine($"Result  ot 1 to {limit} = {GetSumLimit(limit)}");
+    }
+
+}
+
+
+БОЙ между двумя игроками с помощью цикла WHILE
+
+    int playerHealth = 100;
+        int playerDamage = 15;
+        int enemyHealth =100;
+        int enemyDamage = 10;
+
+        while (playerHealth > 0 && enemyHealth > 0)
+        {
+            playerHealth -= enemyDamage;
+            enemyHealth -= playerDamage;
+
+            Console.WriteLine(playerHealth + " User");
+            Console.WriteLine(enemyHealth + " Enemy");
+
+        }
+
+        if (playerHealth <= 0 && enemyHealth <= 0)
+        {
+            Console.WriteLine("Draw");
+        }
+        else if (enemyHealth <= 0)
+        {
+            Console.WriteLine("User Win");
+        }
+
+        else if (playerHealth <= 0)
+        {
+            Console.WriteLine("Enemy Win");
+
+        }
+
+        ИГРА В РАНДОМ УГАДАЙ ЦИФРУ
+
+         int number;
+        int lower, higher;
+        int triesCount = 5;
+        int userInput;
+
+        Random rand = new Random();
+
+        number = rand.Next(0, 101);
+        lower = rand.Next(number -10, number);
+        higher = rand.Next(number + 1, number + 10);
+        Console.WriteLine($"Мы загадали число от 0 до 100 оно болешь чем {lower}, но меньше чем {higher}");
+        Console.WriteLine($" Что это за число ? У вас {triesCount} попыток отгадать");
+
+        while(triesCount-- > 0)
+        {
+            Console.Write("Ваш ответ ");
+            userInput = Convert.ToInt32(Console.ReadLine());    
+            if(userInput == number)
+            {
+                Console.WriteLine("Вы были правы " + number + ".");
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Не верно попробуйте еще раз");
+            }
+            
+        }
+        if (triesCount < 0)
+        {
+            Console.WriteLine("Вы проиграли. Повезет в следующий раз. Это было число " + number + ".");
+        }
+
+
+        Игра Гладиаторские бои:
+
+           Random rand = new Random();
+        float health1 = rand.Next(90, 100);
+        int damage1 = rand.Next(5, 20);
+        int armor1 = rand.Next(25, 65);
+
+        float health2 = rand.Next(90, 100);
+        int damage2 = rand.Next(5, 20);
+        int armor2 = rand.Next(25, 65);
+
+        Console.WriteLine($"Gladiator 1  - {health1}  health  {damage1} damage , {armor1} armor.");
+        Console.WriteLine($"Gladiator 2  - {health2}  health , {damage2} damage , {armor2} armor.");
+
+        while (health1>0&& health2 > 0)
+        {
+            health1 -= Convert.ToSingle(rand.Next(0, damage2 + 1)) / 100 * armor1;
+            health2 -= Convert.ToSingle(rand.Next(0, damage1 + 1)) / 100 * armor2;
+
+            Console.WriteLine($"Gladiator 1 health {health1} ");
+            Console.WriteLine($"Gladiator 2 health {health2} ");
+        }
+
+        if (health1 <= 0 && health2 <= 0)
+        {
+
+            Console.WriteLine("Drawn");
+
+                }
+
+        else if ( health1 <= 0)
+        {
+            Console.WriteLine("Gladiator 2 WIN");
+        }
+        else if( health2 <= 0)
+        {
+            Console.WriteLine("Gladiator 1 Win");
+        }
+
+
+
+
+        //  Создать программу отвечающуся за местами в самолете
+
+        int[] sectors = { 6, 28, 15, 15, 17 };
+        bool IsOpen= true;
+        while (IsOpen)
+        {
+            Console.SetCursorPosition(0, 18);
+            for (int i = 0; i < sectors.Length; i++)
+            {
+
+                Console.WriteLine($"in sectrot {i+1} free { sectors[i]} seats");
+
+
+            }
+            Console.SetCursorPosition(0, 0);
+            Console.WriteLine("Регитсрация рейса");
+            Console.WriteLine("\n \n1 - Забронировать места \n\n2 -Выход из программы");
+            Console.Write("Введите номер команды: ");
+
+            switch (Convert.ToInt32(Console.ReadLine()))
+            {
+                case 1:
+                    int userSector, userPlaceAmount;
+                    Console.Write("В каком секторе вы хотите лететь: ");
+                    userSector = Convert.ToInt32(Console.ReadLine()) - 1;
+
+                    if (sectors.Length <= userSector || userSector < 0)
+                    {
+
+                        Console.WriteLine("Такого сектора не существует");
+                        break;
+
+                    }
+                    Console.Write("Сколько мест вы хотите забронировать? ");
+                    userPlaceAmount = Convert.ToInt32(Console.ReadLine());
+                    if (sectors[userSector] < userPlaceAmount|| userPlaceAmount<0)
+                    {
+                        Console.WriteLine($"В секторе {userSector} недостаточно место" + $"остаток {sectors[userSector]}");
+                        break;
+
+                    }    
+                    sectors[userSector] = userPlaceAmount;
+                    break;
+                    case 2:
+                    IsOpen = false;
+                    break;
+                    
+            } 
+
+
+
+            Console.ReadKey();
+            Console.Clear();
+
+        }
+       

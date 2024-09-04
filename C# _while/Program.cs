@@ -1,70 +1,60 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
+using System.Dynamic;
+using System.Globalization;
 using System.Net.Security;
+using System.Reflection.Metadata;
 using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.JavaScript;
+using System.Runtime.Intrinsics.X86;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
-public class MainClass()
+using System.Xml.Serialization;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
+class Program
 {
-    public static void Main(string[] args)
+
+
+    static void Echo (string saidword, int deep)
     {
-        /* Тернарный оператор разниза 
-         */
+        var modif = saidword;
+        if (modif.Length > 2)
+        {
+            modif = modif.Remove(0, 2);
+        }
+        Console.WriteLine("....."+ modif);
+        if (deep > 1)
+        {
+            Echo(modif, deep - 1);
+        }
 
-        Console.WriteLine("Напишите свой любимый цвет с маленькой буквы");
-       
-        var color = Console.ReadLine(); 
+    }
+    
         
-        if(color == "red")
+        static void Main1( string[] args) 
+    {
+
+
+        Console.WriteLine("Напиши что то ");
+        var str = Console.ReadLine();
+        Console.WriteLine("Укажите глубину эха" );
+        var deep = int.Parse(Console.ReadLine());
+        for (int i = 0; i < deep; i++)
         {
-            Console.BackgroundColor = ConsoleColor.Red;
-            Console.ForegroundColor = ConsoleColor.Black;
+            Echo(str, deep);
 
-            Console.WriteLine("Your color is red");
+
         }
-
-        else if (color == "green")
-        {
-            Console.BackgroundColor=ConsoleColor.Green;
-            Console.ForegroundColor = ConsoleColor.Black;
-
-            Console.WriteLine("Your color is green");
-        }
-
-        else
-        {
-            Console.BackgroundColor = ConsoleColor.Cyan;
-            Console.ForegroundColor = ConsoleColor.Black;
-
-            Console.WriteLine("Your color is cyan!");
-        }
-
-
-
-
-
-
-
-
-
-
 
 
 
     }
 
-
-
-
-
-
-
-
-
-    }
-
+   
+}
 
 
 
