@@ -1,84 +1,145 @@
-﻿using Microsoft.VisualBasic;
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.Design;
-using System.Diagnostics.CodeAnalysis;
-using System.Dynamic;
-using System.Globalization;
-using System.Net.Security;
-using System.Reflection.Metadata;
-using System.Runtime.ConstrainedExecution;
-using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.JavaScript;
-using System.Runtime.Intrinsics.X86;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
-using System.Xml;
-using System.Xml.Serialization;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿// shift alt f - форматирование 
 
 class Program
 {
-    static string[] CreateArrayOets(int num)
+// 3. Есть ли в массиве одинаковые элементы
+
+
+    static void Main()
     {
-        var result = new string[num];
-        return result;
+        // Task1();
+        // Task2();
+        // Task3();
+        // Task4();
+        Task5();
     }
-    static (string Name, string LastName, int Age) EnterUser()
+
+    static void Task1()
     {
-        (string Name, string LastName, int Age) User;
-        Console.WriteLine("Enter your name: ");
-        User.Name = Console.ReadLine();
+        // 1. Поиск максимального элемента в массиве
+        var array = new int[] { 8, 9, 10 };
 
-        Console.WriteLine("Enter your Lastname: ");
-        User.LastName = Console.ReadLine();
+        int max = 0;
 
-        string age;
-        int intage;
-
-        do
+        for (int i = 0; i < array.Length; i++)
         {
-            Console.WriteLine("Enter your age");
-            age = Console.ReadLine();
-
-        }
-        while (CheckNum(age, out intage));
-
-        User.Age = intage;
-
-        return User;
-
-    }
-    static bool CheckNum(string number, out int corrnumber)
-    {
-        if (int.TryParse(number, out int intnum))
-        {
-            if (intnum > 0)
+            if (max < array[i])
             {
-                corrnumber = intnum;
-                return false;
+                max = array[i];
             }
         }
+
+        Console.WriteLine(max);
+    }
+
+    static void Task2()
+    {
+        // 2. Вывести элементы массива, которые больше предыдущего
+        var numbers = new int[] { 6, 3, 8, 11, 5, 6 };
+
+        // numbers[i];
+        // numbers[i-1];
+
+        for (var i = 1; i < numbers.Length; i++)
         {
-            corrnumber = 0;
-            return true;
+            if (numbers[i] > numbers[i - 1])
+            {
+                Console.WriteLine(numbers[i]);
+            }
         }
     }
 
+    static void Task3()
+    {
+        // 3. Есть ли в массиве одинаковые элементы
+        int[] array = { 6, 7, 6, 8 };
 
-        static void Main(string[] args)
+        var repeatedNumbers = new int[array.Length];
 
+        for (int i = 0; i < array.Length; i++)
         {
+            var isRepeat = false;
+            for (var j = 0; j < array.Length; j++)
+            {
+                if (array[i] == array[j])
+                {
+                    isRepeat = true;
+                }
+            }
 
+            // if (!isRepeat)
+            // if (isRepeat == false)
+            if (isRepeat)
+            {
+                var isAlreadyRepeated = false;
+                for (int k = 0; k < repeatedNumbers.Length; k++)
+                {
+                    if (array[i] == repeatedNumbers[k])
+                    {
+                        isAlreadyRepeated = true;
+                    }
+                }
 
-
-
-
+                if (!isAlreadyRepeated)
+                {
+                    Console.WriteLine($"Повторяется {array[i]}");
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Не повторяется {array[i]}");
+            }
         }
-
     }
 
+    static void Task4()
+    {
+        // 4. Заменить элементы массива на противоположные
+        // Не меняя исходный массив
+        // Меняя исходный массив
 
+        var a = 1;
+        var b = a;
+        b = 5;
 
+        var numbers = new int[] { 6, 3, 8, 11, 5, 6 };
 
+        for (int i = 0; i < numbers.Length; i++)
+        {
+            numbers[i] = numbers[i] * -1;
+        }
 
+        // Для каждого
+        // foreach (var number in numbers)
+        // {
+        //     number = number * -1;
+        // }
+        //
+        foreach (var number in numbers)
+        {
+            Console.WriteLine(number);
+        }
+    }
+
+    static void Task5()
+    {
+        // Максимальный по модулю элемент массива
+        var numbers = new int[] { -7, 6, -8, 1 };
+        var max = 0;
+
+        for (int i = 0; i < numbers.Length; i++)
+        {
+            if (numbers[i] < 0)
+            {
+                numbers[i] *= -1;
+            }
+
+            if (numbers[i] > max)
+            {
+                max = numbers[i];
+            }
+        }
+
+        Console.WriteLine(max);
+    }
+}
