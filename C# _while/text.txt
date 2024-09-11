@@ -351,4 +351,54 @@ int DayOfWeek = Convert.ToInt32(Console.ReadLine());
             Console.Clear();
 
         }
+
+
+
+
        
+         public static void Anketa(string name, string surname, double age, bool pets)
+     
+    {
+        (string name, string surname, double age, bool pets) User = new();
+        Console.WriteLine("Enter your name: ");
+        name = Console.ReadLine();
+        Console.WriteLine("Enter your surname: ");
+        surname = Console.ReadLine();
+        Console.WriteLine("Enter your age: ");
+        age = Convert.ToDouble(Console.ReadLine());
+        Console.WriteLine("Do you have pets?  Yes or No");
+        var result = Console.ReadLine();
+         if (result == "Yes")
+        {
+            pets = true;
+        }
+        else
+        {
+            pets = false;
+        }
+
+        return User;
+    }
+
+    static string[] CreateArrayPets(int num)
+    {
+        var array=  new string[num];   
+        return array;
+    }
+
+
+
+
+
+        static void Main1( string[] args) 
+    {
+        Anketa();
+
+      
+
+
+    }
+
+   
+}
+

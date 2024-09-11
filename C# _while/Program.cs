@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.Design;
 using System.Diagnostics.CodeAnalysis;
 using System.Dynamic;
 using System.Globalization;
@@ -11,51 +13,70 @@ using System.Runtime.InteropServices.JavaScript;
 using System.Runtime.Intrinsics.X86;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+using System.Xml;
 using System.Xml.Serialization;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 class Program
 {
-
-
-    static void Echo (string saidword, int deep)
+    static string[] CreateArrayOets(int num)
     {
-        var modif = saidword;
-        if (modif.Length > 2)
+        var result = new string[num];
+        return result;
+    }
+    static (string Name, string LastName, int Age) EnterUser()
+    {
+        (string Name, string LastName, int Age) User;
+        Console.WriteLine("Enter your name: ");
+        User.Name = Console.ReadLine();
+
+        Console.WriteLine("Enter your Lastname: ");
+        User.LastName = Console.ReadLine();
+
+        string age;
+        int intage;
+
+        do
         {
-            modif = modif.Remove(0, 2);
+            Console.WriteLine("Enter your age");
+            age = Console.ReadLine();
+
         }
-        Console.WriteLine("....."+ modif);
-        if (deep > 1)
+        while (CheckNum(age, out intage));
+
+        User.Age = intage;
+
+        return User;
+
+    }
+    static bool CheckNum(string number, out int corrnumber)
+    {
+        if (int.TryParse(number, out int intnum))
         {
-            Echo(modif, deep - 1);
+            if (intnum > 0)
+            {
+                corrnumber = intnum;
+                return false;
+            }
+        }
+        {
+            corrnumber = 0;
+            return true;
+        }
+    }
+
+
+        static void Main(string[] args)
+
+        {
+
+
+
+
+
         }
 
     }
-    
-        
-        static void Main1( string[] args) 
-    {
-
-
-        Console.WriteLine("Напиши что то ");
-        var str = Console.ReadLine();
-        Console.WriteLine("Укажите глубину эха" );
-        var deep = int.Parse(Console.ReadLine());
-        for (int i = 0; i < deep; i++)
-        {
-            Echo(str, deep);
-
-
-        }
-
-
-
-    }
-
-   
-}
-
 
 
 
