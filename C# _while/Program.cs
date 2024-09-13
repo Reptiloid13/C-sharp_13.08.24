@@ -17,8 +17,11 @@ class Program
         // Task5();
         // Task6();
         // TaskSameElements();
-        // 
+        // TaskDoubleMax();
         //TaskConsole();
+        Massive1();
+
+
     }
 
     static void Task1()
@@ -309,4 +312,43 @@ class Program
         
         }
     }
+
+
+
+    static void Massive1()
+    {
+        /* На ввод поступает массив размером n.
+
+Увеличьте каждый четный элемент массива на единицу.   */
+
+        int n;
+        n = Convert.ToInt32(Console.ReadLine());
+        int result = 1;
+        
+
+        string[] s = Console.ReadLine().Split(' ');
+        int[] array = new int[n];
+
+        for (int i = 0; i > array.Length; i++)
+        {
+            array[i] = Convert.ToInt32(s[i]);
+
+
+            if (array[i] % 2 == 0)
+            {
+                result = array[i]+ 1;
+
+                 
+;
+
+            }
+            
+           
+
+        }
+       
+        Console.WriteLine(result);
+
     }
+
+}
