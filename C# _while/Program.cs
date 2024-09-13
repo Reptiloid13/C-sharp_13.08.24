@@ -16,7 +16,7 @@ class Program
          //Task5();
         // Task6();
         // TaskSameElements();
-       // TaskDoubleMax();
+        // TaskDoubleMax();
     }
 
     static void Task1()
@@ -131,14 +131,13 @@ class Program
         // Максимальный по модулю элемент массива
         var numbers = new int[] { -7, 6, -8, 1 };
         var max = 0;
-        var minMax=-1;
+        var minMax = -1;
 
         for (int i = 0; i < numbers.Length; i++)
         {
             if (numbers[i] < 0)
             {
-                
-                 minMax = numbers[i];
+                minMax = numbers[i];
                 minMax *= -1;
             }
 
@@ -146,21 +145,17 @@ class Program
             {
                 max = numbers[i];
             }
-            
-
-            
         }
+
         if (minMax > max)
         {
-           minMax *= -1;
+            minMax *= -1;
             Console.WriteLine(minMax);
         }
         else
         {
             Console.WriteLine(max);
         }
-
-        
     }
 
     static void Task6()
@@ -168,39 +163,35 @@ class Program
         //2.  Найти разность между
         //максимальным и минимальным элементами массива
 
-        int [] array = { 5, 6, 3, 2 };
+        int[] array = { 5, 6, 3, 2 };
         int max = 0;
         int min = 100000;
-   
 
-        for (int i = 0; i<array.Length; i++)
+
+        for (int i = 0; i < array.Length; i++)
         {
-            if(array[i] > max)
-                {
-
+            if (array[i] > max)
+            {
                 max = array[i];
             }
 
-         
 
             if (array[i] < min)
             {
                 min = array[i];
-                
             }
-            
         }
-        Console.WriteLine($"Разность {max - min}" );
-       
+
+        Console.WriteLine($"Разность {max - min}");
     }
 
 
     static void TaskSameElements()
     {
         int[] array = { 5, 6, 7, 2, 1, 5 };
-       
 
-        for (int i = 0; i<array.Length; i++)
+
+        for (int i = 0; i < array.Length; i++)
         {
             var same = false;
 
@@ -208,41 +199,29 @@ class Program
             {
                 if (array[j] == array[i])
                 {
-
                     same = true;
                     Console.WriteLine("Yes");
-
-
-
                 }
-
             }
 
             for (int k = i + 1; k < array.Length; k++)
             {
-               if (array[k]!= array[i])
+                if (array[k] != array[i])
                 {
                     same = false;
                     Console.WriteLine("NO");
                 }
-
             }
-
-          
-          
         }
-
-
-
     }
 
     static void TaskDoubleMax()
     {
         int[] array = { 4, 6, 8, 12, 11 };
         int max1 = 0;
-        int max2 = 0;  
+        int max2 = 0;
 
-        for(int i = 0; i < array.Length; i++)
+        for (int i = 0; i < array.Length; i++)
 
         {
             if (array[i] > max1)
@@ -250,15 +229,13 @@ class Program
                 max1 = array[i];
             }
 
-                for (int j = 0 ; j < array.Length; j++)
+            for (int j = 0; j < array.Length; j++)
+            {
+                if (array[j] > max2 && array[j] < array[i])
                 {
-                    if (array[j] > max2 && array[j] < array[i])
-                    {
-                        max2 = array[j];
-                    }
-                
+                    max2 = array[j];
+                }
             }
-           
         }
 
         Console.WriteLine($"Maximum 1 : {max1} , Maximum 2 :  {max2} ");
