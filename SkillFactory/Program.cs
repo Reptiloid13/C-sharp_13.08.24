@@ -5,7 +5,7 @@ namespace SkillFactory
     internal class Program
 
     {
-        /* 
+        /*
          * Необходимо создать метод, который заполняет данные с клавиатуры по пользователю (возвращает кортеж):
 Имя;
 Фамилия;
@@ -24,11 +24,9 @@ namespace SkillFactory
         static void Main(string[] args)
 
         {
-
             var x = EnterUser();
-           
-
         }
+
         static (string Name, string LastName, int Age, bool Pets, int[] favcolors) EnterUser()
         {
             (string Name, string LastName, int Age, bool Pets) User;
@@ -57,8 +55,7 @@ namespace SkillFactory
                 {
                     Pets = false;
                 }
-            }
-            while (Pets == null);
+            } while (Pets == null);
 
             if (Pets != null && Pets == true)
             {
@@ -66,27 +63,23 @@ namespace SkillFactory
                 var hasPet = ReadStrings(petsCount, "Name pet : ");
 
                 Console.WriteLine(string.Join(";", hasPet));
-
             }
 
 
             var colorCount = ReadPositiveInt("How many favortite colors do you have: ");
             var colors = ReadStrings(colorCount, "Color: ");
 
-            for (int i = 0; i<colorCount; i++)
+            for (int i = 0; i < colorCount; i++)
             {
                 Console.Write($"Color № {i + 1}: ");
                 var color = Console.ReadLine();
                 colors[i] = color;
             }
 
-            Console.WriteLine(string.Join (";", colors));
+            Console.WriteLine(string.Join(";", colors));
 
 
             return EnterUser();
-
-
-
         }
 
         static string[] ReadStrings(int count, string message)
@@ -111,7 +104,6 @@ namespace SkillFactory
             } while (!int.TryParse(Console.ReadLine(), out colorsCount) && colorsCount > 0);
 
             return colorsCount;
-
         }
     }
 }
