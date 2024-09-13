@@ -13,10 +13,11 @@ class Program
         // Task2();
         // Task3();
         // Task4();
-         //Task5();
+        // Task5();
         // Task6();
         // TaskSameElements();
-        // TaskDoubleMax();
+        // 
+        TaskConsole();
     }
 
     static void Task1()
@@ -163,9 +164,9 @@ class Program
         //2.  Найти разность между
         //максимальным и минимальным элементами массива
 
-        int[] array = { 5, 6, 3, 2 };
-        int max = 0;
-        int min = 100000;
+        int[] array = { -6, -3, };
+        var max = array[0];
+        var min = array[0];
 
 
         for (int i = 0; i < array.Length; i++)
@@ -185,44 +186,33 @@ class Program
         Console.WriteLine($"Разность {max - min}");
     }
 
-
     static void TaskSameElements()
     {
-        int[] array = { 5, 6, 7, 2, 1, 5 };
-
+        int[] array = { 5, 6, 7, 2, 1 };
+        var same = false;
 
         for (int i = 0; i < array.Length; i++)
         {
-            var same = false;
-
             for (int j = i + 1; j < array.Length; j++)
             {
                 if (array[j] == array[i])
-                {
                     same = true;
-                    Console.WriteLine("Yes");
-                }
-            }
-
-            for (int k = i + 1; k < array.Length; k++)
-            {
-                if (array[k] != array[i])
-                {
-                    same = false;
-                    Console.WriteLine("NO");
-                }
             }
         }
+
+        if (same)
+            Console.WriteLine("Повторяются");
+        else
+            Console.WriteLine("Не повторяются");
     }
 
     static void TaskDoubleMax()
     {
         int[] array = { 4, 6, 8, 12, 11 };
-        int max1 = 0;
-        int max2 = 0;
+        int max1 = array[0];
+        int max2 = array[0];
 
         for (int i = 0; i < array.Length; i++)
-
         {
             if (array[i] > max1)
             {
@@ -239,5 +229,80 @@ class Program
         }
 
         Console.WriteLine($"Maximum 1 : {max1} , Maximum 2 :  {max2} ");
+    }
+
+    static void TaskConsole()
+    {
+        // Необходимо создать метод, который заполняет данные с клавиатуры по пользователю (возвращает кортеж):
+        // Имя;
+        // Фамилия;
+        // Возраст;
+        // Наличие питомца;
+        // Если питомец есть, то запросить количество питомцев;
+        // Если питомец есть, вызвать метод, принимающий на вход количество питомцев и возвращающий массив их кличек (заполнение с клавиатуры);
+        // Запросить количество любимых цветов;
+        // Вызвать метод, который возвращает массив любимых цветов по их количеству (заполнение с клавиатуры);
+        // Сделать проверку, ввёл ли пользователь корректные числа: возраст, количество питомцев, количество цветов в отдельном методе;
+        // Требуется проверка корректного ввода значений и повтор ввода, если ввод некорректен;
+        // Корректный ввод: ввод числа типа int больше 0.
+        // Метод, который принимает кортеж из предыдущего шага и показывает на экран данные.
+        // Вызов методов из метода Main.
+
+        var colorsCount = ReadPositiveInt("Количество цветов: ");
+        var colors = ReadStrings(colorsCount, "Цвет");
+
+        for (int i = 0; i < colorsCount; i++)
+        {
+            Console.Write($"Цвет №{i + 1}: ");
+            var color = Console.ReadLine();
+            colors[i] = color;
+        }
+
+        Console.WriteLine(string.Join("@", colors));
+
+        // Домашка - вынести в отдельный меотод bool ReadBool(string message)
+        // var hasPets = ReadBool("Есть ли питомцы (yes/y/no/n): ")
+        bool? hasPets = null;
+        do
+        {
+            Console.WriteLine("Есть ли питомцы (yes/y/no/n): ");
+            var input = Console.ReadLine();
+            if (input == "yes" || input == "y")
+                hasPets = true;
+            else if (input == "no" || input == "n")
+                hasPets = false;
+        } while (hasPets == null);
+
+        if (hasPets != null && hasPets == true)
+        {
+            var petsCount = ReadPositiveInt("Количество питомцев: ");
+            var pets = ReadStrings(petsCount, "Питомец");
+
+            Console.WriteLine(string.Join(";", pets));
+        }
+
+        static int ReadPositiveInt(string message)
+        {
+            int colorsCount;
+            do
+            {
+                Console.Write(message);
+            } while (!int.TryParse(Console.ReadLine(), out colorsCount) && colorsCount > 0);
+
+            return colorsCount;
+        }
+
+        static string[] ReadStrings(int count, string message)
+        {
+            var strings = new string[count];
+
+            for (int i = 0; i < count; i++)
+            {
+                Console.Write($"{message} № {i + 1}: ");
+                strings[i] = Console.ReadLine();
+            }
+
+            return strings;
+        }
     }
 }
