@@ -9,6 +9,7 @@ class Program
 
     static void Main()
     {
+        //Console.WriteLine("WTF");
         // Task1();
         // Task2();
         // Task3();
@@ -17,7 +18,7 @@ class Program
         // Task6();
         // TaskSameElements();
         // 
-        TaskConsole();
+        //TaskConsole();
     }
 
     static void Task1()
@@ -233,63 +234,54 @@ class Program
 
     static void TaskConsole()
     {
-        // Необходимо создать метод, который заполняет данные с клавиатуры по пользователю (возвращает кортеж):
-        // Имя;
-        // Фамилия;
-        // Возраст;
-        // Наличие питомца;
-        // Если питомец есть, то запросить количество питомцев;
-        // Если питомец есть, вызвать метод, принимающий на вход количество питомцев и возвращающий массив их кличек (заполнение с клавиатуры);
-        // Запросить количество любимых цветов;
-        // Вызвать метод, который возвращает массив любимых цветов по их количеству (заполнение с клавиатуры);
-        // Сделать проверку, ввёл ли пользователь корректные числа: возраст, количество питомцев, количество цветов в отдельном методе;
-        // Требуется проверка корректного ввода значений и повтор ввода, если ввод некорректен;
-        // Корректный ввод: ввод числа типа int больше 0.
-        // Метод, который принимает кортеж из предыдущего шага и показывает на экран данные.
-        // Вызов методов из метода Main.
-
-        var colorsCount = ReadPositiveInt("Количество цветов: ");
-        var colors = ReadStrings(colorsCount, "Цвет");
-
-        for (int i = 0; i < colorsCount; i++)
+        static (string Name, string LastName, int Age, bool Pets, int[] favcolors) EnterUser()
         {
-            Console.Write($"Цвет №{i + 1}: ");
-            var color = Console.ReadLine();
-            colors[i] = color;
-        }
+            (string Name, string LastName, int Age, bool Pets) User;
 
-        Console.WriteLine(string.Join("@", colors));
+            Console.WriteLine("Enter your name: ");
+            User.Name = Console.ReadLine();
 
-        // Домашка - вынести в отдельный меотод bool ReadBool(string message)
-        // var hasPets = ReadBool("Есть ли питомцы (yes/y/no/n): ")
-        bool? hasPets = null;
-        do
-        {
-            Console.WriteLine("Есть ли питомцы (yes/y/no/n): ");
-            var input = Console.ReadLine();
-            if (input == "yes" || input == "y")
-                hasPets = true;
-            else if (input == "no" || input == "n")
-                hasPets = false;
-        } while (hasPets == null);
+            Console.WriteLine("Enter your LastName: ");
+            User.LastName = Console.ReadLine();
 
-        if (hasPets != null && hasPets == true)
-        {
-            var petsCount = ReadPositiveInt("Количество питомцев: ");
-            var pets = ReadStrings(petsCount, "Питомец");
+            Console.WriteLine("Enter your age: ");
+            User.Age = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine(string.Join(";", pets));
-        }
 
-        static int ReadPositiveInt(string message)
-        {
-            int colorsCount;
+            bool? Pets = null;
             do
             {
-                Console.Write(message);
-            } while (!int.TryParse(Console.ReadLine(), out colorsCount) && colorsCount > 0);
+                Console.WriteLine("Do you have  pets (Yes/Y/No/N) : ");
+                var inPut = Console.ReadLine();
 
-            return colorsCount;
+                if (inPut == "Yes" || inPut == "Y")
+                {
+                    Pets = true;
+                }
+                else if (inPut == "NO" || inPut == "N")
+                {
+                    Pets = false;
+                }
+            }
+            while (Pets == null);
+
+            if (Pets != null && Pets == true)
+            {
+                var petsCount = ReadPositiveInt("Количество питомцев: ");
+                var hasPet = ReadStrings(petsCount, "Pets: ");
+
+                Console.WriteLine(string.Join(";", hasPet));
+
+            }
+
+
+            
+
+
+            return EnterUser();
+
+
+
         }
 
         static string[] ReadStrings(int count, string message)
@@ -304,5 +296,17 @@ class Program
 
             return strings;
         }
+
+        static int ReadPositiveInt(string message)
+        {
+            int colorsCount;
+            do
+            {
+                Console.Write(message);
+            } while (!int.TryParse(Console.ReadLine(), out colorsCount) && colorsCount > 0);
+
+            return colorsCount;
+        
+        }
     }
-}
+    }
