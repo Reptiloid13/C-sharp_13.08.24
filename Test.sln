@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SkillFactory", "SkillFactor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkillFactory", "SkillFactory\SkillFactory.csproj", "{B66848F6-6A2D-40F4-83CF-7F60D2264C19}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{4C38E951-47DB-49A0-AA43-EB29A5388207}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{B66848F6-6A2D-40F4-83CF-7F60D2264C19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B66848F6-6A2D-40F4-83CF-7F60D2264C19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B66848F6-6A2D-40F4-83CF-7F60D2264C19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C38E951-47DB-49A0-AA43-EB29A5388207}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C38E951-47DB-49A0-AA43-EB29A5388207}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C38E951-47DB-49A0-AA43-EB29A5388207}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C38E951-47DB-49A0-AA43-EB29A5388207}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
