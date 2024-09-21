@@ -11,12 +11,10 @@ struct Rectangle
 {
     public int Width, Height;
 
-
-    public Rectangle(int width, int heigt)
+    public Rectangle(int width, int height)
     {
         Width = width;
-        Height = heigt;
-
+        Height = height;
     }
 
     public int Area()
@@ -24,4 +22,3 @@ struct Rectangle
         return Width * Height;
     }
 }
-
