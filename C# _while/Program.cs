@@ -1,6 +1,7 @@
 ﻿// shift alt f - форматирование 
 
 using System;
+using System.Runtime.InteropServices;
 
 class Program
 {
@@ -168,7 +169,7 @@ class Program
         //2.  Найти разность между
         //максимальным и минимальным элементами массива
 
-        int[] array = { -6, -3, };
+        int[] array = { -6, -3 };
         var max = array[0];
         var min = array[0];
 
@@ -319,54 +320,42 @@ class Program
     {
         /* На ввод поступает массив размером n.
 
-Увеличьте каждый четный элемент массива на единицу.   */
+Увеличьте каждый четный элемент массива на единицу. 
+        5
+5 5 9 8 3*/
 
-        int n;
-        n = Convert.ToInt32(Console.ReadLine());
+        int[] array = { 5, 5, 9, 8, 3 };
+
+
+
         int result = 1;
 
+        int chet;
 
-        string[] s = Console.ReadLine().Split(' ');
-        int[] array = new int[n];
 
         for (int i = 0; i > array.Length; i++)
         {
-            array[i] = Convert.ToInt32(s[i]);
 
 
             if (array[i] % 2 == 0)
             {
-                result = array[i] + 1;
+                result = array[i] + result;
 
 
             }
 
 
 
-        }
 
+        }
         Console.WriteLine(result);
 
+
     }
-    //    var square = new Rectangle() { Width = 20, Height = 4 };
-    //    Console.WriteLine(square.Area());
 
-    //struct Rectangle
-    //    {
-    //        public int Width, Height;
+    /* На ввод поступает массив размером n.
 
-
-    //        public Rectangle(int width, int heigt)
-    //        {
-    //            Width = width;
-    //            Height = heigt;
-
-    //        }
-
-    //        public int Area()
-    //        {
-    //            return Width * Height;
-    //        }
+Увеличьте каждый четный элемент массива на единицу.   */
 
 
 
