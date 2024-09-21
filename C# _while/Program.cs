@@ -4,7 +4,7 @@ using System;
 
 class Program
 {
-// 3. Есть ли в массиве одинаковые элементы
+    // 3. Есть ли в массиве одинаковые элементы
 
 
     static void Main()
@@ -278,7 +278,7 @@ class Program
             }
 
 
-            
+
 
 
             return EnterUser();
@@ -309,7 +309,7 @@ class Program
             } while (!int.TryParse(Console.ReadLine(), out colorsCount) && colorsCount > 0);
 
             return colorsCount;
-        
+
         }
     }
 
@@ -324,7 +324,7 @@ class Program
         int n;
         n = Convert.ToInt32(Console.ReadLine());
         int result = 1;
-        
+
 
         string[] s = Console.ReadLine().Split(' ');
         int[] array = new int[n];
@@ -336,19 +336,38 @@ class Program
 
             if (array[i] % 2 == 0)
             {
-                result = array[i]+ 1;
+                result = array[i] + 1;
 
-                 
-;
 
             }
-            
-           
+
+
 
         }
-       
+
         Console.WriteLine(result);
 
     }
+    //    var square = new Rectangle() { Width = 20, Height = 4 };
+    //    Console.WriteLine(square.Area());
+
+    //struct Rectangle
+    //    {
+    //        public int Width, Height;
+
+
+    //        public Rectangle(int width, int heigt)
+    //        {
+    //            Width = width;
+    //            Height = heigt;
+
+    //        }
+
+    //        public int Area()
+    //        {
+    //            return Width * Height;
+    //        }
+
+
 
 }

@@ -1,0 +1,60 @@
+﻿Person tom = new Person(); // создание объекта класса Person
+
+// Получаем значение полей в переменные
+string personName = tom.name;
+int personaAge = tom.age;
+Console.WriteLine($"Name: {personName} Age: {personaAge}"); // Имя - Undefined Возраст: 0 
+
+// устанавливаем новые значения полей
+tom.name = "Tom";
+tom.age = 37;
+
+tom.Print(); 
+
+// Определение класса Person
+class Person 
+{
+    public string name = "Undefined";
+    public int age;
+
+public void Print()
+{
+    Console.WriteLine($"Имя: {name} Возраст: {age} ");   
+}
+
+}
+
+
+С 3 конструкторами 
+
+
+
+Person tom = new Person(); // Person tom = new (); 
+Person bob = new Person("Bob"); //  Person bob = new("Bob"); 
+Person sam = new Person("Sam", 25); // Person sam = new("Sam,25");
+
+
+
+tom.Print(); // Name: Tom Age: 37
+bob.Print(); // Name: Bob Age: 18
+sam.Print(); // Name Sam Age: 25
+
+
+class Person
+{
+    public string name;
+    public int age;
+
+    public Person()
+    {
+        Console.WriteLine("Create object Person");
+        name = "Tom";
+        age = 37; 
+    }
+    public Person (string n) { name = n; age = 18; } // 1 конструктор
+    public Person (string n, int a ) { name = n; age = a;} // 2 конструктор
+    public void Print() // 3 тий конструктор 
+    {
+        Console.WriteLine($"Name: {name} Age: {age}");
+    }
+}
