@@ -2,26 +2,22 @@
 {
     static void Main()
     {
-        Massive1();
+        ArrayTask1();
     }
 
-    static void Massive1()
+    static void ArrayTask1()
     {
         /* На ввод поступает массив размером n. Увеличьте каждый четный элемент массива на единицу. 5 5 5 9 8 3 */
 
         int[] array = { 5, 5, 9, 8, 3 };
-        int result = 1;
-        int chet;
 
-        for (int i = 0; i > array.Length; i++)
+        for (int i = 0; i < array.Length; i++)
         {
             if (array[i] % 2 == 0)
-            {
-                result = array[i] + result;
-            }
+                array[i] += 1;
         }
 
-        Console.WriteLine(result);
+        Console.Write(string.Join(", ", array));
     }
 
     /* На ввод поступает массив размером n. Увеличьте каждый четный элемент массива на единицу.   */
