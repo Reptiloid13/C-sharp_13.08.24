@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 class Program
 {
     // 3. Есть ли в массиве одинаковые элементы
-
+    // Rjvvtynfhbq 
 
     static void Main()
     {
