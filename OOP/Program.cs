@@ -1,45 +1,21 @@
-﻿var point = new Point(-99999999, 4);
+﻿using OOP;
 
-Console.WriteLine(point.Distance());
-Console.WriteLine(point);
-Console.WriteLine(point.ToString());
-Console.WriteLine(Point.Distance(3, 4));
+var square = new Rectangle(21, 5) { Width = 20, Height = 4 };
+Console.WriteLine(square.GetArea());
 
-struct Point
-{
-    private double X = 0;
-    private double Y = 0;
+var fromColor = new Color() { Blue = 100, Green = 100, Red = 100 };
+var toColor = new Color() { Blue = 110, Green = 200, Red = 200 };
+ColorsTask.GetColorShades(fromColor, toColor, 10);
 
-    public override string ToString()
-    {
-        return base.ToString() + $"; x = {X}, y = {Y}";
-    }
-
-    public Point(double x, double y)
-    {
-        if (!IsRight(x, y))
-        {
-            Console.WriteLine($"Неверные координаты x = {x}, y = {y}");
-            x = 0;
-            y = 0;
-        }
-
-        X = x;
-        Y = y;
-    }
-
-    private bool IsRight(double x, double y)
-    {
-        return x > -99999 && y < 99999;
-    }
-
-    public static double Distance(double x, double y)
-    {
-        return Math.Sqrt(x * x + y * y);
-    }
-
-    public double Distance()
-    {
-        return Math.Sqrt(X * X + Y * Y);
-    }
-}
+/*
+RGB: (100,100,100)
+RGB: (110,110,101)
+RGB: (120,120,102)
+RGB: (130,130,103)
+RGB: (140,140,104)
+RGB: (150,150,105)
+RGB: (160,160,106)
+RGB: (170,170,107)
+RGB: (180,180,108)
+RGB: (200,200,110)
+*/
