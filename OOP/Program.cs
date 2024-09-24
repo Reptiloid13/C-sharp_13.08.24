@@ -1,11 +1,37 @@
 ﻿using OOP;
 
-var square = new Rectangle(21, 5) { Width = 20, Height = 4 };
-Console.WriteLine(square.GetArea());
 
-var fromColor = new Color() { Blue = 100, Green = 100, Red = 100 };
-var toColor = new Color() { Blue = 110, Green = 200, Red = 200 };
-ColorsTask.GetColorShades(fromColor, toColor, 10);
+
+//var fromColor = new Color() { Blue = 100, Green = 100, Red = 100 };
+//var toColor = new Color() { Blue = 110, Green = 200, Red = 200 };
+//ColorsTask.GetColorShades(fromColor, toColor, 10);
+
+
+struct Color
+{
+    public int Red;
+    public int Green;
+    public int Blue;
+
+    public Color(int red, int green, int blue)
+    {
+        Red = red; Green = green; Blue = blue;
+    }
+
+    public Color[] GetColorShades(Color fromColor, Color toColor, int shadesCount)
+    {
+        Color[] shades = new Color[shadesCount];
+        for (int i = 0; i < shadesCount; i++)
+        {
+            int red = i * 10 + 100;
+            int green = i * 10 + 100;
+            int blue = i * 10 + 100;
+            shades[i] = new Color(red, green, blue);
+        }
+        return shades;
+    }
+}
+
 
 /*
 RGB: (100,100,100)
