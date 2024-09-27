@@ -95,30 +95,24 @@ class Program
 
         // ПОЧему не работает через цикл for ?
 
-        //for (int i = 0; i < array.Length; i++)   
-        //{
-        //    if (array[i] != 0 && array[i] > 0)
-        //    {
-
-        //    }
-        //    Console.WriteLine(string.Join(",", array));
-
+        // for (int i = 0; i < array.Length; i++)
+        // {
+        //     if (array[i] != 0 && array[i] > 0)
+        //         Console.Write(array[i] + " ");
+        // }
 
         foreach (var item in array)
         {
             if (item != 0)
-            {
                 Console.Write(item + " ");
-            }
-
         }
 
 
     }
+
+
     //    На ввод поступает целое число N, а далее Nе количество целых чисел.
     //Необходимо вывести на экран сумму всех нечетных элементов данного массива чисел.
-
-
     static void ArraySumOddNumbers()
     {
 

@@ -1,13 +1,16 @@
-﻿using OOP;
-
-
-
-//var fromColor = new Color() { Blue = 100, Green = 100, Red = 100 };
+﻿//var fromColor = new Color() { Blue = 100, Green = 100, Red = 100 };
 //var toColor = new Color() { Blue = 110, Green = 200, Red = 200 };
-//ColorsTask.GetColorShades(fromColor, toColor, 10);
+//ColorTask.GetColorShades(fromColor, toColor, 10);
 
 var obj = new A(1) {N = 2};
 Console.WriteLine(obj.N);
+
+
+
+var employee = new Employee(1); // Саркис
+employee.GetOldestEmployee([new Employee(2), new Employee(3), new Employee(4) , new Employee(5) ,new Employee(6)]);
+
+var oldest = Employee.GetOldestEmployeeStatic([employee, new Employee(2), new Employee(3), new Employee(4) , new Employee(5) ,new Employee(6)]);
 
 class A {
     public int N;
@@ -21,6 +24,36 @@ class A {
 }
 
 
+class Employee
+{
+    public int Age;
+    
+    public Employee(int age)
+    {
+         Age = age;   
+    }
+
+    public Employee GetOldestEmployee(Employee[] othersEmployees)
+    {
+        Age = 4;
+        // ...
+    }
+    
+    public static Employee GetOldestEmployeeStatic(Employee[] othersEmployees)
+    {
+        // ...
+    }
+}
+
+// 10 100 - 6 = 90 / 5 = 18
+// 10 20 30 - 3 // 20 / (3 - 1) = 20 / 2 = 10
+
+var shades = Color.GetColorShades(new Color(10, 10, 10), new Color(20, 20, 20), 3);
+// 10, 10, 10
+// 15, 15, 15
+// 20, 20, 20
+// 20 - 10 = 10 / (3-1) = 10 / 2 = 5
+
 struct Color
 {
     public int Red;
@@ -32,9 +65,10 @@ struct Color
         Red = red; Green = green; Blue = blue;
     }
 
-    public Color[] GetColorShades(Color fromColor, Color toColor, int shadesCount)
+    public static Color[] GetColorShades(Color fromColor, Color toColor, int shadesCount)
     {
         Color[] shades = new Color[shadesCount];
+        
         for (int i = 0; i < shadesCount; i++)
         {
             int red = i * 10 + 100;
@@ -42,6 +76,7 @@ struct Color
             int blue = i * 10 + 100;
             shades[i] = new Color(red, green, blue);
         }
+        
         return shades;
     }
 }
