@@ -6,6 +6,20 @@
 //var toColor = new Color() { Blue = 110, Green = 200, Red = 200 };
 //ColorsTask.GetColorShades(fromColor, toColor, 10);
 
+var obj = new A(1) {N = 2};
+Console.WriteLine(obj.N);
+
+class A {
+    public int N;
+
+    public A(int n)
+    {
+        Console.WriteLine("Конструктор");
+        Console.WriteLine(N);
+        N = n;
+    }
+}
+
 
 struct Color
 {
