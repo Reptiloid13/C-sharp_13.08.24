@@ -4,7 +4,7 @@ public struct Rectangle
 {
     public int Width, Height;
 
-    public Rectangle(int width, int height)
+    public static Rectangle(int width, int height)
     {
         Width = width;
         Height = height;
