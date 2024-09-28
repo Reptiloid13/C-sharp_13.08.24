@@ -1,28 +1,39 @@
-﻿namespace OOP;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Data;
+using System.Diagnostics.Contracts;
 
-var rect = new Rectangle(10, 20);
-var area1 = rect.GetAreaNotStatic();
+namespace OOP;
 
-// Для статических методов не нужен экземпляр класса
-var area2 = Rectangle.GetAreaStatic(30, 20);
-
-public struct Rectangle
+internal class Program
 {
-    public int Width, Height;
 
-    public Rectangle(int width, int height)
+    static void Main(string[] args)
     {
-        Width = width;
-        Height = height;
+        Car ferarri = new Car();
+        ferarri.Name = "F40";
+        ferarri.HorsePower = 471;
+        ferarri.Age = 30;
+        ferarri.MaxSpeed = 317.0f;
+
+
+        Car maserati = ferarri;
+        maserati.HorsePower = 1000;
+        Console.WriteLine(ferarri.HorsePower);
+
+
+
+
     }
 
-    public int GetAreaNotStatic()
-    {
-        return Width * Height;
-    }
 
-    public static int GetAreaStatic(int width, int height)
-    {
-        return width * height;
-    }
 }
+
+class Car
+{
+    public string Name;
+    public int HorsePower;
+    public int Age;
+    public float MaxSpeed;
+
+}
+

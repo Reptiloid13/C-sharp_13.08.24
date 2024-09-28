@@ -1,6 +1,7 @@
 
 
 using System;
+using System.ComponentModel.Design;
 using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics.Arm;
 using System.Xml.XPath;
@@ -17,6 +18,8 @@ class Program
         // ArrayPlusOne();
         //ArrayWithoutZero();
         //ArraySumOddNumbers();
+        //SymbolsLetterOrNumver();
+        Task1();
     }
 
     static void ArrayMultiply()
@@ -130,4 +133,39 @@ class Program
         }
         Console.Write(sum + " ");
     }
+
+
+    static void SymbolsLetterOrNumver()
+    {
+        char a;
+        a = Convert.ToChar(Console.ReadLine());
+
+        if (char.IsDigit(a)) 
+
+        { Console.WriteLine("number"); }
+
+        else if (char.IsLetter(a))
+        {
+            Console.WriteLine("letter");
+        }
+
+        
+    }
+
+    static void Task1()
+
+//        На ввод поступает число.
+//Программа должна вывести на консоль символ, соответствующий данному числу согласно таблице ASCII.
+
+    {
+        int number = Convert.ToInt32(Console.ReadLine());
+        number = Convert.ToChar(number);
+        int number2 = Convert.ToInt32(Console.ReadLine());
+        number2= Convert.ToChar(number2);
+
+        Console.WriteLine( number + " " + number2); // Как ввести в Консоль Врайт Лайн два значения? 
+
+        
+    }
+    
 }

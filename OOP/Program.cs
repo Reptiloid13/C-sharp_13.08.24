@@ -2,17 +2,18 @@
 //var toColor = new Color() { Blue = 110, Green = 200, Red = 200 };
 //ColorTask.GetColorShades(fromColor, toColor, 10);
 
-var obj = new A(1) {N = 2};
+var obj = new A(1) { N = 2 };
 Console.WriteLine(obj.N);
 
 
 
 var employee = new Employee(1); // Саркис
-employee.GetOldestEmployee([new Employee(2), new Employee(3), new Employee(4) , new Employee(5) ,new Employee(6)]);
+employee.GetOldestEmployee([new Employee(2), new Employee(3), new Employee(4), new Employee(5), new Employee(6)]);
 
-var oldest = Employee.GetOldestEmployeeStatic([employee, new Employee(2), new Employee(3), new Employee(4) , new Employee(5) ,new Employee(6)]);
+var oldest = Employee.GetOldestEmployeeStatic([employee, new Employee(2), new Employee(3), new Employee(4), new Employee(5), new Employee(6)]);
 
-class A {
+class A
+{
     public int N;
 
     public A(int n)
@@ -27,10 +28,10 @@ class A {
 class Employee
 {
     public int Age;
-    
+
     public Employee(int age)
     {
-         Age = age;   
+        Age = age;
     }
 
     public Employee GetOldestEmployee(Employee[] othersEmployees)
@@ -38,7 +39,7 @@ class Employee
         Age = 4;
         // ...
     }
-    
+
     public static Employee GetOldestEmployeeStatic(Employee[] othersEmployees)
     {
         // ...
@@ -65,18 +66,19 @@ struct Color
         Red = red; Green = green; Blue = blue;
     }
 
-    public static Color[] GetColorShades(Color fromColor, Color toColor, int shadesCount)
+    public Color[] GetColorShades(Color fromColor, Color toColor, int shadesCount)
     {
         Color[] shades = new Color[shadesCount];
-        
+
         for (int i = 0; i < shadesCount; i++)
         {
-            int red = i * 10 + 100;
-            int green = i * 10 + 100;
-            int blue = i * 10 + 100;
-            shades[i] = new Color(red, green, blue);
+            fromColor.Red = (110 - 100) / 10 - 1;
+
+
         }
-        
+
+
+
         return shades;
     }
 }
