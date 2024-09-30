@@ -19,7 +19,10 @@ class Program
         //ArrayWithoutZero();
         //ArraySumOddNumbers();
         //SymbolsLetterOrNumver();
-        Task1();
+        //Task1();
+        //StringTask();
+        // StringTask2();
+        StringTask3();
     }
 
     static void ArrayMultiply()
@@ -140,7 +143,7 @@ class Program
         char a;
         a = Convert.ToChar(Console.ReadLine());
 
-        if (char.IsDigit(a)) 
+        if (char.IsDigit(a))
 
         { Console.WriteLine("number"); }
 
@@ -149,23 +152,84 @@ class Program
             Console.WriteLine("letter");
         }
 
-        
+
     }
 
     static void Task1()
 
-//        На ввод поступает число.
-//Программа должна вывести на консоль символ, соответствующий данному числу согласно таблице ASCII.
+    //        На ввод поступает число.
+    //Программа должна вывести на консоль символ, соответствующий данному числу согласно таблице ASCII.
 
     {
         int number = Convert.ToInt32(Console.ReadLine());
         number = Convert.ToChar(number);
         int number2 = Convert.ToInt32(Console.ReadLine());
-        number2= Convert.ToChar(number2);
+        number2 = Convert.ToChar(number2);
 
-        Console.WriteLine( number + " " + number2); // Как ввести в Консоль Врайт Лайн два значения? 
+        Console.WriteLine(number + " " + number2); // Как ввести в Консоль Врайт Лайн два значения? 
 
-        
+
     }
-    
+
+    static void StringTask()
+    {
+        // На ввод поступает строка состоящая из символов.
+        //Определите кол-во  цифр в данной строке.  (Строка без пробелов). 
+        //ac24e5sf0
+
+        string a = Console.ReadLine();
+        int numbers = 0;
+        foreach (char ch in a)
+        {
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (ch >= '0' && ch <= '9')
+                {
+
+
+                }
+
+            }
+
+        }
+        numbers++; // Не получается вывести кол-во цифр в  строке
+        Console.WriteLine(numbers);
+
+    }
+    static void StringTask2()
+
+    {
+        //На ввод поступает строка, определите количество слов в строке
+
+        string s = Console.ReadLine();
+        int count = 1;
+        for (int i = 0; i <= s.Length; i++)
+        {
+            if ((i < s.Length))
+            {
+                if ((s[i] == ' ') && (s[i - 1] != ' ')) count++;
+            }
+        }
+        Console.WriteLine(count);
+
+
+
+    }
+
+    static void StringTask3()
+    {
+        //На ввод поступает строка. Программа должна развернуть строку и вывести ее на печать.
+        string s = Console.ReadLine();
+        for (int i = s.Length - 1; i >= 0; i--)
+        {
+            Console.Write(s[i]);
+        }
+
+
+
+
+
+    }
+
+
 }
