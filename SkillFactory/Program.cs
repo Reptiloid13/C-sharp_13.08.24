@@ -4,48 +4,60 @@
 namespace SkillFactory
 {
 
-    class Student
-    {
-        public Guid id;
-        public string firstName;
-        public string lastName;
-        public string middleName;
-        public int age;
-        public string group;
 
-
-    }
 
     class Program
     {
-        static Student GetStudent()
-        {
-            Student student = new Student();
-            student.firstName = "Sarkis";
-            student.lastName = "Petrosyants";
-            student.middleName = "Semenovich";
-            student.age = 30;
-            student.group = "CDEV-47";
-
-        }
-
-        static void Print(studetn student)
-        {
-
-        }
         static void Main(string[] args)
         {
-            var firstStudent = GetStudent();
-            Print(firstStudent);
+            var N = ReadPositiveInt ("Enter  N: ");
+            var nums = ReadIntegers(N);
+            var reversed = Reverse(nums);
+            Console.WriteLine(string.Join(", ", reversed));
+
+
         }
+        static int[] ReadIntegers(int n)
+        {
+           
+            int[] numbers = new int[n];
+            var items = Console.ReadLine().Split(' ');
+            var nums = new int[n];
+
+            for (int i = 0; i < n; i++)
+            {
+                nums[i] = Convert.ToInt32(items[i]);
+            }
+            return nums;
+
+
+
+        }
+
+        static int ReadPositiveInt(string message)
+        {
+            int value;
+            do
+            {
+                Console.WriteLine(message);
+            }
+            while (int.TryParse(message, out value) == false);
+
+            return value;
+        }
+        static int[] Reverse(int[] nums)
+        {
+            var n = nums.Length;
+            for (int i = 0; i < nums.Length / 2; i++)
+            {
+                (nums[i], nums[n - i - 1]) = (nums[n - i - 1], nums[i]);
+
+            }
+            return nums;
+
+        }
+
     }
-
-
-
-
-
-
-
 
 
 

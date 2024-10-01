@@ -218,12 +218,11 @@ class Program
 
     static void StringTask3()
     {
-        //На ввод поступает строка. Программа должна развернуть строку и вывести ее на печать.
-        string s = Console.ReadLine();
-        for (int i = s.Length - 1; i >= 0; i--)
-        {
-            Console.Write(s[i]);
-        }
+
+        int num1 = 10;
+        int num2 = 20;
+        (num1, num2)= (num2, num1);
+        Console.WriteLine($"{num1}  , {num2}");
 
 
 

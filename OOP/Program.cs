@@ -1,7 +1,7 @@
 ﻿
-var shades = Color.GetColorShades(new Color(100, 100, 100), new Color(200, 200, 110), 10);
-foreach (var shade in shades)
-    Console.WriteLine(shade.ToString());
+//var shades = Color.GetColorShades(new Color(100, 100, 100), new Color(200, 200, 110), 10);
+//foreach (var shade in shades)
+//    Console.WriteLine(shade.ToString());
 
 // var N = ReadPositiveInt("Введите количество чисел N: ");
 // var nums = ReadIntegers(N);
@@ -49,9 +49,13 @@ static int[] Reverse(int[] nums)
         // nums[n - i - 1] - отзеркаленный
         // nums[nums.Length - i - 1] - отзеркаленный
 
-        var temp = nums[i];
-        nums[i] = nums[n - i - 1];
-        nums[n - i - 1] = temp;
+        //var temp = nums[i];
+        //nums[i] = nums[n - i - 1];
+        //nums[n - i - 1] = temp;
+
+        (nums[i], nums[n-i-1]) = (nums[n-i-1], nums[i]); // Меняем две инт переменной без третьей 
+
+
     }
     return nums; 
 }
@@ -66,42 +70,42 @@ static void SumElements(int[] array)
     Console.WriteLine(sum);
 }
 
-struct Color
-{
-    public int Red;
-    public int Green;
-    public int Blue;
+//struct Color
+//{
+//    public int Red;
+//    public int Green;
+//    public int Blue;
 
-    public Color(int red, int green, int blue)
-    {
-        Red = red; Green = green; Blue = blue;
-    }
+//    public Color(int red, int green, int blue)
+//    {
+//        Red = red; Green = green; Blue = blue;
+//    }
     
-    public override string ToString()
-    {
-        return $"Red: {Red}, Green: {Green}, Blue: {Blue}";
-    }
+//    public override string ToString()
+//    {
+//        return $"Red: {Red}, Green: {Green}, Blue: {Blue}";
+//    }
 
-    public static Color[] GetColorShades(Color fromColor, Color toColor, int shadesCount)
-    {
-        var shades = new Color[shadesCount];
-        shades[0] = fromColor;
-        shades[shadesCount - 1] = toColor;
+//    public static Color[] GetColorShades(Color fromColor, Color toColor, int shadesCount)
+//    {
+//        var shades = new Color[shadesCount];
+//        shades[0] = fromColor;
+//        shades[shadesCount - 1] = toColor;
 
-        for (int i = 1; i < shadesCount - 1; i++)
-        {
-            var redStep = (toColor.Red - fromColor.Red) / (shadesCount - 1);
-            var greenStep = (toColor.Green - fromColor.Green) / (shadesCount - 1);
-            var blueStep = (toColor.Blue - fromColor.Blue) / (shadesCount - 1);
+//        for (int i = 1; i < shadesCount - 1; i++)
+//        {
+//            var redStep = (toColor.Red - fromColor.Red) / (shadesCount - 1);
+//            var greenStep = (toColor.Green - fromColor.Green) / (shadesCount - 1);
+//            var blueStep = (toColor.Blue - fromColor.Blue) / (shadesCount - 1);
             
-            var prevColor = shades[i - 1];
-            var color = new Color(prevColor.Red + redStep, prevColor.Green + greenStep, prevColor.Blue + blueStep);
+//            var prevColor = shades[i - 1];
+//            var color = new Color(prevColor.Red + redStep, prevColor.Green + greenStep, prevColor.Blue + blueStep);
             
-            shades[i] = color;
-        }
+//            shades[i] = color;
+//        }
 
-        return shades;
-    }
+//        return shades;
+//    }
 }
 
 
