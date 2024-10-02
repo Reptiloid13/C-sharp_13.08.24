@@ -226,15 +226,13 @@ class Program
         //Перезапишите и выведите массив на печать, где каждый элемент возведён в 3ю степень
 
         int n = Convert.ToInt32(Console.ReadLine());
-        double[] numbers = new double[n];
-        string[] item = Console.ReadLine().Split(' ');
+        var items = Console.ReadLine().Split(' ');
 
         for (int i = 0; i < n; i++)
         {
-            numbers[i] = Convert.ToInt32(item[i]);
-            numbers[i] = Math.Pow(numbers[i], 3);
+            var num = Convert.ToInt32(items[i]);
+            var isLast = i == n - 1;
+            Console.Write(Math.Pow(num, 3) + (isLast ? "" : " "));
         }
-
-        Console.Write(string.Join(" ", numbers));
     }
 }
