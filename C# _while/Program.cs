@@ -1,5 +1,3 @@
-
-
 using System;
 using System.ComponentModel.Design;
 using System.Runtime.InteropServices;
@@ -8,11 +6,8 @@ using System.Xml.XPath;
 
 class Program
 {
-
-
     static void Main()
     {
-
         //ArrayMultiply();
         //ArrayMultiplyVer2();
         // ArrayPlusOne();
@@ -22,13 +17,12 @@ class Program
         //Task1();
         //StringTask();
         // StringTask2();
-        StringTask3();
-        //Array3();
+        // StringTask3();
+        Array3();
     }
 
     static void ArrayMultiply()
     {
-
         //       На ввод поступает массив размером n.  
         //Перемножьте каждый элемент массива на число n. 5
         //5 5 9 8 3
@@ -42,11 +36,9 @@ class Program
             {
                 array[i] *= result;
             }
-
-
         }
-        Console.WriteLine(string.Join("; ", array));
 
+        Console.WriteLine(string.Join("; ", array));
     }
 
     static void ArrayMultiplyVer2()
@@ -64,12 +56,11 @@ class Program
 
             if (result > 0)
             {
-
                 result *= array[i];
             }
+
             Console.Write(string.Join(" ", array));
         }
-
     }
 
     static void ArrayPlusOne()
@@ -88,8 +79,8 @@ class Program
             {
                 array[i] += 1;
             }
-
         }
+
         Console.Write(string.Join(", ", array));
     }
 
@@ -113,8 +104,6 @@ class Program
             if (item != 0)
                 Console.Write(item + " ");
         }
-
-
     }
 
 
@@ -122,19 +111,16 @@ class Program
     //Необходимо вывести на экран сумму всех нечетных элементов данного массива чисел.
     static void ArraySumOddNumbers()
     {
-
         int[] array = { 5, 5, 4, 3, 2 };
         int sum = 0;
         for (int i = 0; i < array.Length; i++)
         {
-
             if (array[i] % 2 != 0)
             {
                 sum = sum + array[i];
-
             }
-
         }
+
         Console.Write(sum + " ");
     }
 
@@ -146,20 +132,20 @@ class Program
 
         if (char.IsDigit(a))
 
-        { Console.WriteLine("number"); }
+        {
+            Console.WriteLine("number");
+        }
 
         else if (char.IsLetter(a))
         {
             Console.WriteLine("letter");
         }
-
-
     }
 
     static void Task1()
 
-    //        На ввод поступает число.
-    //Программа должна вывести на консоль символ, соответствующий данному числу согласно таблице ASCII.
+        //        На ввод поступает число.
+        //Программа должна вывести на консоль символ, соответствующий данному числу согласно таблице ASCII.
 
     {
         int number = Convert.ToInt32(Console.ReadLine());
@@ -168,8 +154,6 @@ class Program
         number2 = Convert.ToChar(number2);
 
         Console.WriteLine(number + " " + number2); // Как ввести в Консоль Врайт Лайн два значения? 
-
-
     }
 
     static void StringTask()
@@ -186,17 +170,14 @@ class Program
             {
                 if (ch >= '0' && ch <= '9')
                 {
-
-
                 }
-
             }
-
         }
+
         numbers++; // Не получается вывести кол-во цифр в  строке
         Console.WriteLine(numbers);
-
     }
+
     static void StringTask2()
 
     {
@@ -211,10 +192,8 @@ class Program
                 if ((s[i] == ' ') && (s[i - 1] != ' ')) count++;
             }
         }
+
         Console.WriteLine(count);
-
-
-
     }
 
     static void StringTask3()
@@ -237,21 +216,14 @@ class Program
                 Console.Write("NO");
                 break;
             }
-
-
-
-
-
         }
     }
 
     static void Array3()
     {
-
         //        На ввод подается размер массива и сам массив.
 
         //Перезапишите и выведите массив на печать, где каждый элемент возведён в 3ю степень
-
 
         int n = Convert.ToInt32(Console.ReadLine());
         int[] numbers = new int[n];
@@ -261,16 +233,10 @@ class Program
         {
             numbers[i] = Convert.ToInt32(item[i]);
 
-            if (numbers[i] > 0)
-            {
-                // Console.Write(Math.Pow(numbers[i], 3)); Почему не могу выести ответ через пробел? 
-                numbers[i] *= numbers[i] * numbers[i];
-                Console.Write(string.Join(" ", numbers[i]));
-            }
+            // Console.Write(Math.Pow(numbers[i], 3)); Почему не могу выести ответ через пробел? 
+            numbers[i] *= numbers[i] * numbers[i];
         }
 
-
-
+        Console.Write(string.Join(" ", numbers));
     }
-
 }
