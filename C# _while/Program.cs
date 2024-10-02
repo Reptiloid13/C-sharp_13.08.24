@@ -23,6 +23,7 @@ class Program
         //StringTask();
         // StringTask2();
         StringTask3();
+        //Array3();
     }
 
     static void ArrayMultiply()
@@ -218,17 +219,58 @@ class Program
 
     static void StringTask3()
     {
+        //        Напишите программу, которая запрашивает положительное натуральное целое число,
+        //        и выводит "YES", если в числе есть хотя бы один ноль, и "NO" иначе
 
-        int num1 = 10;
-        int num2 = 20;
-        (num1, num2)= (num2, num1);
-        Console.WriteLine($"{num1}  , {num2}");
+        int num1 = Convert.ToInt32(Console.ReadLine());
+        while (num1 > 0)
+        {
+            if (num1 % 10 == 0)
+            {
+                Console.Write("YES");
+                num1++;
+                break;
+            }
+            else
+            {
+                num1 = num1 / 10;
+                Console.Write("NO");
+                break;
+            }
 
 
+
+
+
+        }
+    }
+
+    static void Array3()
+    {
+
+        //        На ввод подается размер массива и сам массив.
+
+        //Перезапишите и выведите массив на печать, где каждый элемент возведён в 3ю степень
+
+
+        int n = Convert.ToInt32(Console.ReadLine());
+        int[] numbers = new int[n];
+        string[] item = Console.ReadLine().Split(' ');
+
+        for (int i = 0; i < n; i++)
+        {
+            numbers[i] = Convert.ToInt32(item[i]);
+
+            if (numbers[i] > 0)
+            {
+                // Console.Write(Math.Pow(numbers[i], 3)); Почему не могу выести ответ через пробел? 
+                numbers[i] *= numbers[i] * numbers[i];
+                Console.Write(string.Join(" ", numbers[i]));
+            }
+        }
 
 
 
     }
-
 
 }
