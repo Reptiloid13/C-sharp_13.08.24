@@ -15,10 +15,10 @@ class Program
         //ArraySumOddNumbers();
         //SymbolsLetterOrNumver();
         //Task1();
-        //StringTask();
-        // StringTask2();
-        // StringTask3();
-        Array3();
+        StringTask();
+        //StringTask2();
+        //StringTask3();
+        // Array3();
     }
 
     static void ArrayMultiply()
@@ -48,7 +48,6 @@ class Program
         string[] s = Console.ReadLine().Split(' ');
         int[] array = new int[n];
         int result = array[0];
-
 
         for (int i = 0; i < s.Length; i++)
         {
@@ -149,9 +148,10 @@ class Program
 
     {
         int number = Convert.ToInt32(Console.ReadLine());
-        number = Convert.ToChar(number);
+        var char1 = Convert.ToChar(number);
+
         int number2 = Convert.ToInt32(Console.ReadLine());
-        number2 = Convert.ToChar(number2);
+        var char2 = Convert.ToChar(number2);
 
         Console.WriteLine(number + " " + number2); // Как ввести в Консоль Врайт Лайн два значения? 
     }
@@ -162,20 +162,21 @@ class Program
         //Определите кол-во  цифр в данной строке.  (Строка без пробелов). 
         //ac24e5sf0
 
-        string a = Console.ReadLine();
-        int numbers = 0;
-        foreach (char ch in a)
+        var input = Console.ReadLine();
+        var numbersCount = 0;
+
+        for (int i = 0; i < input.Length; i++)
         {
-            for (int i = 0; i < a.Length; i++)
+            var symbol = input[i].ToString();
+            int num = 0;
+            var isInteger = int.TryParse(symbol, out num);
+            if (isInteger)
             {
-                if (ch >= '0' && ch <= '9')
-                {
-                }
+                numbersCount++; // Не получается вывести кол-во цифр в  строке
             }
         }
 
-        numbers++; // Не получается вывести кол-во цифр в  строке
-        Console.WriteLine(numbers);
+        Console.WriteLine(numbersCount);
     }
 
     static void StringTask2()
@@ -185,12 +186,9 @@ class Program
 
         string s = Console.ReadLine();
         int count = 1;
-        for (int i = 0; i <= s.Length; i++)
+        for (int i = 0; i < s.Length; i++)
         {
-            if ((i < s.Length))
-            {
-                if ((s[i] == ' ') && (s[i - 1] != ' ')) count++;
-            }
+            if (s[i] == ' ' && i != 0 && s[i - 1] != ' ') count++;
         }
 
         Console.WriteLine(count);
