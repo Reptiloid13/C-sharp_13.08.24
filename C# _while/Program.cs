@@ -226,15 +226,13 @@ class Program
         //Перезапишите и выведите массив на печать, где каждый элемент возведён в 3ю степень
 
         int n = Convert.ToInt32(Console.ReadLine());
-        int[] numbers = new int[n];
+        double[] numbers = new double[n];
         string[] item = Console.ReadLine().Split(' ');
 
         for (int i = 0; i < n; i++)
         {
             numbers[i] = Convert.ToInt32(item[i]);
-
-            // Console.Write(Math.Pow(numbers[i], 3)); Почему не могу выести ответ через пробел? 
-            numbers[i] *= numbers[i] * numbers[i];
+            numbers[i] = Math.Pow(numbers[i], 3);
         }
 
         Console.Write(string.Join(" ", numbers));
