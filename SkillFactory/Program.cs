@@ -3,23 +3,18 @@
 
 namespace SkillFactory
 {
-
-
-
     class Program
     {
         static void Main(string[] args)
         {
-            var N = ReadPositiveInt ("Enter  N: ");
+            var N = ReadPositiveInt("Enter  N: ");
             var nums = ReadIntegers(N);
             var reversed = Reverse(nums);
             Console.WriteLine(string.Join(", ", reversed));
-
-
         }
+
         static int[] ReadIntegers(int n)
         {
-           
             int[] numbers = new int[n];
             var items = Console.ReadLine().Split(' ');
             var nums = new int[n];
@@ -28,10 +23,8 @@ namespace SkillFactory
             {
                 nums[i] = Convert.ToInt32(items[i]);
             }
+
             return nums;
-
-
-
         }
 
         static int ReadPositiveInt(string message)
@@ -40,26 +33,21 @@ namespace SkillFactory
             do
             {
                 Console.WriteLine(message);
-            }
-            while (int.TryParse(message, out value) == false);
+                //ошибка ниже
+            } while (int.TryParse(message, out value) == false);
 
             return value;
         }
+
         static int[] Reverse(int[] nums)
         {
             var n = nums.Length;
             for (int i = 0; i < nums.Length / 2; i++)
             {
                 (nums[i], nums[n - i - 1]) = (nums[n - i - 1], nums[i]);
-
             }
+
             return nums;
-
         }
-
     }
-
-
-
-
 }

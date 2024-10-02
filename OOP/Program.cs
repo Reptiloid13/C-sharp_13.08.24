@@ -106,7 +106,7 @@ static void SumElements(int[] array)
 
 //        return shades;
 //    }
-}
+//}
 
 
 /*
