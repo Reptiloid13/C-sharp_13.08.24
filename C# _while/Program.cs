@@ -9,13 +9,13 @@ class Program
     static void Main()
     {
         //ArrayMultiply();
-        //ArrayMultiplyVer2();
+        ArrayMultiplyVer2();
         // ArrayPlusOne();
         //ArrayWithoutZero();
         //ArraySumOddNumbers();
         //SymbolsLetterOrNumver();
         //Task1();
-        StringTask();
+        //StringTask();
         //StringTask2();
         //StringTask3();
         // Array3();
@@ -53,12 +53,12 @@ class Program
         {
             array[i] = Convert.ToInt32(s[i]);
 
-            if (result > 0)
+            if (result >= 0)
             {
-                result *= array[i];
+                array[i] = array[i] * n;
             }
 
-            Console.Write(string.Join(" ", array));
+            Console.Write(string.Join(" ", array[i]));
         }
     }
 
@@ -143,8 +143,8 @@ class Program
 
     static void Task1()
 
-        //        На ввод поступает число.
-        //Программа должна вывести на консоль символ, соответствующий данному числу согласно таблице ASCII.
+    //        На ввод поступает число.
+    //Программа должна вывести на консоль символ, соответствующий данному числу согласно таблице ASCII.
 
     {
         int number = Convert.ToInt32(Console.ReadLine());
@@ -153,7 +153,7 @@ class Program
         int number2 = Convert.ToInt32(Console.ReadLine());
         var char2 = Convert.ToChar(number2);
 
-        Console.WriteLine(number + " " + number2); // Как ввести в Консоль Врайт Лайн два значения? 
+        Console.WriteLine(number + " " + number2);
     }
 
     static void StringTask()
@@ -172,7 +172,7 @@ class Program
             var isInteger = int.TryParse(symbol, out num);
             if (isInteger)
             {
-                numbersCount++; // Не получается вывести кол-во цифр в  строке
+                numbersCount++;
             }
         }
 
@@ -212,7 +212,7 @@ class Program
             {
                 num1 = num1 / 10;
                 Console.Write("NO");
-                break;
+
             }
         }
     }
