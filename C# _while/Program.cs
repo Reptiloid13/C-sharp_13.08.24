@@ -9,7 +9,7 @@ class Program
     static void Main()
     {
         //ArrayMultiply();
-        ArrayMultiplyVer2();
+        //ArrayMultiplyVer2();
         // ArrayPlusOne();
         //ArrayWithoutZero();
         //ArraySumOddNumbers();
@@ -19,6 +19,10 @@ class Program
         //StringTask2();
         //StringTask3();
         // Array3();
+        //ListEvenNumbers();
+        // ListStringsWords();
+        ReverseArray();
+
     }
 
     static void ArrayMultiply()
@@ -232,5 +236,48 @@ class Program
             var isLast = i == n - 1;
             Console.Write(Math.Pow(num, 3) + (isLast ? "" : " "));
         }
+    }
+
+
+    static void ListEvenNumbers()
+    {
+        List<int> numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        var evenNumbers = numbers.Where(x => x % 2 == 0).ToList();
+        Console.WriteLine("Чётные числа: " + string.Join(", ", evenNumbers));
+    }
+
+    static void ListStringsWords()
+    {
+        var myList = new List<string>() { "Dog", "Cat", "Parrot", "Wolf", "10" }; // Можно ли создать int и string одновременно?
+        foreach (var item in myList)
+        {
+            Console.WriteLine("Enter Home animal: ");
+            string animal = Console.ReadLine();
+
+            if (ContainsAnimal(myList, animal))
+            {
+                Console.WriteLine($"Word has {animal} in the list");
+
+            }
+            else
+                Console.WriteLine($"Word hasn't {animal} in the list");
+        }
+
+
+    }
+
+    public static bool ContainsAnimal(List<string> list, string animal)
+    {
+        return list.Contains(animal);
+
+    }
+
+    static void ReverseArray()
+    {
+        var numbers = new List<int>() { 1, 2, 3, 4, 5 };
+        Console.WriteLine("Original Array: " + string.Join(" ", numbers));
+        numbers.Reverse();
+        Console.WriteLine("New Array: " + string.Join(" ", numbers));
+
     }
 }
