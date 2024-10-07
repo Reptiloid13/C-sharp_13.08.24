@@ -22,7 +22,6 @@ class Program
         //ListEvenNumbers();
         // ListStringsWords();
         ReverseArray();
-
     }
 
     static void ArrayMultiply()
@@ -147,8 +146,8 @@ class Program
 
     static void Task1()
 
-    //        На ввод поступает число.
-    //Программа должна вывести на консоль символ, соответствующий данному числу согласно таблице ASCII.
+        //        На ввод поступает число.
+        //Программа должна вывести на консоль символ, соответствующий данному числу согласно таблице ASCII.
 
     {
         int number = Convert.ToInt32(Console.ReadLine());
@@ -216,7 +215,6 @@ class Program
             {
                 num1 = num1 / 10;
                 Console.Write("NO");
-
             }
         }
     }
@@ -241,14 +239,24 @@ class Program
 
     static void ListEvenNumbers()
     {
-        List<int> numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-        var evenNumbers = numbers.Where(x => x % 2 == 0).ToList();
-        Console.WriteLine("Чётные числа: " + string.Join(", ", evenNumbers));
+        var numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        var filtered = new List<int>();
+
+        foreach (var number in numbers)
+        {
+            if (number % 2 == 0) filtered.Add(number);
+        }
+
+        Console.WriteLine("Чётные числа: " + string.Join(", ", filtered));
     }
 
     static void ListStringsWords()
     {
-        var myList = new List<string>() { "Dog", "Cat", "Parrot", "Wolf", "10" }; // Можно ли создать int и string одновременно?
+        var myList = new List<string>()
+            { "Dog", "Cat", "Parrot", "Wolf", "10" }; // Можно ли создать int и string одновременно?
+
+        var nums = new int[16];
+
         foreach (var item in myList)
         {
             Console.WriteLine("Enter Home animal: ");
@@ -257,27 +265,24 @@ class Program
             if (ContainsAnimal(myList, animal))
             {
                 Console.WriteLine($"Word has {animal} in the list");
-
             }
             else
                 Console.WriteLine($"Word hasn't {animal} in the list");
         }
-
-
     }
 
     public static bool ContainsAnimal(List<string> list, string animal)
     {
         return list.Contains(animal);
-
     }
 
     static void ReverseArray()
     {
         var numbers = new List<int>() { 1, 2, 3, 4, 5 };
-        Console.WriteLine("Original Array: " + string.Join(" ", numbers));
-        numbers.Reverse();
-        Console.WriteLine("New Array: " + string.Join(" ", numbers));
+        var reversed = new List<int>();
 
+        for (int i = 0; i < numbers.Count; i++)
+        {
+        }
     }
 }
