@@ -279,10 +279,14 @@ class Program
     static void ReverseArray()
     {
         var numbers = new List<int>() { 1, 2, 3, 4, 5 };
-        var reversed = new List<int>();
-
-        for (int i = 0; i < numbers.Count; i++)
+        var reversed = new List<int>(); 
+        for (int i = numbers.Count-1; i >=0; i--)
         {
+            reversed.Add(numbers[i]);
+           // Console.WriteLine(string.Join("; ",numbers[i])); // Почему не получается вывести ответ в одну строку? 
         }
+
+        Console.WriteLine(string.Join(";", reversed));
+        
     }
 }
