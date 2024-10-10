@@ -11,20 +11,20 @@ class Program
 
 
 
-        people.Add(new Person() { FirstName = "John", LastName = "Ivanov", SurName = "Jimmovich", Age = 31 });
-        people.Add(new Person() { FirstName = "Enrique", LastName = "Fedorchuk", SurName = "Iglesiovich", Age = 21 });
-        people.Add(new Person() { FirstName = "Leonardo", LastName = "DaVcitor", SurName = "Olegovich", Age = 49 });
+        people.Add(new Person() { FirstName = "John", LastName = "Ivanov", SecondName = "Jimmovich", Age = 31 });
+        people.Add(new Person() { FirstName = "Enrique", LastName = "Fedorchuk", SecondName = "Iglesiovich", Age = 21 });
+        people.Add(new Person() { FirstName = "Leonardo", LastName = "DaVcitor", SecondName = "Olegovich", Age = 49 });
 
 
-        ;
+
 
         // people.RemoveAt(1);
 
-        // PrintPersons(people);
+        PrintPersons(people);
 
         Console.WriteLine("List of peole: ");
 
-      Console.WriteLine(people.ToString()); // ВОПРОС -  Почему не вывозидится список ? 
+        //Console.WriteLine(people.ToString()); // ВОПРОС -  Почему не вывозидится список ? 
 
         // foreach (Person person in people)
         // {
@@ -32,19 +32,31 @@ class Program
         //     Console.WriteLine($"{person.FirstName}, {person.LastName}, {person.Age}");
         // }
     }
-    // public static void PrintPersons(List<Person> people)
-    //{
+    public static void PrintFirstLetters(List<Person> people)
+    {
+        var secondname = people[0].SecondName;
 
-//    }
-    //public static void PrintPersons(List<Person> people)
+        var firstname = people[0].FirstName;
+
+        Console.WriteLine($"{firstname}, {secondname}");
+
+
+    }
+    public static void PrintPersons(List<Person> people)
+    {
+        for (int i = 0; i < people.Count; i++)
+        {
+            var person = people[i];
+            Console.WriteLine($"index = {i}, {person.FirstName}, {person.LastName}, {person.SecondName} {person.Age}");
+        }
+    }
+    //public override string ToString(List<Person> people) // Попробовал вывести в отдельный методвне класса, но все равно ошибка 
     //{
-    //    for (int i = 0; i < people.Count; i++)
-    //    {
-    //        var person = people[i];
-    //        Console.WriteLine($"index = {i}, {person.FirstName}, {person.LastName}, {person.Age}");
-    //    }
+    //    foreach(Person person in people)
+    //    return $"{person.FirstName}, {person.LastName}, {person.SecondName}, {person.Age}";
     //}
 }
+
 
 class Person
 {
@@ -54,10 +66,10 @@ class Person
     //на консоль.
     public string FirstName;
     public string LastName;
-    public string SurName;
+    public string SecondName;
     public int Age;
-    public override string ToString()
-    {
-        return $"{FirstName}, {LastName}, {SurName}, {Age}";
-    }
+    //public override string ToString()
+    //{
+    //    return $"{FirstName}, {LastName}, {SurName}, {Age}";
+    //}
 }

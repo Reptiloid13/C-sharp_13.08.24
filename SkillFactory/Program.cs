@@ -5,49 +5,22 @@ namespace SkillFactory
 {
     class Program
     {
-        static void Main(string[] args)
+        //  Создать класс Player, Должны быть поля
+        // name и HealtPoints = 100.
+        //Каждый игрок может Damage(int value)
+        // другого игрока.Каждый игрок по очереди
+        //     наносит урон (случайное число от 0 до 10). 
+        //      Вывести победителя
+        class Players
         {
-            var N = ReadPositiveInt("Enter  N: ");
-            var nums = ReadIntegers(N);
-            var reversed = Reverse(nums);
-            Console.WriteLine(string.Join(", ", reversed));
-        }
+            public string player1 = "Paladin";
+            public string player2 = "Ork";
+            public int HealthPoints = 100;
 
-        static int[] ReadIntegers(int n)
-        {
-            int[] numbers = new int[n];
-            var items = Console.ReadLine().Split(' ');
-            var nums = new int[n];
-
-            for (int i = 0; i < n; i++)
+            public void Print()
             {
-                nums[i] = Convert.ToInt32(items[i]);
+                Console.WriteLine($"Name {player1}, {player2}");
             }
-
-            return nums;
-        }
-
-        static int ReadPositiveInt(string message)
-        {
-            int value;
-            do
-            {
-                Console.WriteLine(message);
-                //ошибка ниже
-            } while (int.TryParse(message, out value) == true);
-
-            return value;
-        }
-
-        static int[] Reverse(int[] nums)
-        {
-            var n = nums.Length;
-            for (int i = 0; i < nums.Length / 2; i++)
-            {
-                (nums[i], nums[n - i - 1]) = (nums[n - i - 1], nums[i]);
-            }
-
-            return nums;
         }
     }
 }

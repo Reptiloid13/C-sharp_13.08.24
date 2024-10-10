@@ -21,7 +21,9 @@ class Program
         // Array3();
         //ListEvenNumbers();
         // ListStringsWords();
-        ReverseArray();
+        //ReverseArray();
+        //DictionaryWords();
+        ListCapacity();
     }
 
     static void ArrayMultiply()
@@ -146,8 +148,8 @@ class Program
 
     static void Task1()
 
-        //        На ввод поступает число.
-        //Программа должна вывести на консоль символ, соответствующий данному числу согласно таблице ASCII.
+    //        На ввод поступает число.
+    //Программа должна вывести на консоль символ, соответствующий данному числу согласно таблице ASCII.
 
     {
         int number = Convert.ToInt32(Console.ReadLine());
@@ -279,14 +281,65 @@ class Program
     static void ReverseArray()
     {
         var numbers = new List<int>() { 1, 2, 3, 4, 5 };
-        var reversed = new List<int>(); 
-        for (int i = numbers.Count-1; i >=0; i--)
+        var reversed = new List<int>();
+        for (int i = numbers.Count - 1; i >= 0; i--)
         {
             reversed.Add(numbers[i]);
-           // Console.WriteLine(string.Join("; ",numbers[i])); // Почему не получается вывести ответ в одну строку? 
+            // Console.WriteLine(string.Join("; ",numbers[i])); // Почему не получается вывести ответ в одну строку? 
         }
 
         Console.WriteLine(string.Join(";", reversed));
-        
+
+    }
+
+
+    static void DictionaryWords()
+    {
+        //Нужно найти количество слов.
+        //
+        string text = "More Money, More Problems: Sean Diddy Combs accused of bribing music artists to tamper with the witnesses before trial.";
+        Dictionary<string, int> wordCount = new Dictionary<string, int>();
+        var words = text.Split(' ', ',', '.', ':');
+
+        foreach (var word in words)
+        {
+            if (!wordCount.ContainsKey(word))
+                wordCount[word] = 0;
+            wordCount[word]++;
+
+
+
+        }
+        Console.WriteLine("Количество слов: {0}  ", wordCount.Count);
+        // Нужно найти количество слов, длина которых == 3.
+        for (int i = 0; i < words.Length; i++)
+        {
+            string key = words[i].Length + "letter word"; // Почему работает только так? 
+
+            if (words[i].Length == 3)
+            {
+                Console.WriteLine(words[i]);
+            }
+
+
+
+
+
+
+        }
+
+
+    }
+
+    static void ListCapacity()
+    {
+        List<int> list = new List<int>();
+
+        for (int i = 0; i < 200; i++)
+        {
+            list.Add(i);
+
+        }
+        Console.WriteLine($"Capacity: {list.Capacity}");
     }
 }
