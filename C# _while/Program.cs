@@ -22,7 +22,7 @@ class Program
         //ListEvenNumbers();
         // ListStringsWords();
         //ReverseArray();
-        //DictionaryWords();
+        DictionaryWords();
         ListCapacity();
     }
 
@@ -148,8 +148,8 @@ class Program
 
     static void Task1()
 
-    //        На ввод поступает число.
-    //Программа должна вывести на консоль символ, соответствующий данному числу согласно таблице ASCII.
+        //        На ввод поступает число.
+        //Программа должна вывести на консоль символ, соответствующий данному числу согласно таблице ASCII.
 
     {
         int number = Convert.ToInt32(Console.ReadLine());
@@ -289,7 +289,6 @@ class Program
         }
 
         Console.WriteLine(string.Join(";", reversed));
-
     }
 
 
@@ -297,38 +296,39 @@ class Program
     {
         //Нужно найти количество слов.
         //
-        string text = "More Money, More Problems: Sean Diddy Combs accused of bribing music artists to tamper with the witnesses before trial.";
-        Dictionary<string, int> wordCount = new Dictionary<string, int>();
+        var text =
+            "More Money, More Problems: Sean Diddy Combs accused of bribing music artists to tamper with the witnesses before trial.";
+        var wordCount = new Dictionary<string, int>();
         var words = text.Split(' ', ',', '.', ':');
 
-        foreach (var word in words)
+        foreach (var letter in text)
         {
-            if (!wordCount.ContainsKey(word))
-                wordCount[word] = 0;
-            wordCount[word]++;
-
-
-
+            Console.WriteLine(letter);
         }
+
         Console.WriteLine("Количество слов: {0}  ", wordCount.Count);
         // Нужно найти количество слов, длина которых == 3.
-        for (int i = 0; i < words.Length; i++)
+        foreach (var word in words)
         {
-            string key = words[i].Length + "letter word"; // Почему работает только так? 
-
-            if (words[i].Length == 3)
+            if (word.Length == 3)
             {
-                Console.WriteLine(words[i]);
+                // Console.WriteLine(word);
             }
-
-
-
-
-
-
         }
 
 
+        // Начинаются с буквы М - Math math
+        foreach (var word in words)
+        {
+            if (word != "")
+            {
+                var first = word[0].ToString().ToLower();
+                if (first == "m")
+                {
+                    Console.WriteLine(word);
+                }
+            }
+        }
     }
 
     static void ListCapacity()
@@ -338,8 +338,7 @@ class Program
         for (int i = 0; i < 200; i++)
         {
             list.Add(i);
-
+            Console.WriteLine($"Capacity: {list.Capacity}");
         }
-        Console.WriteLine($"Capacity: {list.Capacity}");
     }
 }
