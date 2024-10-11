@@ -1,5 +1,4 @@
-﻿
-//var shades = Color.GetColorShades(new Color(100, 100, 100), new Color(200, 200, 110), 10);
+﻿//var shades = Color.GetColorShades(new Color(100, 100, 100), new Color(200, 200, 110), 10);
 //foreach (var shade in shades)
 //    Console.WriteLine(shade.ToString());
 
@@ -12,7 +11,7 @@ static int[] ReadIntegers(int n)
 {
     int[] numbers = new int[n];
     var items = Console.ReadLine().Split(' '); // ["1", "2", "3", ...] 
-    
+
     var nums = new int[n]; // [1, 2, 3, ...] 
 
     for (int i = 0; i < items.Length; i++)
@@ -23,7 +22,7 @@ static int[] ReadIntegers(int n)
     // "a b c".Split(" "); // ["a", "b", "c"]
     // "abc".Split(" "); // ["abc"]
 
-    return nums; 
+    return nums;
 }
 
 static int ReadPositiveInt(string message)
@@ -36,8 +35,6 @@ static int ReadPositiveInt(string message)
 
     return value;
 }
-
-
 
 
 static int[] Reverse(int[] nums)
@@ -53,11 +50,10 @@ static int[] Reverse(int[] nums)
         //nums[i] = nums[n - i - 1];
         //nums[n - i - 1] = temp;
 
-        (nums[i], nums[n-i-1]) = (nums[n-i-1], nums[i]); // Меняем две инт переменной без третьей 
-
-
+        (nums[i], nums[n - i - 1]) = (nums[n - i - 1], nums[i]); // Меняем две инт переменной без третьей 
     }
-    return nums; 
+
+    return nums;
 }
 
 static void SumElements(int[] array)
@@ -67,6 +63,7 @@ static void SumElements(int[] array)
     {
         sum += array[i];
     }
+
     Console.WriteLine(sum);
 }
 
@@ -80,7 +77,7 @@ static void SumElements(int[] array)
 //    {
 //        Red = red; Green = green; Blue = blue;
 //    }
-    
+
 //    public override string ToString()
 //    {
 //        return $"Red: {Red}, Green: {Green}, Blue: {Blue}";
@@ -97,10 +94,10 @@ static void SumElements(int[] array)
 //            var redStep = (toColor.Red - fromColor.Red) / (shadesCount - 1);
 //            var greenStep = (toColor.Green - fromColor.Green) / (shadesCount - 1);
 //            var blueStep = (toColor.Blue - fromColor.Blue) / (shadesCount - 1);
-            
+
 //            var prevColor = shades[i - 1];
 //            var color = new Color(prevColor.Red + redStep, prevColor.Green + greenStep, prevColor.Blue + blueStep);
-            
+
 //            shades[i] = color;
 //        }
 
