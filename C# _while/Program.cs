@@ -18,8 +18,8 @@ class Program
         // ListStringsWords();
         //ReverseArray();
         // DictionaryWords();
-        //ListCapacity();
-        Clone();
+        ListCapacity();
+        //Clone();
     }
 
     static void ArrayMultiply()
@@ -243,7 +243,11 @@ class Program
         for (int i = 0; i < 200; i++)
         {
             list.Add(i);
-            Console.WriteLine($"Capacity: {list.Capacity}");
+           // Console.WriteLine($"Nubmer now:  {list[i]}   Capacity: {list.Capacity}");
+           if (list.Capacity == i + 1)
+            {
+                Console.WriteLine($"{list[i]} - число изменений Capacity {list.Capacity} ");
+            }
         }
     }
 
