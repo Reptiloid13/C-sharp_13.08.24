@@ -18,8 +18,11 @@ class Program
         // ListStringsWords();
         //ReverseArray();
         // DictionaryWords();
-        ListCapacity();
+        // ListCapacity();
         //Clone();
+        RandomNumbers();
+
+
     }
 
     static void ArrayMultiply()
@@ -243,8 +246,8 @@ class Program
         for (int i = 0; i < 200; i++)
         {
             list.Add(i);
-           // Console.WriteLine($"Nubmer now:  {list[i]}   Capacity: {list.Capacity}");
-           if (list.Capacity == i + 1)
+            // Console.WriteLine($"Nubmer now:  {list[i]}   Capacity: {list.Capacity}");
+            if (list.Capacity == i + 1)
             {
                 Console.WriteLine($"{list[i]} - число изменений Capacity {list.Capacity} ");
             }
@@ -265,4 +268,28 @@ class Program
         Console.WriteLine($"{original}  получилось {cloneOriginal}");
 
     }
+
+    static void RandomNumbers()
+    {
+        /*Случайное число: Напишите программу, 
+          * которая генерирует случайное целое число от 1 до 100 и выводит его на экран.*/
+        int numbers = new Random().Next(0, 101);
+        Console.WriteLine(numbers);
+
+        //Случайное слово: Создайте массив строк с названиями фруктов. 
+        //    Напишите программу, которая выбирает случайный фрукт из этого массива и выводит его на экран.
+
+        string[] array = { "Bananas", "Orange", "Pineapple", "Apple", "Blackberry" };
+        int index = new Random().Next(0, array.Length);
+        Console.WriteLine(array[index]);
+
+
+        //Бросок кубиков: Напишите программу, которая симулирует бросок двух шестигранных кубиков и выводит сумму выпавших значений.
+        int cube1 = new Random().Next(1, 7);
+        int cube2 = new Random().Next(1, 7);
+        int result = cube1 + cube2;
+        Console.WriteLine($"На первом кубике выпало: {cube1} На втором кубике Выпало: {cube2} Итого: {result}");
+
+
     }
+}
