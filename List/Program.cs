@@ -14,16 +14,18 @@ class Program
         var word = "apple";
         var a = word[0];
 
-        PrintPeople printPeople = new PrintPeople(); // Непонятная ошибка 
-        printPeople.PrintPeople(people);
+        PrintPeople(people);
+
+        GetInitials getinitials = new GetInitials();
+        getinitials.GetInitials(person);
     }
 
-    public static string GetInitials(Person person)
+    public  string GetInitials(Person person)
     {
         return $"{person.FirstName[0]}. {person.SecondName[0]}. {person.LastName}"; // А. А. Тестов
     }
 
-    public void PrintPeople(List<Person> people)
+    public static void PrintPeople(List<Person> people)
     {
         Console.WriteLine("List of people: ");
         foreach (var person in people)
