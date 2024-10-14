@@ -21,8 +21,6 @@ class Program
         // ListCapacity();
         //Clone();
         RandomNumbers();
-
-
     }
 
     static void ArrayMultiply()
@@ -146,7 +144,6 @@ class Program
     }
 
 
-
     static void ListEvenNumbers()
     {
         var numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -242,15 +239,18 @@ class Program
     static void ListCapacity()
     {
         List<int> list = new List<int>();
+        var previousCapacity = list.Capacity;
 
         for (int i = 0; i < 200; i++)
         {
             list.Add(i);
             // Console.WriteLine($"Nubmer now:  {list[i]}   Capacity: {list.Capacity}");
-            if (list.Capacity == i + 1)
+            if (list.Capacity != previousCapacity)
             {
                 Console.WriteLine($"{list[i]} - число изменений Capacity {list.Capacity} ");
             }
+
+            previousCapacity = list.Capacity;
         }
     }
 
@@ -266,13 +266,12 @@ class Program
         cloneOriginal = original;
         cloneOriginal = "Small";
         Console.WriteLine($"{original}  получилось {cloneOriginal}");
-
     }
 
     static void RandomNumbers()
     {
-        /*Случайное число: Напишите программу, 
-          * которая генерирует случайное целое число от 1 до 100 и выводит его на экран.*/
+        /*Случайное число: Напишите программу,
+         * которая генерирует случайное целое число от 1 до 100 и выводит его на экран.*/
         int numbers = new Random().Next(0, 101);
         Console.WriteLine(numbers);
 
@@ -285,11 +284,9 @@ class Program
 
 
         //Бросок кубиков: Напишите программу, которая симулирует бросок двух шестигранных кубиков и выводит сумму выпавших значений.
-        int cube1 = new Random().Next(1, 7);
-        int cube2 = new Random().Next(1, 7);
-        int result = cube1 + cube2;
+        var cube1 = new Random().Next(1, 7);
+        var cube2 = new Random().Next(1, 7);
+        var result = cube1 + cube2;
         Console.WriteLine($"На первом кубике выпало: {cube1} На втором кубике Выпало: {cube2} Итого: {result}");
-
-
     }
 }

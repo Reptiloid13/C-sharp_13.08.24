@@ -6,7 +6,6 @@ namespace SkillFactory
 {
     class Program
     {
-
         static void Main()
         {
             //Player player  =new Player();
@@ -16,32 +15,38 @@ namespace SkillFactory
 
             Player player1 = new Player("Paladin");
             Player player2 = new Player("Ork");
-            Player damage = new Player(player); // Не получается вызвать метод Damage
 
-            while (true)
+            while (player2.HealthPoints > 0 && player1.HealthPoints > 0)
             {
                 player1.Damage(player2);
-                Console.WriteLine($"{player1.Name} Здоровья осталось  {player1.HealthPoints} Урона: {player2.Name}");
-                if (player2.HealthPoints <= 0)
-                {
-                    Console.WriteLine($" победил: {player1.Name}");
-                    break;
-                }
+                Console.WriteLine(
+                    $"{player1.Name} наносит урон {player2.Name}. У {player2.Name} осталось {player2.HealthPoints} hp");
 
                 player2.Damage(player1);
-                Console.WriteLine($"{player2.Name} Здоровья Осталось   {player2.HealthPoints} Урона: {player1.Name}");
-                if (player1.HealthPoints <= 0)
-                {
-                    Console.WriteLine($"Победил {player2.Name}");
-                    break;
-                }
+                Console.WriteLine(
+                    $"{player2.Name} наносит урон {player1.Name}. У {player1.Name} осталось {player1.HealthPoints} hp");
             }
+
+            if (player2.HealthPoints <= 0)
+                Console.WriteLine($"Победил: {player1.Name}");
+
+            if (player1.HealthPoints <= 0)
+                Console.WriteLine($"Победил {player2.Name}");
+
+            int sum = Sum(5, 6);
+
             //  Создать класс Player, Должны быть поля
             // name и HealtPoints = 100.
             //Каждый игрок может Damage(int value)
             // другого игрока.Каждый игрок по очереди
             //     наносит урон (случайное число от 0 до 10). 
             //      Вывести победителя
+        }
+
+        public static int Sum(int a, int b)
+        {
+            int sum = a + b;
+            return sum;
         }
 
         class Player
@@ -53,12 +58,11 @@ namespace SkillFactory
             {
                 Name = name;
             }
+
             public void Damage(Player player)
             {
                 int damage = new Random().Next(0, 10);
                 player.HealthPoints -= damage;
-                Console.WriteLine(damage);
-
             }
         }
     }
