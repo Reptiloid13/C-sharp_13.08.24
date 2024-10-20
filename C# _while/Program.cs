@@ -6,76 +6,31 @@ using System.Xml.XPath;
 
 class Program
 {
-    static void Main()
+    //Создайте класс Person с методом экземпляра sayHello,
+    //    который выводит на экран строку
+    //    "Привет, меня зовут {имя}".
+    //    Создайте экземпляр класса Person
+    //    и вызовите метод sayHello.
+
+    public static void Main(string[] args)
     {
-        var person = new Person("FirstName", "LastName", "SecondName", 10);
-
-        // person.Age = -1000;
-        person.SetAge(-1000);
-        Console.WriteLine(person.GetAge());
-
-        Console.WriteLine(person.Height);
+        Person person = new Person("Иван");// что нужно писать в скобочках. Аргумент здесь по сути не нужен 
+                                           // person.SayHello("Иван");
+        var x = Person.SayHello("Иван");
+        Console.WriteLine(x);
     }
 }
 
 class Person
 {
-    public string FirstName;
-    public string LastName;
-
-    public string SecondName;
-
-    // Поле
-    private int Age;
-
-    // Свойство
-    public int Height
+    public string Name;
+    public Person(string name)
     {
-        get { return Height; }
-        set
-        {
-            if (value < 0)
-                Height = 1;
-            else
-                // value - ключевое слово, которое обозначение значение, которое устанавливается
-                Height = value;
-        }
+        Name = name;
     }
-
-    public int GetHeight()
+    public static string SayHello(string name)
     {
-        return Height;
-    }
-
-    public int SetHeight(int height)
-    {
-        Height = height;
-    }
-
-    public Person(string firstName, string lastName, string secondName, int age)
-    {
-        FirstName = firstName;
-        LastName = lastName;
-        SecondName = secondName;
-        Age = age;
-    }
-
-    public void SetAge(int age)
-    {
-        if (age < 0) age = 1;
-        Age = age;
-    }
-
-    public int GetAge()
-    {
-        return Age;
+        return "Привет, меня зовут " + name;
     }
 }
 
-// interface ICar
-// {
-//     public int Speed { get; set; }
-//     
-//     void Drive();
-//
-// }
