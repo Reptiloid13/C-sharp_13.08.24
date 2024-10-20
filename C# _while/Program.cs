@@ -23,6 +23,7 @@ class Program
         var y = Person.SayHello("Олег");
         Console.WriteLine(y);
         var count = Person.GetCount(); // А какой здесь нужен аргумент? 
+
         Console.WriteLine($"Количество экземпляров {count}");
     }
 }
