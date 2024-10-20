@@ -28,9 +28,10 @@ class MainClass
         Console.WriteLine($"User Info:\nИмя {userInfo.Name} \nФамилия {userInfo.LastName} \nВозраст: {userInfo.Age} \nДомашние питомцы: {userInfo.Pets} \nЛюбимые цвета: {string.Join(", ", userInfo.favcolors)}");
     }
 
-    static (string Name, string LastName, int Age, bool Pets, int[] favcolors) EnterUser()
+    public static (string Name, string LastName, int Age, bool Pets, string[] favcolors) EnterUser()
     {
-        (string Name, string LastName, int Age, bool Pets) User;
+        (string Name, string LastName, int Age, bool Pets, string[] favcolors) User = (Name: "", LastName: "", Age: 0, Pets: false, favcolors: new string[0]);
+
 
         Console.WriteLine("Введите имя");
         User.Name = Console.ReadLine();
@@ -38,14 +39,13 @@ class MainClass
         Console.WriteLine("Введите Фамилию");
         User.LastName = Console.ReadLine();
 
-        //string age;
-        //int intage;
+
         do
         {
             Console.WriteLine("Введите возраст цифрами");
-            //age = Console.ReadLine();
+
         } while (!int.TryParse(Console.ReadLine(), out User.Age));
-        //User.Age = intage;
+
 
         bool? Pets = null;
         do
@@ -71,16 +71,10 @@ class MainClass
             Console.WriteLine(string.Join(", ", hasPets));
         }
         var colorCount = ReadPositiveInt("Как много у тебя любимых цветов");
-        var colors = ReadStrings(colorCount, "Color:");
+        User.favcolors = ReadStrings(colorCount, "Color:");
 
-        //for (int i = 0; i < colorCount; i++)
-        //{
-        //    Console.Write($"Color № {i + 1}");
-        //    var color = Console.ReadLine();
-        //    colors[i] = color;
-        //}
-        //Console.WriteLine(string.Join(", ", colors));
-        return EnterUser();
+
+        return User;
     }
     static bool CheckNum(string number, out int corrnumber)
     {

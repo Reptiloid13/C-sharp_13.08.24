@@ -1,63 +1,47 @@
-﻿namespace List;
+﻿using System.Numerics;
+using System.Security.Authentication;
+
+namespace List;
 
 class Program
 {
     public static void Main(string[] args)
     {
-        List<Person> people = new List<Person>();
+        int number1 = new Random().Next(0, 100);
+        Console.WriteLine($"Первое число: " + number1);
+        int number2 = new Random().Next(0, 100);
+        Console.WriteLine($"Второе число:  " + number2);
 
-        people.Add(new Person() { FirstName = "John", LastName = "Ivanov", SecondName = "Jimmovich", Age = 31 });
-        people.Add(new Person()
-            { FirstName = "Enrique", LastName = "Fedorchuk", SecondName = "Iglesiovich", Age = 21 });
-        people.Add(new Person() { FirstName = "Leonardo", LastName = "DaVcitor", SecondName = "Olegovich", Age = 49 });
-
-        var word = "apple";
-        var a = word[0];
+        var sum = MathHelper.Add(number1, number2);
+        Console.WriteLine($"Результат: " + sum);
 
 
-        PrintPeople(people);
+        var multiply = MathHelper.Multiply(number1, number2);
+        Console.WriteLine($"Результат: " + multiply);
 
-        Person person = new Person() { FirstName = "John", LastName = "Ivanov", SecondName = "Jimmovich", Age = 31 };
-        string initials = person.GetInitials();
-        Console.WriteLine(initials);
-
-        person.PrintLastNameAndAge();
-
-        // GetInitials(person);
     }
 
-    // Для статического метода не нужен экземпляр класса
-    public static void PrintPeople(List<Person> people)
-    {
-        Console.WriteLine("List of people: ");
-        foreach (var person in people)
-        {
-            var initials = person.GetInitials();
-            Console.WriteLine(initials);
-        }
-    }
+    //1. Создайте класс MathHelper с статическим методом add, который принимает два целых числа и возвращает их сумму.
+    //Используйте этот метод для вычисления суммы двух чисел.
+
+
 }
 
-class Person
+class MathHelper
 {
-    public string FirstName;
-    public string LastName;
-    public string SecondName;
-    public int Age;
+    public int number1;
+    public int number2;
 
-    public override string ToString()
+
+
+
+    public static int Add(int number1, int number2)
     {
-        return $"{FirstName}, {LastName}, {SecondName}, {Age}";
+        return number1 + number2;
     }
 
-    public string GetInitials()
+    public static int Multiply(int number1, int number2)
     {
-        return $"{FirstName[0]}. {SecondName[0]}. {LastName}"; // А. А. Тестов
-    }
-
-    // Иванов, 26
-    public void PrintLastNameAndAge()
-    {
-        Console.WriteLine($"{LastName}, {Age}");
+        return number1 * number2;
     }
 }
