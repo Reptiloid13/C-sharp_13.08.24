@@ -1,45 +1,14 @@
-﻿
-using System;
-using System.Runtime.ConstrainedExecution;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿namespace OOP;
 
-class MainClass
+class Program
 {
-
-    //5. Создайте класс Car с методом экземпляра drive, который выводит на экран строку "Машина едет".
-    //        Добавьте в класс статический метод getMaxSpeed, который возвращает максимальную скорость всех машин.
-
-
-    public static void Main(string[] args)
+    // 5. Создайте класс Car с методом экземпляр а drive, который выводит на экран строку "Машина едет".
+    // Добавьте в класс статический метод getMaxSpeed, который возвращает максимальную скорость всех машин.
+    public static void Main()
     {
-        Car car = new Car(120, "BMW");
-        Car car1 = new Car(210, "Lada");
-
-
-
-    }
-}
-
-class Car
-{
-    public int Speed;
-    public string Name;
-
-
-    public Car(int speed, string name)
-    {
-        Speed = speed;
-        Name = name;
-    }
-
-    public string Drive(string message)
-    {
-        return "Машина едет";
-    }
-    public static int GetMaxSpeed(int speed)
-    {
-
+        // CarTask.Test();
+        // BankTask.Test();
+        // StudentTask.Test();
+        GettersSetters.Test();
     }
 }

@@ -14,14 +14,14 @@ class Program
 
     public static void Main(string[] args)
     {
-        Person person = new Person("Иван");// что нужно писать в скобочках. Аргумент здесь по сути не нужен 
-                                           // person.SayHello("Иван");
-        var x = Person.SayHello("Иван");
-        Console.WriteLine(x);
+        Person person = new Person("Иван");
+        var ivan = person.Name; // "Иван"
+        // person.SayHello();
+
+        Person.SayHello("Иван");
 
         Person person1 = new Person("Олег");
-        var y = Person.SayHello("Олег");
-        Console.WriteLine(y);
+        Person.SayHello("Олег");
         var count = Person.GetCount(); // А какой здесь нужен аргумент? 
 
         Console.WriteLine($"Количество экземпляров {count}");
@@ -31,21 +31,21 @@ class Program
 class Person
 {
     public string Name;
-    public static int count = 0;
+    public int count = 0;
 
     public Person(string name)
     {
         Name = name;
         count++;
     }
-    public static string SayHello(string name)
+
+    public static void SayHello(string name)
     {
-        return "Привет, меня зовут " + name;
+        Console.WriteLine($"Привет, меня зовут {name}");
     }
-    public static int GetCount(int count)
+
+    public static int GetCount()
     {
         return count;
-
     }
 }
-

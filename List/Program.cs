@@ -19,22 +19,18 @@ class Program
         var multiply = MathHelper.Multiply(number1, number2);
         Console.WriteLine($"Результат: " + multiply);
 
+        // var mathHelper1 = new MathHelper() { number1 = 1, number2 = 2 };
+        // var mathHelper2 = new MathHelper() { number1 = 3, number2 = 4 };
+
+        MathHelper.Add(5, 3);
     }
 
     //1. Создайте класс MathHelper с статическим методом add, который принимает два целых числа и возвращает их сумму.
     //Используйте этот метод для вычисления суммы двух чисел.
-
-
 }
 
 class MathHelper
 {
-    public int number1;
-    public int number2;
-
-
-
-
     public static int Add(int number1, int number2)
     {
         return number1 + number2;
