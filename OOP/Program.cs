@@ -9,6 +9,7 @@ class Program
         // CarTask.Test();
         // BankTask.Test();
         // StudentTask.Test();
-        GettersSetters.Test();
+       // GettersSetters.Test();
+        GetDoposit.Test();
     }
 }

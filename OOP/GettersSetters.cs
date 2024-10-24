@@ -46,3 +46,47 @@ class User
         return Age;
     }
 }
+
+//6. Создайте класс BankAccount с методом экземпляра deposit, который добавляет деньги на счет
+//    .Добавьте в класс статический метод getTotalBalance, который возвращает общую сумму денег на всех счетах
+//    .Создайте два экземпляра класса BankAccount и вызовите метод deposit для каждого.
+
+
+public class GetDoposit
+{
+    public static void Test()
+    {
+        BankAccount account1 = new BankAccount(0);
+        account1.Deposit(100); // Почему присваем значение через скобочки? 
+        BankAccount account2 = new BankAccount(0);
+        account2.Deposit(200);
+        Console.WriteLine($"Total Balance: {BankAccount.GetTotalBalance()}");
+
+
+    }
+
+}
+
+
+    class BankAccount
+{
+    public decimal Balance; // Можно ли писать переменные с маленькой буквы?
+    public static decimal TotalBalance = 0;
+
+    public BankAccount(decimal balance) //Какой смысл от конструктора здесь? 
+    {
+        Balance = balance;
+
+    }
+
+    public void Deposit(decimal amount) // Зачем нам конструктор, когда мы можем  присваивать значение без него?
+    {
+        Balance += amount;
+        TotalBalance += amount;
+    }
+    public static decimal GetTotalBalance()
+    {
+        return TotalBalance;
+    }
+}
+
