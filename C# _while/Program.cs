@@ -16,22 +16,23 @@ class Program
     {
         Person person = new Person("Иван");
         var ivan = person.Name; // "Иван"
-        // person.SayHello();
+
 
         Person.SayHello("Иван");
+        person.SayHello1("Fedor"); // 2 ой методд Задание 1 
 
         Person person1 = new Person("Олег");
         Person.SayHello("Олег");
-        var count = Person.GetCount(); // А какой здесь нужен аргумент? 
-
-        Console.WriteLine($"Количество экземпляров {count}");
+        // var count = Person.GetCount(); // А какой здесь нужен аргумент? 
+        person1.GetCount();  // Решение Задания 2 
+        Console.WriteLine($"Количество экземпляров {person1.GetCount()}");
     }
 }
 
 class Person
 {
     public string Name;
-    public int count = 0;
+    public static int count = 0;
 
     public Person(string name)
     {
@@ -43,8 +44,13 @@ class Person
     {
         Console.WriteLine($"Привет, меня зовут {name}");
     }
+    public void SayHello1(string name)
+    {
+        Console.WriteLine($"Привет, меня зовут {name}");
+    }
 
-    public static int GetCount()
+
+    public int GetCount()
     {
         return count;
     }

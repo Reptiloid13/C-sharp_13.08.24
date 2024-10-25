@@ -42,9 +42,18 @@ public class Car
         Console.WriteLine($"Машина едет: {Name}");
     }
 
-    public static int GetMaxSpeed()
+    public static int GetMaxSpeed(params Сar[] cars) // Почему Массив не работает? 
     {
-        return 1;
+        int maxSpeed = 0;
+        foreach (var car in cars)
+        {
+            if (car.Speed > maxSpeed)
+            {
+                maxSpeed = car.Speed;
+            }
+        }
+
+        return maxSpeed;
     }
 }
 
@@ -126,8 +135,8 @@ public class GetTime
     public static void Test()
     {
         Time time = new Time();
-        time.Minutes = 88; // Почему значения выходят за пределы гет сет? 
-        time.Hours = 88;
+        time.Minutes = 22;
+        time.Hours = 12;
         Console.WriteLine($" hours {time.Hours} minutes {time.Minutes}");
 
     }
@@ -142,7 +151,11 @@ class Time
 
         set
 
-        { if (value >= 0 || value <= 23) hours = value; }
+        {
+            if (value < 0 || value > 23)
+                Console.WriteLine(" Не то время");
+            else { hours = value; }
+        }
         get { return hours; }
 
     }
@@ -150,7 +163,18 @@ class Time
     {
 
         set
-        { if (value >= 0 || value <= 59) minutes = value; }
+        {
+            if (value < 0 || value > 59) Console.WriteLine(" Не то время");
+            else { minutes = value; }
+        }
         get { return minutes; }
     }
+}
+
+//Задача: Создайте класс Password с приватным полем password.Реализуйте геттер и сеттер для пароля.
+//    Сеттер должен проверять, соответствует ли входной пароль определённым критериям 
+//    (например, минимальной длине, содержанию хотя бы одной цифры и т. д.).
+class Password
+{
+
 }
