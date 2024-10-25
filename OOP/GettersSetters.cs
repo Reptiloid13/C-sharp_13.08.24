@@ -1,4 +1,7 @@
-﻿namespace OOP;
+﻿using System.Net.Http.Headers;
+using System.Runtime.InteropServices;
+
+namespace OOP;
 
 public class GettersSetters
 {
@@ -68,7 +71,7 @@ public class GetDoposit
 }
 
 
-    class BankAccount
+class BankAccount
 {
     public decimal Balance; // Можно ли писать переменные с маленькой буквы?
     public static decimal TotalBalance = 0;
@@ -90,3 +93,154 @@ public class GetDoposit
     }
 }
 
+
+//7. Создайте класс Student с методом экземпляра learn, который выводит на экран строку "Студент учится". 
+//    Добавьте в класс статический метод getAverageGrade, который возвращает средний балл всех студентов.
+//    Создайте три экземпляра класса Student и вызовите метод learn для каждого.
+public class GetStudent
+{
+    public static void Test()
+    {
+        Student student1 = new Student("", 4); // Как вызывать значение из скобок, что
+        student1.Name = "Bob";
+        student1.Grade = 4;
+
+        Student student2 = new Student("Bill", 5);
+        student2.Name = "Bill";
+        student2.Grade = 5;
+        Student student3 = new Student("Jackob", 2);
+        student3.Name = "Jackob";
+        student3.Grade = 2;
+
+        student1.Learn();
+        student2.Learn();
+        student3.Learn();
+
+        Student[] students = { student1, student2, student3 };
+        double avergeGrade = Student.GetAverageGrade(students);
+        Console.WriteLine($"Студент {student1.Name},  оценка: {student1.Grade}\n" +  // Как сделать , чтобу "Студент учиться был в Консоли 
+            $"Студент {student2.Name},  оценка: {student2.Grade}\n" +
+            $"Студент {student3.Name},  оценка: {student3.Grade}\n" +
+            $"Средний балл всех студентов: {Math.Round(avergeGrade, 2)}  ");
+
+    }
+}
+class Student
+{
+    public string Name;
+
+    public int Grade;
+
+    public Student(string name, int grade)
+    {
+        Name = name;
+        Grade = grade;
+    }
+
+    public void Learn()
+    {
+        Console.WriteLine("Студент учиться");
+    }
+
+    public static double GetAverageGrade(Student[] students)
+    {
+        int sum = 0;
+        foreach (Student student in students)
+        {
+            sum += student.Grade;
+        }
+        return (double)sum / students.Length;
+
+    }
+}
+
+//8. Создайте класс Book с методом экземпляра read, который выводит на экран строку "Читаю книгу {название}".
+//    Добавьте в класс статический метод getTotalPages, который возвращает общее количество страниц во всех книгах.
+//    Создайте два экземпляра класса Book и вызовите метод read для каждого
+
+public class GetBook
+{
+    public static void Test()
+    {
+        Book book1 = new Book();
+        book1.Name = "Как стать Айтишником";
+        book1.TotalPages = new Random().Next(100, 999);
+        book1.Read();
+        Book book2 = new Book();
+        book2.Name = "Мой путь в С-шарп";
+        book2.TotalPages = new Random().Next(1, 20);
+        book2.Read();
+
+        Console.WriteLine($"Книга - {book1.Name}, Страницу у книги - {book1.TotalPages}\n" +
+            $" Книга - {book2.Name} Страницу у книги - {book2.TotalPages} ");
+
+    }
+
+}
+
+class Book
+{
+    public string Name;
+    public int TotalPages;
+
+
+
+
+    public void Read()
+    {
+        Console.WriteLine($"Читаю кингу {Name} ");
+    }
+
+    public static int GetTotalPages()
+    {
+        int TotalPages = 0;
+        return TotalPages;
+    }
+
+}
+
+
+//9. Создайте класс Weather с методом экземпляра getForecast, который выводит на экран строку "Погода в {городе}: {погода}".
+//    Добавьте в класс статический метод getAverageTemperature, который возвращает среднюю температуру во всех городах.
+//    Создайте два экземпляра класса Weather и вызовите метод getForecast для каждого.
+
+public class GetWeather
+{
+    public static void Test()
+    {
+        Weather moscow = new Weather();
+        moscow.Name = "Moscow";
+        moscow.Temperature = +7;
+        moscow.GetForecast();
+        Weather evpatoria = new Weather();
+        evpatoria.Name = "Evpatoria";
+        evpatoria.Temperature = +20;
+        evpatoria.GetForecast();
+        Weather[] weathers = { moscow, evpatoria };
+        int averageTemperature = Weather.GetAverageTemperature(weathers);
+        Console.WriteLine($" Средняя погода {averageTemperature}");
+
+    }
+}
+
+class Weather
+{
+    public string Name;
+    public int Temperature;
+
+
+    public void GetForecast()
+    {
+        Console.WriteLine($"Погода в {Name} : {Temperature}");
+    }
+
+    public static int GetAverageTemperature(Weather[] weathers)
+    {
+        int sum = 0;
+        foreach (Weather weather in weathers)
+        {
+            sum += weather.Temperature;
+        }
+        return sum / weathers.Length;
+    }
+}

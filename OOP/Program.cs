@@ -9,7 +9,10 @@ class Program
         // CarTask.Test();
         // BankTask.Test();
         // StudentTask.Test();
-       // GettersSetters.Test();
-        GetDoposit.Test();
+        // GettersSetters.Test();
+        //GetDoposit.Test();
+        //GetStudent.Test
+        //GetBook.Test();
+        GetWeather.Test();
     }
 }
