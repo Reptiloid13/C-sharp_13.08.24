@@ -7,12 +7,14 @@ class Program
     public static void Main()
     {
         // CarTask.Test();
-        // BankTask.Test();
+        // Bank.Test();
         // StudentTask.Test();
         // GettersSetters.Test();
         //GetDoposit.Test();
         //GetStudent.Test
         //GetBook.Test();
-        GetWeather.Test();
+        //GetWeather.Test();
+        GetPoints.Test();
+        GetTime.Test();
     }
 }

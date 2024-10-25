@@ -60,7 +60,8 @@ public class GetDoposit
     public static void Test()
     {
         BankAccount account1 = new BankAccount(0);
-        account1.Deposit(100); // Почему присваем значение через скобочки? 
+        account1.Deposit(100);// Почему присваем значение через скобочки? 
+
         BankAccount account2 = new BankAccount(0);
         account2.Deposit(200);
         Console.WriteLine($"Total Balance: {BankAccount.GetTotalBalance()}");
@@ -69,12 +70,36 @@ public class GetDoposit
     }
 
 }
-
+//1. Задача: Разработайте класс BankAccount с приватным полем balance.
+//    Предоставьте геттер для баланса и сеттер, который позволяет производить депозиты(добавляет к балансу) и выводы(вычитает из баланса). 
+//    Обеспечьте, чтобы баланс не мог быть отрицательным.
 
 class BankAccount
 {
     public decimal Balance; // Можно ли писать переменные с маленькой буквы?
     public static decimal TotalBalance = 0;
+    private decimal _balnce { get; set; }
+
+    public decimal balance
+    {
+
+
+        set
+        {
+            if (value < 0)
+            {
+                Console.WriteLine("Баланс не может быть меньше 0 ");
+            }
+            else
+            {
+                balance = value;
+            }
+        }
+        get
+        {
+            return balance;
+        }
+    }
 
     public BankAccount(decimal balance) //Какой смысл от конструктора здесь? 
     {
