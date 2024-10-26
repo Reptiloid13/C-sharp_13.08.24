@@ -15,7 +15,6 @@ public class Car
     public int speed
     {
         set
-
         {
             if (value < 0 || value > 200)
 
@@ -23,18 +22,13 @@ public class Car
             else
                 speed = value;
         }
-        get
-
-        { return speed; }
-
-
-
+        get { return speed; }
     }
+
     public Car(int speed, string name)
     {
         Speed = speed;
         Name = name;
-
     }
 
     public void Drive()
@@ -42,7 +36,7 @@ public class Car
         Console.WriteLine($"Машина едет: {Name}");
     }
 
-    public static int GetMaxSpeed(params Сar[] cars) // Почему Массив не работает? 
+    public static int GetMaxSpeed(Car[] cars) // Почему Массив не работает? 
     {
         int maxSpeed = 0;
         foreach (var car in cars)
@@ -75,7 +69,6 @@ class CarTask
     }
 }
 
-
 //Напишите класс Triangle с приватными полями point1, point2 и point3.
 //    Они будут типа Point.У Point есть x и y Реализуйте геттеры и сеттеры для этих полей, обеспечивая, чтобы сеттеры проверяли, 
 //        являются ли входные значения правильными координатами.
@@ -93,13 +86,16 @@ public class GetPoints
         Triangle point3 = new Triangle();
         point3.X = 2;
         point3.Y = 2;
-        Console.WriteLine($" X1 = {point1.X} Y1 = {point1.Y}\n X2 = {point2.X} Y2 = {point2.Y} \n X3 {point3.X} Y3 = {point3.Y}");
+        Console.WriteLine(
+            $" X1 = {point1.X} Y1 = {point1.Y}\n X2 = {point2.X} Y2 = {point2.Y} \n X3 {point3.X} Y3 = {point3.Y}");
     }
 }
+
 class Triangle
 {
     private int x { get; set; }
     private int y { get; set; }
+
     public int X
     {
         set
@@ -107,40 +103,37 @@ class Triangle
             if (value >= 0)
                 x = value;
         }
-        get
-        {
-            return x;
-
-        }
-
-
+        get { return x; }
     }
+
     public int Y
     {
-        set { if (value >= 0) y = value; }
+        set
+        {
+            if (value >= 0) y = value;
+        }
         get { return y; }
-
     }
 }
-
 
 //4. Задача: Разработайте класс Time с приватными полями hours и minutes.Предоставьте геттеры и сеттеры для этих полей.
 //    Сеттеры должны проверять, находятся ли входные значения в диапазоне от 0 до 23 для часов и от 0 до 59 для минут
 //var time = new Time(); // 00:00:00
 //time.seconds = 65; // 00:01:05
 
-
 public class GetTime
 {
     public static void Test()
     {
         Time time = new Time();
-        time.Minutes = 22;
-        time.Hours = 12;
-        Console.WriteLine($" hours {time.Hours} minutes {time.Minutes}");
+        time.Minutes = 65;
+        time.Hours = 25;
 
+        // 01:05
+        Console.WriteLine($" hours {time.Hours} minutes {time.Minutes}");
     }
 }
+
 class Time
 {
     private int hours { get; set; }
@@ -148,24 +141,28 @@ class Time
 
     public int Hours
     {
-
         set
 
         {
             if (value < 0 || value > 23)
                 Console.WriteLine(" Не то время");
-            else { hours = value; }
+            else
+            {
+                hours = value;
+            }
         }
         get { return hours; }
-
     }
+
     public int Minutes
     {
-
         set
         {
             if (value < 0 || value > 59) Console.WriteLine(" Не то время");
-            else { minutes = value; }
+            else
+            {
+                minutes = value;
+            }
         }
         get { return minutes; }
     }
@@ -176,5 +173,4 @@ class Time
 //    (например, минимальной длине, содержанию хотя бы одной цифры и т. д.).
 class Password
 {
-
 }

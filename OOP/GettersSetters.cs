@@ -54,21 +54,17 @@ class User
 //    .Добавьте в класс статический метод getTotalBalance, который возвращает общую сумму денег на всех счетах
 //    .Создайте два экземпляра класса BankAccount и вызовите метод deposit для каждого.
 
-
 public class GetDoposit
 {
     public static void Test()
     {
         BankAccount account1 = new BankAccount(0);
-        account1.Deposit(100);// Почему присваем значение через скобочки? 
+        account1.Deposit(100); // Почему присваем значение через скобочки? 
 
-        BankAccount account2 = new BankAccount(0);
+        BankAccount account2 = new BankAccount(190);
         account2.Deposit(200);
         Console.WriteLine($"Total Balance: {BankAccount.GetTotalBalance()}");
-
-
     }
-
 }
 //1. Задача: Разработайте класс BankAccount с приватным полем balance.
 //    Предоставьте геттер для баланса и сеттер, который позволяет производить депозиты(добавляет к балансу) и выводы(вычитает из баланса). 
@@ -78,12 +74,10 @@ class BankAccount
 {
     public decimal Balance; // Можно ли писать переменные с маленькой буквы?
     public static decimal TotalBalance = 0;
-    private decimal _balnce { get; set; }
+    private decimal _balance { get; set; }
 
     public decimal balance
     {
-
-
         set
         {
             if (value < 0)
@@ -95,16 +89,12 @@ class BankAccount
                 balance = value;
             }
         }
-        get
-        {
-            return balance;
-        }
+        get { return balance; }
     }
 
-    public BankAccount(decimal balance) //Какой смысл от конструктора здесь? 
+    public BankAccount(decimal initialBalance) //Какой смысл от конструктора здесь? 
     {
-        Balance = balance;
-
+        Balance = initialBalance;
     }
 
     public void Deposit(decimal amount) // Зачем нам конструктор, когда мы можем  присваивать значение без него?
@@ -112,12 +102,12 @@ class BankAccount
         Balance += amount;
         TotalBalance += amount;
     }
+
     public static decimal GetTotalBalance()
     {
         return TotalBalance;
     }
 }
-
 
 //7. Создайте класс Student с методом экземпляра learn, который выводит на экран строку "Студент учится". 
 //    Добавьте в класс статический метод getAverageGrade, который возвращает средний балл всех студентов.
@@ -126,16 +116,11 @@ public class GetStudent
 {
     public static void Test()
     {
-        Student student1 = new Student("", 4); // Как вызывать значение из скобок, что
-        student1.Name = "Bob";
-        student1.Grade = 4;
-
+        Student student1 = new Student("Bob", 4); // Как вызывать значение из скобок, что
         Student student2 = new Student("Bill", 5);
-        student2.Name = "Bill";
-        student2.Grade = 5;
         Student student3 = new Student("Jackob", 2);
-        student3.Name = "Jackob";
-        student3.Grade = 2;
+
+        Console.WriteLine(student1.Name);
 
         student1.Learn();
         student2.Learn();
@@ -143,17 +128,17 @@ public class GetStudent
 
         Student[] students = { student1, student2, student3 };
         double avergeGrade = Student.GetAverageGrade(students);
-        Console.WriteLine($"Студент {student1.Name},  оценка: {student1.Grade}\n" +  // Как сделать , чтобу "Студент учиться был в Консоли 
+        Console.WriteLine(
+            $"Студент {student1.Name},  оценка: {student1.Grade}\n" + // Как сделать , чтобу "Студент учиться был в Консоли 
             $"Студент {student2.Name},  оценка: {student2.Grade}\n" +
             $"Студент {student3.Name},  оценка: {student3.Grade}\n" +
             $"Средний балл всех студентов: {Math.Round(avergeGrade, 2)}  ");
-
     }
 }
+
 class Student
 {
     public string Name;
-
     public int Grade;
 
     public Student(string name, int grade)
@@ -164,7 +149,7 @@ class Student
 
     public void Learn()
     {
-        Console.WriteLine("Студент учиться");
+        Console.WriteLine($"Студент {Name} учится");
     }
 
     public static double GetAverageGrade(Student[] students)
@@ -174,8 +159,8 @@ class Student
         {
             sum += student.Grade;
         }
-        return (double)sum / students.Length;
 
+        return (double)sum / students.Length;
     }
 }
 
@@ -197,19 +182,14 @@ public class GetBook
         book2.Read();
 
         Console.WriteLine($"Книга - {book1.Name}, Страницу у книги - {book1.TotalPages}\n" +
-            $" Книга - {book2.Name} Страницу у книги - {book2.TotalPages} ");
-
+                          $" Книга - {book2.Name} Страницу у книги - {book2.TotalPages} ");
     }
-
 }
 
 class Book
 {
     public string Name;
     public int TotalPages;
-
-
-
 
     public void Read()
     {
@@ -221,9 +201,7 @@ class Book
         int TotalPages = 0;
         return TotalPages;
     }
-
 }
-
 
 //9. Создайте класс Weather с методом экземпляра getForecast, который выводит на экран строку "Погода в {городе}: {погода}".
 //    Добавьте в класс статический метод getAverageTemperature, который возвращает среднюю температуру во всех городах.
@@ -233,18 +211,18 @@ public class GetWeather
 {
     public static void Test()
     {
-        Weather moscow = new Weather();
-        moscow.Name = "Moscow";
-        moscow.Temperature = +7;
+        Weather moscow = new Weather() { Name = "Moscow", Temperature = 7 };
+
         moscow.GetForecast();
-        Weather evpatoria = new Weather();
-        evpatoria.Name = "Evpatoria";
-        evpatoria.Temperature = +20;
+        
+        Weather evpatoria = new Weather() {Name = "Evpatoria", Temperature = 20};
+
         evpatoria.GetForecast();
         Weather[] weathers = { moscow, evpatoria };
         int averageTemperature = Weather.GetAverageTemperature(weathers);
-        Console.WriteLine($" Средняя погода {averageTemperature}");
+        
 
+        Console.WriteLine($" Средняя погода {averageTemperature}");
     }
 }
 
@@ -252,7 +230,6 @@ class Weather
 {
     public string Name;
     public int Temperature;
-
 
     public void GetForecast()
     {
@@ -266,6 +243,7 @@ class Weather
         {
             sum += weather.Temperature;
         }
+
         return sum / weathers.Length;
     }
 }

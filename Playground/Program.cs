@@ -14,7 +14,7 @@ class Program
 
     public static void Main(string[] args)
     {
-        Person person = new Person("Иван");
+        Person person = new Person("Иван") { Name = "Иван2" };
         var ivan = person.Name; // "Иван"
 
 
@@ -24,7 +24,7 @@ class Program
         Person person1 = new Person("Олег");
         Person.SayHello("Олег");
         // var count = Person.GetCount(); // А какой здесь нужен аргумент? 
-        person1.GetCount();  // Решение Задания 2 
+        person1.GetCount(); // Решение Задания 2 
         Console.WriteLine($"Количество экземпляров {person1.GetCount()}");
     }
 }
@@ -44,6 +44,8 @@ class Person
     {
         Console.WriteLine($"Привет, меня зовут {name}");
     }
+
+    // Что-то здесь не так
     public void SayHello1(string name)
     {
         Console.WriteLine($"Привет, меня зовут {name}");
