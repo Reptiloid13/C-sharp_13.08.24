@@ -6,7 +6,7 @@ class Program
     // Добавьте в класс статический метод getMaxSpeed, который возвращает максимальную скорость всех машин.
     public static void Main()
     {
-        // CarTask.Test();
+        //CarTask.Test();
         // Bank.Test();
         // StudentTask.Test();
         // GettersSetters.Test();
@@ -14,7 +14,7 @@ class Program
         //GetStudent.Test
         //GetBook.Test();
         //GetWeather.Test();
-        GetPoints.Test();
+        //GetPoints.Test();
         GetTime.Test();
     }
 }

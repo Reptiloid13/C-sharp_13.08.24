@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Drawing;
 using System.Security.AccessControl;
 
 namespace OOP;
@@ -56,7 +57,7 @@ class CarTask
     public static void Test()
     {
         var car = new Car(120, "BMW");
-        car.speed = 220;
+
         var car1 = new Car(210, "Lada");
         var car2 = new Car(110, "Opel");
 
@@ -64,7 +65,7 @@ class CarTask
         car.Drive();
         car1.Drive();
 
-        var maxSpeedEver = Car.GetMaxSpeed(); // 210
+        var maxSpeedEver = Car.GetMaxSpeed(new Car[] { car, car1, car2 }); // 210
         Console.WriteLine(maxSpeedEver);
     }
 }
@@ -126,11 +127,12 @@ public class GetTime
     public static void Test()
     {
         Time time = new Time();
-        time.Minutes = 65;
-        time.Hours = 25;
+        time.Minutes = 61;
+        time.Hours = 10; // часы не изменяются почему то 
+        time.Seconds = 90;
 
         // 01:05
-        Console.WriteLine($" hours {time.Hours} minutes {time.Minutes}");
+        Console.WriteLine($" hours {time.Hours} minutes {time.Minutes} seconds {time.Seconds}");
     }
 }
 
@@ -138,14 +140,26 @@ class Time
 {
     private int hours { get; set; }
     private int minutes { get; set; }
+    private int seconds { get; set; }
 
     public int Hours
     {
         set
 
         {
-            if (value < 0 || value > 23)
+            if (value < 0)
+            {
+
                 Console.WriteLine(" Не то время");
+            }
+
+            else if (value > 24)
+            {
+                Hours += value / 24;
+                hours = value % 24;
+                hours++;
+
+            }
             else
             {
                 hours = value;
@@ -158,7 +172,16 @@ class Time
     {
         set
         {
-            if (value < 0 || value > 59) Console.WriteLine(" Не то время");
+            if (value < 0) Console.WriteLine(" Не то время");
+
+            else if (value > 60)
+            {
+                Minutes += value / 60;
+                minutes = value % 60;
+                hours++;
+
+
+            }
             else
             {
                 minutes = value;
@@ -166,8 +189,26 @@ class Time
         }
         get { return minutes; }
     }
-}
+    public int Seconds
+    {
+        set
+        {
+            if (value < 0) Console.WriteLine("Не то время");
+            else if (value > 60)
+            {
+                Seconds += value / 60;
+                seconds = value % 60;
+                minutes++;
 
+
+            }
+            else seconds = value;
+        }
+        get { return seconds; }
+
+    }
+
+}
 //Задача: Создайте класс Password с приватным полем password.Реализуйте геттер и сеттер для пароля.
 //    Сеттер должен проверять, соответствует ли входной пароль определённым критериям 
 //    (например, минимальной длине, содержанию хотя бы одной цифры и т. д.).

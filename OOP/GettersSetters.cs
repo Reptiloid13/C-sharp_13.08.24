@@ -59,7 +59,7 @@ public class GetDoposit
     public static void Test()
     {
         BankAccount account1 = new BankAccount(0);
-        account1.Deposit(100); // Почему присваем значение через скобочки? 
+        account1.Deposit(100);
 
         BankAccount account2 = new BankAccount(190);
         account2.Deposit(200);
@@ -92,12 +92,12 @@ class BankAccount
         get { return balance; }
     }
 
-    public BankAccount(decimal initialBalance) //Какой смысл от конструктора здесь? 
+    public BankAccount(decimal initialBalance)
     {
         Balance = initialBalance;
     }
 
-    public void Deposit(decimal amount) // Зачем нам конструктор, когда мы можем  присваивать значение без него?
+    public void Deposit(decimal amount)
     {
         Balance += amount;
         TotalBalance += amount;
@@ -178,11 +178,12 @@ public class GetBook
         book1.Read();
         Book book2 = new Book();
         book2.Name = "Мой путь в С-шарп";
-        book2.TotalPages = new Random().Next(1, 20);
+        book2.TotalPages = 100;
         book2.Read();
 
         Console.WriteLine($"Книга - {book1.Name}, Страницу у книги - {book1.TotalPages}\n" +
-                          $" Книга - {book2.Name} Страницу у книги - {book2.TotalPages} ");
+                          $" Книга - {book2.Name} Страницу у книги - {book2.TotalPages} \n" +
+                          $"Общее количество страниц у двух книг: {GetTotalPages()} ");
     }
 }
 
@@ -198,8 +199,8 @@ class Book
 
     public static int GetTotalPages()
     {
-        int TotalPages = 0;
-        return TotalPages;
+
+        return Book.TotalPages + Book.TotalPages;
     }
 }
 
@@ -214,13 +215,13 @@ public class GetWeather
         Weather moscow = new Weather() { Name = "Moscow", Temperature = 7 };
 
         moscow.GetForecast();
-        
-        Weather evpatoria = new Weather() {Name = "Evpatoria", Temperature = 20};
+
+        Weather evpatoria = new Weather() { Name = "Evpatoria", Temperature = 20 };
 
         evpatoria.GetForecast();
         Weather[] weathers = { moscow, evpatoria };
         int averageTemperature = Weather.GetAverageTemperature(weathers);
-        
+
 
         Console.WriteLine($" Средняя погода {averageTemperature}");
     }
