@@ -178,12 +178,15 @@ public class GetBook
         book1.Read();
         Book book2 = new Book();
         book2.Name = "Мой путь в С-шарп";
-        book2.TotalPages = 100;
+        book2.TotalPages = new Random().Next(1, 20);
+
+
+        //  нужно что то записать 
         book2.Read();
 
         Console.WriteLine($"Книга - {book1.Name}, Страницу у книги - {book1.TotalPages}\n" +
                           $" Книга - {book2.Name} Страницу у книги - {book2.TotalPages} \n" +
-                          $"Общее количество страниц у двух книг: {GetTotalPages()} ");
+                          $"Общее количество страниц у двух книг: {Book.GetTotalPages(book1.TotalPages, book2.TotalPages)} ");
     }
 }
 
@@ -197,10 +200,10 @@ class Book
         Console.WriteLine($"Читаю кингу {Name} ");
     }
 
-    public static int GetTotalPages()
+    public static int GetTotalPages(int totalPages1, int totalPages2)
     {
 
-        return Book.TotalPages + Book.TotalPages;
+        return totalPages1 + totalPages2;
     }
 }
 
