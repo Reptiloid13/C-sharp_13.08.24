@@ -9,6 +9,7 @@ class Program
         //RandomTask1();
         RandomPassword();
     }
+
     //Случайный цвет: Создайте массив с основными цветами(например, красный, зеленый, синий)
     //     и напишите программу, которая выбирает случайный цвет и выводит его на экран.
     public static void RandomTask1()
@@ -18,19 +19,11 @@ class Program
 
         for (int i = 0; i < colors.Length; i++)
         {
-
             int index = random.Next(colors.Length);
             Console.WriteLine(colors[index]); // опятть бесконечный вывод. 
-
-
-
-
         }
-
-
-
-
     }
+
     //. Пароль генератор: Напишите программу,
     //    которая генерирует случайный пароль длиной 8 символов, содержащий буквы и цифры.
     public static void RandomPassword()
@@ -42,8 +35,8 @@ class Program
         for (int i = 0; i < 8; i++)
         {
             password += letters[random.Next(letters.Length)];
-
         }
+
         Console.WriteLine($"Ваш пароль: {password}");
     }
     //Подбрасывание монеты: Напишите программу, которая симулирует подбрасывание монеты 1млн раз и считает,
@@ -51,7 +44,6 @@ class Program
 
     public static void HeadsAndTails()
     {
-
         int heads = 0;
         int tails = 0;
 
@@ -64,18 +56,12 @@ class Program
                 heads++;
             else
                 tails++;
-
-
         }
-
-
-
-
     }
+
     private static bool RandomNumber()
     {
         Random random = new Random();
         return random.Next(2) == 0;
     }
-
 }

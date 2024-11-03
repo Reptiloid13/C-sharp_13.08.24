@@ -172,39 +172,40 @@ public class GetBook
 {
     public static void Test()
     {
-        Book book1 = new Book();
-        book1.Name = "Как стать Айтишником";
-        book1.TotalPages = new Random().Next(100, 999);
+        Book book1 = new Book("Как стать Айтишником", new Random().Next(100, 999));
         book1.Read();
-        Book book2 = new Book();
-        book2.Name = "Мой путь в С-шарп";
-        book2.TotalPages = new Random().Next(1, 20);
-
+        Book book2 = new Book("Мой путь в С-шарп", new Random().Next(1, 20));
 
 
         //  нужно что то записать 
         book2.Read();
 
-        Console.WriteLine($"Книга - {book1.Name}, Страницу у книги - {book1.TotalPages}\n" +
-                          $" Книга - {book2.Name} Страницу у книги - {book2.TotalPages} \n" +
-                          $"Общее количество страниц у двух книг: {Book.GetTotalPages(book1.TotalPages, book2.TotalPages)} ");
+        Console.WriteLine($"Книга - {book1.Name}, Страниц у книги - {book1.Pages}");
+        Console.WriteLine($"Книга - {book2.Name}, Страниц у книги - {book2.Pages}");
+        Console.WriteLine($"Общее количество страниц у двух книг: {string.Join(", ", Book.TotalPages)}");
     }
 }
 
 class Book
 {
     public string Name;
-    public int TotalPages;
+    public int Pages;
+
+    // public static int TotalPages { get; private set; }
+    private static List<int> TotalPagesList { get; set; } = [];
+    public static int TotalPages => TotalPagesList.Sum();
+
+    public Book(string name, int pages)
+    {
+        Name = name;
+        Pages = pages;
+
+        TotalPagesList.Add(pages);
+    }
 
     public void Read()
     {
         Console.WriteLine($"Читаю кингу {Name} ");
-    }
-
-    public static int GetTotalPages(int totalPages1, int totalPages2)
-    {
-
-        return totalPages1 + totalPages2;
     }
 }
 

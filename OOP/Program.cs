@@ -14,7 +14,8 @@ class Program
         //GetStudent.Test
         //GetBook.Test();
         //GetWeather.Test();
-        //GetPoints.Test();
-        //GetTime.Test();
+        // GetPoints.Test();
+        GetTime.Test();
+        // TransportTask.Test();
     }
 }

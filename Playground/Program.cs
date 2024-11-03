@@ -52,5 +52,25 @@ class Book
     }
 }
 
+class Person
+{
+    public string Name;
+    public static int count = 0;
+
+    public Person(string name)
+    {
+        Name = name;
+        count++;
+    }
+
+    public static void SayHello(string name)
+    {
+        Console.WriteLine($"Привет, меня зовут {name}");
+    }
+
+    public void SayHello1()
+    {
+        Console.WriteLine($"Привет, меня зовут {Name}");
+    }
 
 
