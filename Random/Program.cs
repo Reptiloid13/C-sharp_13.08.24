@@ -6,8 +6,7 @@ class Program
 {
     public static void Main(string[] args)
     {
-        //RandomTask1();
-        RandomPassword();
+        RandomTask1();
     }
 
     //Случайный цвет: Создайте массив с основными цветами(например, красный, зеленый, синий)
@@ -15,29 +14,10 @@ class Program
     public static void RandomTask1()
     {
         string[] colors = { "blue", "red", "green" };
-        Random random = new Random();
+        var random = new Random();
 
-        for (int i = 0; i < colors.Length; i++)
-        {
-            int index = random.Next(colors.Length);
-            Console.WriteLine(colors[index]); // опятть бесконечный вывод. 
-        }
-    }
-
-    //. Пароль генератор: Напишите программу,
-    //    которая генерирует случайный пароль длиной 8 символов, содержащий буквы и цифры.
-    public static void RandomPassword()
-    {
-        Random random = new Random();
-        char[] letters = "123456789QWERTYUIOPASDFGHJKLZXCVBNM".ToCharArray();
-        string password = "";
-
-        for (int i = 0; i < 8; i++)
-        {
-            password += letters[random.Next(letters.Length)];
-        }
-
-        Console.WriteLine($"Ваш пароль: {password}");
+        var randomInt = random.Next(0, colors.Length); // 0, 1, 2
+        Console.WriteLine(colors[randomInt]);
     }
     //Подбрасывание монеты: Напишите программу, которая симулирует подбрасывание монеты 1млн раз и считает,
     //    сколько раз выпала орел, а сколько решка.
@@ -49,7 +29,7 @@ class Program
 
         for (int i = 0; i < 1000000; i++)
         {
-            bool result = RandomNumber() == 0 ? true : false;
+            bool result = true; //RandomNumber() == 0 ? true : false;
 
 
             if (result)
