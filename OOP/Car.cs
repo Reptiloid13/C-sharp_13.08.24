@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Security.AccessControl;
+using System.Text.RegularExpressions;
+using System.Xml.Serialization;
 
 namespace OOP;
 
@@ -214,4 +216,32 @@ class Time
 //    (например, минимальной длине, содержанию хотя бы одной цифры и т. д.).
 class Password
 {
+    private string password { get; set; }
+
+
+    public string Pass//почему если пишу слово полностью выходит оиька? 
+    {
+        set
+        {
+            if (value.Length < 6)
+            {
+                Console.WriteLine("Пароль должен состоять не менее чем из 6 цифр");
+            }
+            else if (!value.Any(char.IsDigit))
+            {
+                Console.WriteLine("В пароли должна быть хотябы ода цифра");
+            }
+            else
+            {
+                password = value;
+                Console.WriteLine("Верный пароль");
+            }
+        }
+        get
+        {
+            return password;
+        }
+    }
+
 }
+

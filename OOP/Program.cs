@@ -12,7 +12,7 @@ class Program
         // GettersSetters.Test();
         //GetDoposit.Test();
         //GetStudent.Test
-        GetBook.Test();
+        //GetBook.Test();
         //GetWeather.Test();
         //GetPoints.Test();
         //GetTime.Test();

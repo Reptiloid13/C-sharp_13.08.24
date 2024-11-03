@@ -181,6 +181,7 @@ public class GetBook
         book2.TotalPages = new Random().Next(1, 20);
 
 
+
         //  нужно что то записать 
         book2.Read();
 
@@ -250,4 +251,5 @@ class Weather
 
         return sum / weathers.Length;
     }
+
 }
