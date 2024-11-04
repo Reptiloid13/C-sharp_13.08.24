@@ -148,5 +148,6 @@ class Person
     {
         Console.WriteLine($"Привет, меня зовут {Name}");
     }
+}
 
 

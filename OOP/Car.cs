@@ -52,6 +52,10 @@ public class Car
 
         return maxSpeed;
     }
+    public void Reset()
+    {
+        Speed = 0;
+    }
 }
 
 class CarTask
@@ -69,6 +73,8 @@ class CarTask
 
         var maxSpeedEver = Car.GetMaxSpeed(new Car[] { car, car1, car2 }); // 210
         Console.WriteLine(maxSpeedEver);
+        car.Reset();
+        car1.Reset();
     }
 }
 
@@ -195,7 +201,7 @@ class Password
 {
     private string _value { get; set; }
 
-    public string Value 
+    public string Value
     {
         set
         {
