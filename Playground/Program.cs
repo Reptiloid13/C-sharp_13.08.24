@@ -6,49 +6,125 @@ using System.Xml.XPath;
 
 class Program
 {
-    //Задача: Напишите класс Book с приватными полями title и author.
-    //    Реализуйте геттеры и сеттеры для этих полей.
-    //    Сеттер для title должен проверять, является ли 
-    //    входное значение строкой и не содержит ли она 
-    //    запрещенные символы: "!@#$%^&*()_+"
 
 
 
-    public static void Main(string[] args)
+    public class MainClass
     {
-        Book book = new Book();
-        book.Tittle = "Agata";
-        Console.WriteLine(book.Tittle);
-    }
-}
-class Book
-{
-    private string title { get; set; }
-    private string _author { get; set; }
 
-    public string Tittle
-    {
-        set
+        public static void Main()
         {
-            if (IsValidTittle(value)) Tittle = value;
-        }
-        get { return title; }
+            Product product = new Product("ключи", 12, 123, 4);
+            Console.WriteLine(product.ToString());
+            Courier courier = new Courier(98745);
+            courier.Deliver(product);
 
-    }
-    private bool IsValidTittle(String input)
-    {
-        if (string.IsNullOrEmpty(input)) return false;
 
-        string forbiddenChars = "!@#$%^&*()_+";
-        foreach (char symbol in forbiddenChars)
-        {
-            if (input.Contains(symbol))
-            {
-                return false;
-            }
+
 
         }
-        return true;
+    }
+
+    class Order<T> where T : Delivery
+
+    {
+        public int ProductId { get; set; }
+        public int Quantity { get; set; }
+
+
+    }
+    //{
+    //    public int Number;
+    //    public string Descrtiption;
+
+    //    public void DisplayAddress()
+    //    {
+    //        Console.WriteLine("Delivery.Address");
+    //    }
+    //}
+    class Product : Order<Delivery>
+    {
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public int Id { get; private set; }
+        public int Quantity { get; set; }
+
+
+        public Product(string name, decimal price, int id, int quantity)
+        {
+            Name = name;
+            Price = price;
+            Id = id;
+            Quantity = quantity;
+        }
+        public override string ToString()
+        {
+            return $"{Name} - {Quantity}шт., цена за единцу: {Price:f2}, общая стоимость: {(Price * Quantity):f2}";
+        }
+        public decimal TotalPrice => Price * Quantity;
+    }
+
+    abstract class Delivery
+    {
+        public abstract void Deliver(Product product);
+    }
+    class Courier : Delivery
+    {
+        private int _id;
+        private DateTime _nextDeliveryTime;
+
+        public Courier(int id)
+        {
+            _id = id;
+            _nextDeliveryTime = DateTime.Now;
+        }
+        public override void Deliver(Product product)
+        {
+            Console.WriteLine($"{product.Name} доставлен курьером {_id}!");
+            _nextDeliveryTime = _nextDeliveryTime.AddMinutes(15);
+        }
+        public DateTime NextDeliveryTime => _nextDeliveryTime;
+    }
+
+
+
+
+    class HomeDelivery : Delivery
+    {
+        public override void Deliver(Product product)
+        {
+            Console.WriteLine($"{product.Name} доставлен курьером!");
+        }
+    }
+    class PickPoint : Delivery
+    {
+        private string _address;
+        private bool _isAvailable;
+
+        public PickPoint(string address)
+        {
+            _address = address;
+        }
+        public override void Deliver(Product product)
+        {
+            Console.WriteLine($"Заказ {_isAvailable} доставлен в постомат по адресу: {_address}");
+        }
+
+    }
+    class ShopDelivery : Delivery
+    {
+        public string Name { get; set; }
+        public int Quanttity { get; set; }
+
+        public ShopDelivery(string name, int quanttity)
+        {
+            Name = name;
+            Quanttity = quanttity;
+        }
+        public override void Deliver(Product product)
+        {
+            Console.WriteLine($" Товар {Name} доставлен в магазин {Quanttity}");
+        }
     }
 }
 
