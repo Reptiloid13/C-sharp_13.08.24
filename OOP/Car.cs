@@ -136,7 +136,7 @@ class Time
 
     public override string ToString()
     {
-        return $"{hours}:{minutes}:{seconds}";
+        return $"{hours}:{minutes.ToString("00")}:{seconds}";
     }
 
     public int Hours
