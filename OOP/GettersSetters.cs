@@ -3,8 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace OOP;
 
-
-
 //8. Создайте класс Book с методом экземпляра read, который выводит на экран строку "Читаю книгу {название}".
 //    Добавьте в класс статический метод getTotalPages, который возвращает общее количество страниц во всех книгах.
 //    Создайте два экземпляра класса Book и вызовите метод read для каждого
@@ -51,6 +49,7 @@ class Book
     {
         Console.WriteLine($"Читаю кингу {Name} ");
     }
+
     public void Reset()
     {
         Pages = 0;
@@ -61,48 +60,44 @@ class Book
 //    Добавьте в класс статический метод getAverageTemperature, который возвращает среднюю температуру во всех городах.
 //    Создайте два экземпляра класса Weather и вызовите метод getForecast для каждого.
 
-//public class GetWeather
-//{
-//    public static void Test()
-//    {
-//        Weather weather = new Weather() { Name = "Moscow", Temperature = 8 };
+public class GetWeather
+{
+    public static void Test()
+    {
+        Weather weather = new Weather() { Name = "Moscow", Temperature = 8 };
 
-//        weather.GetForecast();
+        weather.GetForecast();
 
-//        Weather weather1 = new Weather() { Name = "Evpatoria", Temperature = 20 }; // Какой аргумент отсутсвует, вроде все верно. 
+        Weather weather1 = new Weather("Evpatoria", 20); // Какой аргумент отсутсвует, вроде все верно. 
 
-//        weather1.GetForecast();
+        weather1.GetForecast();
 
+        Console.WriteLine($"Wetaher in {weather.Name} : {weather.Temperature}");
+        Console.WriteLine($"Weather in  {weather1.Name} : {weather1.Temperature}");
+    }
+}
 
-//        Console.WriteLine($"Wetaher in {weather.Name} : {weather.Temperature}");
-//        Console.WriteLine($"Weather in  {weather1.Name} : {weather1.Temperature}");
-//    }
-//}
+class Weather
+{
+    public string Name;
+    public int Temperature;
+    private static List<int> AverageTemperatureList { get; set; } = [];
+    public static int AverageTemperature => AverageTemperatureList.Sum(); // Не пойму что за ошибка? 
 
-//class Weather
-//{
-//    public string Name;
-//    public int Temperature;
-//    private static List<int> AverageTemperatureList { get; set; } = [];
-//    public static int AverageTemperature => AverageTemperature.Sum(); // Не пойму что за ошибка? 
-
-//    public Weather(string name, int temperature)
-//    {
-//        Name = name;
-//        Temperature = temperature;
-//        AverageTemperatureList.Add(Temperature);
-//    }
-
+    public Weather(string name, int temperature)
+    {
+        Name = name;
+        Temperature = temperature;
+        AverageTemperatureList.Add(Temperature);
+    }
 
 
-//    public void GetForecast()
-//    {
-//        Console.WriteLine($"Погода в {Name} : {Temperature}");
-//    }
+    public void GetForecast()
+    {
+        Console.WriteLine($"Погода в {Name} : {Temperature}");
+    }
 
-//public static int GetAverageTemperature()
-//{
-
-//}
-
-
+    public static int GetAverageTemperature()
+    {
+    }
+}
