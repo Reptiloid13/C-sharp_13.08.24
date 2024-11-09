@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.Design;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics.Arm;
 using System.Xml.XPath;
@@ -25,15 +26,7 @@ class Order<T> where T : Delivery
 
 
 }
-//{
-//    public int Number;
-//    public string Descrtiption;
 
-//    public void DisplayAddress()
-//    {
-//        Console.WriteLine("Delivery.Address");
-//    }
-//}
 class Product : Order<Delivery>
 {
     public string Name { get; set; }
@@ -82,14 +75,13 @@ abstract class Person
 
 class Customer : Person
 {
-    public string PersonAdress;
+    public PersonAdress Address;
     public string ReviewText { get; set; }
-    public Customer(string secondName, string firsNamem, int phoneNumber) : base(secondName, firsNamem, phoneNumber) { } // Интуитивно что то смущает, все ли ок? 
-
+    public Customer(string secondName, string firstNamem, int phoneNumber, PersonAdress address) : base(secondName, firstNamem, phoneNumber) { }
 
     public void AddReview()
     {
-        Console.WriteLine("Отзвы добавлен");
+        Console.WriteLine($"Отзвы добавлен: {ReviewText}");
     }
 }
 
@@ -115,25 +107,34 @@ class PersonAdress
     }
 }
 
-abstract class Delivery
-{
-    public abstract void Deliver(Product product);
-    public int DeliveryDate;
-    public int DeliveryAddress;
 
-}
 class Courier : Person
 {
     private int _id;
-    private DateTime _nextDeliveryTime;
 
-    public Courier(string secondName, string firstName, int phoneNumber) : base(secondName, firstName, phoneNumber);
 
+    public Courier(string secondName, string firstName, int phoneNumber, int id) : base(secondName, firstName, phoneNumber)
+    { _id = id; }
 
 
     public override void GetFullName()
     {
-        Console.WriteLine($"{SecondName}, {FirstName}, телефон - {PhoneNumber}");
+        base.GetFullName();
+        Console.WriteLine($"ID Курьера {_id}");
+    }
+
+}
+abstract class Delivery
+{
+    public abstract void Deliver(Product product);
+    public DateTime DeliveryDate { get; set; }
+    public PersonAdress DeliveryAddress { get; set; }
+
+    protected Delivery(DateTime deliveryDate, PersonAdress deliveryAddress)
+    {
+        DeliveryDate = deliveryDate;
+        DeliveryAddress = deliveryAddress;
+
     }
 
 }
@@ -143,10 +144,14 @@ class Courier : Person
 
 class HomeDelivery : Delivery
 {
-    public override void Deliver(Product product)
+    public Courier DeliveryCourier { get; set; }
+    public PersonAdress CustomerAddress { get; set; }
+    public HomeDelivery(DateTime deliveryDate, PersonAdress customerAddress, Courier deliveryCourier, PersonAdress customerAdress) : base(deliveryDate, customerAddress)
     {
-        Console.WriteLine($"{product.Name} доставлен курьером!");
+        DeliveryCourier = deliveryCourier;
+        CustomerAddress = customerAddress;
     }
+
 }
 class PickPoint : Delivery
 {
