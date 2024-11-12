@@ -1,41 +1,52 @@
-using System;
-using System.ComponentModel.Design;
-using System.IO;
-using System.Runtime.InteropServices;
-using System.Runtime.Intrinsics.Arm;
-using System.Xml.XPath;
+using Playground.Order;
+
+namespace Playground;
 
 class Program
 {
     public static void Main()
     {
+        List<ProductItem> products =
+        [
+            new ProductItem(new Product("Product 1", "Description 1", 10.99m, 1, 5), 1),
+            new ProductItem(new Product("Product 2", "Description 2", 19.99m, 2, 3), 1),
+            new ProductItem(new Product("Product 3", "Description 3", 5.99m, 3, 2), 1)
+        ];
+        var address = new Adress("City", 123, "Street", 1, 1);
+        var customer = new Customer("John Doe", "123 Main St", "123-456-7890", address);
 
-        Product product = new Product("Кровать", "Мягкая", 32, 001, 1);
-        Console.WriteLine(product.ToString());
+        var shopDelivery = new ShopDelivery(DateTime.Now, address);
 
+        var courier = new Courier("John Doe", "123 Main St", "1234567890", 1);
+        var homeDelivery = new HomeDelivery(DateTime.Now, address, courier);
 
-
+        var order1 = new Order<ShopDelivery>(products, customer, shopDelivery);
+        var order2 = new Order<HomeDelivery>(products, customer, homeDelivery);
     }
 }
 
-class Order<T> where T : Delivery
-
+class ProductItem
 {
-    public List<string> Products = ["Кровать", "Диван", "Стул", "Подушка"];
-    public int Quantity { get; set; }
+    public Product Product { get; set; }
+    public int Quantity { get; private set; }
 
+    public ProductItem(Product product, int quantity)
+    {
+        Product = product;
+        Quantity = quantity;
+    }
 
+    public void IncreaseQuantity() => Quantity++;
+    public void DecreaseQuantity() => Quantity--;
 }
 
-class Product : Order<Delivery>
+class Product
 {
     public string Name { get; set; }
     public string Description { get; set; }
     public decimal Price { get; set; }
     public int Id { get; set; }
-    public int Quantuty;
-
-
+    public int Quantity { get; set; }
 
     public Product(string name, string description, decimal price, int id, int quantity)
     {
@@ -45,10 +56,12 @@ class Product : Order<Delivery>
         Description = description;
         Quantity = quantity;
     }
+
     public override string ToString()
     {
         return $"{Name} - {Quantity}шт., цена за единцу: {Price:f2}, общая стоимость: {(Price * Quantity):f2}";
     }
+
     public decimal TotalPrice => Price * Quantity;
 }
 
@@ -56,14 +69,13 @@ abstract class Person
 {
     public string SecondName { get; set; }
     public string FirstName { get; set; }
-    public int PhoneNumber { get; set; }
+    public string PhoneNumber { get; set; }
 
-    public Person(string secondName, string firstName, int phoneNumber)
+    public Person(string secondName, string firstName, string phoneNumber)
     {
         SecondName = secondName;
         FirstName = firstName;
         PhoneNumber = phoneNumber;
-
     }
 
 
@@ -75,9 +87,13 @@ abstract class Person
 
 class Customer : Person
 {
-    public PersonAdress Address;
+    public Adress Address;
     public string ReviewText { get; set; }
-    public Customer(string secondName, string firstNamem, int phoneNumber, PersonAdress address) : base(secondName, firstNamem, phoneNumber) { }
+
+    public Customer(string secondName, string firstNamem, string phoneNumber, Adress address) : base(secondName,
+        firstNamem, phoneNumber)
+    {
+    }
 
     public void AddReview()
     {
@@ -85,7 +101,7 @@ class Customer : Person
     }
 }
 
-class PersonAdress
+class Adress
 {
     public string City;
     public int Index;
@@ -93,7 +109,7 @@ class PersonAdress
     public int NumberHouse;
     public int NumberApartament;
 
-    public PersonAdress(string city, int index, string street, int numberHouse, int numberApartament)
+    public Adress(string city, int index, string street, int numberHouse, int numberApartament)
     {
         City = city;
         Index = index;
@@ -101,87 +117,90 @@ class PersonAdress
         NumberHouse = numberHouse;
         NumberApartament = numberApartament;
     }
+
     public void GetFullAddress()
     {
-        Console.WriteLine($" Город -  {City}, Индекс -  {Index}, Улица -  {Street},Номер дома -  {NumberHouse}, Квартира -  {NumberApartament}");
+        Console.WriteLine(
+            $" Город -  {City}, Индекс -  {Index}, Улица -  {Street},Номер дома -  {NumberHouse}, Квартира -  {NumberApartament}");
     }
 }
-
 
 class Courier : Person
 {
     private int _id;
 
-
-    public Courier(string secondName, string firstName, int phoneNumber, int id) : base(secondName, firstName, phoneNumber)
-    { _id = id; }
-
+    public Courier(string secondName, string firstName, string phoneNumber, int id)
+        : base(secondName, firstName, phoneNumber)
+    {
+        _id = id;
+    }
 
     public override void GetFullName()
     {
         base.GetFullName();
         Console.WriteLine($"ID Курьера {_id}");
     }
-
 }
+
 abstract class Delivery
 {
     public abstract void Deliver(Product product);
     public DateTime DeliveryDate { get; set; }
-    public PersonAdress DeliveryAddress { get; set; }
+    public Adress DeliveryAddress { get; set; }
 
-    protected Delivery(DateTime deliveryDate, PersonAdress deliveryAddress)
+    protected Delivery(DateTime deliveryDate, Adress deliveryAddress)
     {
         DeliveryDate = deliveryDate;
         DeliveryAddress = deliveryAddress;
-
     }
-
 }
-
-
-
 
 class HomeDelivery : Delivery
 {
     public Courier DeliveryCourier { get; set; }
-    public PersonAdress CustomerAddress { get; set; }
-    public HomeDelivery(DateTime deliveryDate, PersonAdress customerAddress, Courier deliveryCourier, PersonAdress customerAdress) : base(deliveryDate, customerAddress)
+    public Adress CustomerAddress { get; set; }
+
+    public HomeDelivery(DateTime deliveryDate, Adress customerAddress, Courier deliveryCourier)
+        : base(deliveryDate, customerAddress)
     {
         DeliveryCourier = deliveryCourier;
         CustomerAddress = customerAddress;
     }
 
+    public override void Deliver(Product product)
+    {
+        Console.WriteLine("HomeDelivery");
+    }
 }
+
 class PickPoint : Delivery
 {
-    private string _address;
-    private bool _isAvailable;
+    private Courier _courier;
+    private Adress _courierPickPointAddress;
 
-    public PickPoint(string address)
+    public PickPoint(DateTime deliveryDate, Adress customerAddress, Courier courier, Adress courierPickPointAddress) :
+        base(deliveryDate, customerAddress)
     {
-        _address = address;
+        _courier = courier;
+        _courierPickPointAddress = courierPickPointAddress;
     }
+
     public override void Deliver(Product product)
     {
-        Console.WriteLine($"Заказ {_isAvailable} доставлен в постомат по адресу: {_address}");
+        Console.WriteLine("PickPoint");
+        // Console.WriteLine($"Заказ {_isAvailable} доставлен в постомат по адресу: {_address}");
     }
-
 }
+
 class ShopDelivery : Delivery
 {
-    public string Name { get; set; }
-    public int Quanttity { get; set; }
-
-    public ShopDelivery(string name, int quanttity)
+    public ShopDelivery(DateTime deliveryDate, Adress customerAddress)
+        : base(deliveryDate, customerAddress)
     {
-        Name = name;
-        Quanttity = quanttity;
     }
+
     public override void Deliver(Product product)
     {
-        Console.WriteLine($" Товар {Name} доставлен в магазин {Quanttity}");
+        Console.WriteLine($" Товар  доставлен в магазин ");
     }
 }
-}
-
