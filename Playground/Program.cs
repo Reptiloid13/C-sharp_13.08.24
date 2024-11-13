@@ -14,6 +14,8 @@ class Program
         ];
         var address = new Adress("City", 123, "Street", 1, 1);
         var customer = new Customer("John Doe", "123 Main St", "123-456-7890", address);
+       
+        
 
         var shopDelivery = new ShopDelivery(DateTime.Now, address);
 
@@ -22,6 +24,8 @@ class Program
 
         var order1 = new Order<ShopDelivery>(products, customer, shopDelivery);
         var order2 = new Order<HomeDelivery>(products, customer, homeDelivery);
+
+        Console.WriteLine($"Курьер - {courier} Доставит по адресу - {homeDelivery} заказчику - {customer} заказ - {order1}");
     }
 }
 
