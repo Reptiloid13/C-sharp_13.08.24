@@ -1,4 +1,4 @@
-using Playground.Order;
+
 
 namespace Playground;
 
@@ -25,10 +25,22 @@ class Program
         var order1 = new Order<ShopDelivery>(products, customer, shopDelivery);
         var order2 = new Order<HomeDelivery>(products, customer, homeDelivery);
 
-        Console.WriteLine($"Курьер - {courier.GetFullName()} Доставит по адресу - {homeDelivery} заказчику - {customer} заказ - {order1}");
+
     }
 }
+class Order<T> where T : Delivery
+{
+    private List<ProductItem> _products;
+    private T _delivery;
+    private Customer _customer;
 
+    public Order(List<ProductItem> products, Customer customer, T delivery)
+    {
+        _products = products;
+        _delivery = delivery;
+        _customer = customer;
+    }
+}
 class ProductItem
 {
     public Product Product { get; set; }
@@ -122,7 +134,7 @@ class Adress
         NumberApartament = numberApartament;
     }
 
-    public void GetFullAddress()
+    public virtual void GetFullAddress()
     {
         Console.WriteLine(
             $" Город -  {City}, Индекс -  {Index}, Улица -  {Street},Номер дома -  {NumberHouse}, Квартира -  {NumberApartament}");
@@ -144,6 +156,12 @@ class Courier : Person
         base.GetFullName();
         Console.WriteLine($"ID Курьера {_id}");
     }
+    //public override void GetFullAddress()
+    //{
+    //    base.GetFullAddress();
+
+
+    //}
 }
 
 abstract class Delivery
@@ -157,10 +175,7 @@ abstract class Delivery
         DeliveryDate = deliveryDate;
         DeliveryAddress = deliveryAddress;
     }
-    public override void GetFullAddress()
-    {
 
-    }
 }
 
 class HomeDelivery : Delivery
@@ -196,7 +211,7 @@ class PickPoint : Delivery
     public override void Deliver(Product product)
     {
         Console.WriteLine("PickPoint");
-        // Console.WriteLine($"Заказ {_isAvailable} доставлен в постомат по адресу: {_address}");
+
     }
 }
 

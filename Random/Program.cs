@@ -1,43 +1,44 @@
-﻿class Program
+﻿using Random.Tasks1;
+namespace Random;
+class Program
 {
     public static void Main(string[] args)
     {
-        var simulator = new HeadsAndTailsSimulator() { NumberOfThrows = 1_000_000 };
-        simulator.Simulate();
-        simulator.PrintResult();
-    }
-    // Подбрасывание монеты: Напишите программу, которая симулирует подбрасывание монеты 1млн раз и считает,
-    // сколько раз выпала орел, а сколько решка.}
-}
+        DriveInfo[] drivers = DriveInfo.GetDrives();
+        GetFiles(); //Почему не видно ?
+        GetCatalogs();
 
-class HeadsAndTailsSimulator
-{
-    public required int NumberOfThrows { get; set; }
-    public int Heads { get; private set; }
-    public int Tails { get; private set; }
-
-    public void Simulate()
-    {
-        for (int i = 0; i < 1_000_000; i++)
+        foreach (DriveInfo drive in drivers)
         {
-            if (GetRandomNumber() == 0)
-                Heads++;
-            else
-                Tails++;
+            Console.WriteLine(drive.Name);
+            Console.WriteLine(drive.DriveType);
+            if (drive.IsReady)
+            {
+                Console.WriteLine($"Объем: {drive.TotalSize}");
+                Console.WriteLine($"Свободно: {drive.TotalSize}");
+                Console.WriteLine($"Метка: {drive.VolumeLabel}");
+            }
+        }
+
+        static void GetCatalogs()
+        {
+            string dirName = "C:\\";
+            if (Directory.Exists(dirName))
+            {
+                Console.WriteLine("Папки: ");
+                string[] dirs = Directory.GetDirectories(dirName);
+
+                foreach (string d in dirs)
+                    Console.WriteLine(d);
+                Console.WriteLine();
+                Console.WriteLine("Файлы");
+                string[] files = Directory.GetFiles(dirName);
+
+                foreach (string s in files)
+                    Console.WriteLine(s);
+            }
         }
     }
 
-    public void PrintResult()
-    {
-        Console.WriteLine($"Орел: {Heads}, Решка: {Tails}, Всего: {NumberOfThrows}");
-        Console.WriteLine($"Процент орла: {Heads * 100.0 / NumberOfThrows}%");
-        Console.WriteLine($"Процент решки: {Tails * 100.0 / NumberOfThrows}%");
-    }
-
-
-    private static int GetRandomNumber()
-    {
-        var random = new Random();
-        return random.Next(2);
-    }
 }
+
