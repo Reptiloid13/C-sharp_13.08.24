@@ -5,8 +5,6 @@ VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Playground", "Playground\Playground.csproj", "{904BB0D3-33ED-459A-8CB8-D8A93320C3F5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SkillFactory", "SkillFactory", "{B4816820-5513-4E71-BD11-C35AACE6B3AF}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SkillFactory", "SkillFactory\SkillFactory.csproj", "{B66848F6-6A2D-40F4-83CF-7F60D2264C19}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OOP", "OOP\OOP.csproj", "{CBA1F485-73BA-4AC1-92F2-768ACA482CC8}"
@@ -46,7 +44,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{B66848F6-6A2D-40F4-83CF-7F60D2264C19} = {B4816820-5513-4E71-BD11-C35AACE6B3AF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B094BCCB-FE39-4B3C-9C3E-AE80F09DA878}

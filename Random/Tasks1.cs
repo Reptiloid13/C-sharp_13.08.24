@@ -9,7 +9,7 @@ namespace Random.Tasks1
 {
     class Tasks1
     {
-        static void GetFiles()
+        public static void GetFiles()
         {
             try
             {
@@ -23,7 +23,6 @@ namespace Random.Tasks1
             {
                 Console.WriteLine(e.Message);
             }
-
         }
     }
 }

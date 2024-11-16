@@ -64,7 +64,7 @@ public class GetWeather
 {
     public static void Test()
     {
-        Weather weather = new Weather() { Name = "Moscow", Temperature = 8 };
+        Weather weather = new Weather("Moscow", 10);
 
         weather.GetForecast();
 
@@ -95,9 +95,5 @@ class Weather
     public void GetForecast()
     {
         Console.WriteLine($"Погода в {Name} : {Temperature}");
-    }
-
-    public static int GetAverageTemperature()
-    {
     }
 }

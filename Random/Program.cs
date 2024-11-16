@@ -1,11 +1,11 @@
-﻿using Random.Tasks1;
-namespace Random;
+﻿namespace Random.Tasks1;
+
 class Program
 {
     public static void Main(string[] args)
     {
         DriveInfo[] drivers = DriveInfo.GetDrives();
-        GetFiles(); //Почему не видно ?
+        Tasks1.GetFiles();
         GetCatalogs();
 
         foreach (DriveInfo drive in drivers)
@@ -19,26 +19,24 @@ class Program
                 Console.WriteLine($"Метка: {drive.VolumeLabel}");
             }
         }
-
-        static void GetCatalogs()
-        {
-            string dirName = "C:\\";
-            if (Directory.Exists(dirName))
-            {
-                Console.WriteLine("Папки: ");
-                string[] dirs = Directory.GetDirectories(dirName);
-
-                foreach (string d in dirs)
-                    Console.WriteLine(d);
-                Console.WriteLine();
-                Console.WriteLine("Файлы");
-                string[] files = Directory.GetFiles(dirName);
-
-                foreach (string s in files)
-                    Console.WriteLine(s);
-            }
-        }
     }
 
-}
+    private static void GetCatalogs()
+    {
+        string dirName = "C:\\";
+        if (Directory.Exists(dirName))
+        {
+            Console.WriteLine("Папки: ");
+            string[] dirs = Directory.GetDirectories(dirName);
 
+            foreach (string d in dirs)
+                Console.WriteLine(d);
+            Console.WriteLine();
+            Console.WriteLine("Файлы");
+            string[] files = Directory.GetFiles(dirName);
+
+            foreach (string s in files)
+                Console.WriteLine(s);
+        }
+    }
+}

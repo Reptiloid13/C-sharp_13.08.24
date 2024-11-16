@@ -1,5 +1,3 @@
-
-
 namespace Playground;
 
 class Program
@@ -12,22 +10,19 @@ class Program
             new ProductItem(new Product("Product 2", "Description 2", 19.99m, 2, 3), 1),
             new ProductItem(new Product("Product 3", "Description 3", 5.99m, 3, 2), 1)
         ];
-        var address = new Adress("City", 123, "Street", 1, 1);
+        var address = new Address("City", 123, "Street", 1, 1);
+        Console.WriteLine(address.ToString());
         var customer = new Customer("John Doe", "123 Main St", "123-456-7890", address);
 
-
-
         var shopDelivery = new ShopDelivery(DateTime.Now, address);
-
         var courier = new Courier("John Doe", "123 Main St", "1234567890", 1);
         var homeDelivery = new HomeDelivery(DateTime.Now, address, courier);
 
         var order1 = new Order<ShopDelivery>(products, customer, shopDelivery);
         var order2 = new Order<HomeDelivery>(products, customer, homeDelivery);
-
-
     }
 }
+
 class Order<T> where T : Delivery
 {
     private List<ProductItem> _products;
@@ -40,7 +35,10 @@ class Order<T> where T : Delivery
         _delivery = delivery;
         _customer = customer;
     }
+
+    // Переопределить метод ToStrign(), чтобы вывести полный заказ   
 }
+
 class ProductItem
 {
     public Product Product { get; set; }
@@ -103,10 +101,10 @@ abstract class Person
 
 class Customer : Person
 {
-    public Adress Address;
+    public Address Address;
     public string ReviewText { get; set; }
 
-    public Customer(string secondName, string firstNamem, string phoneNumber, Adress address) : base(secondName,
+    public Customer(string secondName, string firstNamem, string phoneNumber, Address address) : base(secondName,
         firstNamem, phoneNumber)
     {
     }
@@ -117,7 +115,7 @@ class Customer : Person
     }
 }
 
-class Adress
+class Address
 {
     public string City;
     public int Index;
@@ -125,7 +123,7 @@ class Adress
     public int NumberHouse;
     public int NumberApartament;
 
-    public Adress(string city, int index, string street, int numberHouse, int numberApartament)
+    public Address(string city, int index, string street, int numberHouse, int numberApartament)
     {
         City = city;
         Index = index;
@@ -134,10 +132,10 @@ class Adress
         NumberApartament = numberApartament;
     }
 
-    public virtual void GetFullAddress()
+    public override string ToString()
     {
-        Console.WriteLine(
-            $" Город -  {City}, Индекс -  {Index}, Улица -  {Street},Номер дома -  {NumberHouse}, Квартира -  {NumberApartament}");
+        return
+            $"Город -  {City}, Индекс -  {Index}, Улица -  {Street},Номер дома -  {NumberHouse}, Квартира -  {NumberApartament}";
     }
 }
 
@@ -168,22 +166,21 @@ abstract class Delivery
 {
     public abstract void Deliver(Product product);
     public DateTime DeliveryDate { get; set; }
-    public Adress DeliveryAddress { get; set; }
+    public Address DeliveryAddress { get; set; }
 
-    protected Delivery(DateTime deliveryDate, Adress deliveryAddress)
+    protected Delivery(DateTime deliveryDate, Address deliveryAddress)
     {
         DeliveryDate = deliveryDate;
         DeliveryAddress = deliveryAddress;
     }
-
 }
 
 class HomeDelivery : Delivery
 {
     public Courier DeliveryCourier { get; set; }
-    public Adress CustomerAddress { get; set; }
+    public Address CustomerAddress { get; set; }
 
-    public HomeDelivery(DateTime deliveryDate, Adress customerAddress, Courier deliveryCourier)
+    public HomeDelivery(DateTime deliveryDate, Address customerAddress, Courier deliveryCourier)
         : base(deliveryDate, customerAddress)
     {
         DeliveryCourier = deliveryCourier;
@@ -199,9 +196,9 @@ class HomeDelivery : Delivery
 class PickPoint : Delivery
 {
     private Courier _courier;
-    private Adress _courierPickPointAddress;
+    private Address _courierPickPointAddress;
 
-    public PickPoint(DateTime deliveryDate, Adress customerAddress, Courier courier, Adress courierPickPointAddress) :
+    public PickPoint(DateTime deliveryDate, Address customerAddress, Courier courier, Address courierPickPointAddress) :
         base(deliveryDate, customerAddress)
     {
         _courier = courier;
@@ -211,13 +208,12 @@ class PickPoint : Delivery
     public override void Deliver(Product product)
     {
         Console.WriteLine("PickPoint");
-
     }
 }
 
 class ShopDelivery : Delivery
 {
-    public ShopDelivery(DateTime deliveryDate, Adress customerAddress)
+    public ShopDelivery(DateTime deliveryDate, Address customerAddress)
         : base(deliveryDate, customerAddress)
     {
     }
