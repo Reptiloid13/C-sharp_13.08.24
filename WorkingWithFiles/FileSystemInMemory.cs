@@ -24,6 +24,7 @@ public class ModelTask
     public static void GetCatalogsVer2()
     {
         var createdTime = File.GetCreationTime(@$"{Environment.CurrentDirectory}\Folder\NewFile.txt");
+        var createdTime2 = File.GetCreationTime(Path.Combine(Environment.CurrentDirectory, "Folder", "NewFile.txt"));
 
         try
         {
