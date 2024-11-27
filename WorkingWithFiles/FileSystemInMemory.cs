@@ -45,4 +45,35 @@ public class Model
             Console.WriteLine(e.Message);
         }
     }
+
+
+    //Допустим, нам нужно создать файл и записать
+    //в него информацию, в коде выполним следующие действия: 
+    // Проверим существование файла
+    //Если не существует, создадим его и запишем строку.
+    //Откроем файл и прочитаем ранее записанную строку.
+
+    public void GetFileInformation()
+    {
+        string filePath = @"D:\\Folder\"; // не верный путь почему? 
+
+        if (!File.Exists(filePath))
+        {
+            using (StreamWriter sw = File.CreateText(filePath))
+            {
+                sw.WriteLine("Oleg"); // А где консоль? 
+                sw.WriteLine("Dima");
+                sw.WriteLine("Ivan");
+            }
+        }
+        using (StreamReader sr = File.OpenText(filePath))
+        {
+            string str = ""; // Для чего так записали
+            while ((str = sr.ReadLine()) != null)
+            {
+                Console.WriteLine(str);
+
+            }
+        }
+    }
 }

@@ -19,19 +19,19 @@ namespace WorkingWithFiles.ArturTask;
 
 //При нажатии на Enter В консоль выводить "Выбрана папка {Name}" или "Выбран файл {Name.extension}"
 
-public class Folder
-{
-    string path = @"C://SomeDir";
-    string subpath = @"program/avalon";
-    DirectoryInfo dirInfo = new DirectoryInfo(path);
-   if(!dirInfo.Exists)
-        {
-        dirInfo.Create();
-        }
-dirInfo.CreateSubdierctory(subpath)
+////public class Folder
+////{
+////    string path = @"C://SomeDir";
+////    string subpath = @"program/avalon";
+////    DirectoryInfo dirInfo = new DirectoryInfo(path);
+////   if(!dirInfo.Exists)
+////        {
+////        dirInfo.Create();
+////        }
+////dirInfo.CreateSubdierctory(subpath)
 
-      
 
-}
 
-}
+//}
+
+//}
