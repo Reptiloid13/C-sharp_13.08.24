@@ -19,17 +19,17 @@ public class SolvingTask832()
 
     public void GetBinary()
     {
-
-
         string filePath = @"C:\Users\фвьшт\Downloads\BinaryFile.bin";
 
         if (File.Exists(filePath))
         {
             string stringValue;
+            File.GetAttributes(filePath);
             using (BinaryReader reader = new BinaryReader(File.Open(filePath, FileMode.Open)))
             {
                 stringValue = reader.ReadString();
             }
+
             Console.WriteLine("Из файла считано: ");
             Console.WriteLine(stringValue);
         }
@@ -37,32 +37,58 @@ public class SolvingTask832()
 
     public void Task1()
     {
-        //Напишите программу, которая чистит нужную нам папку от файлов  и папок, которые не использовались более 30 минут
-        string dirName = @"C:\Users\фвьшт\OneDrive\Рабочий стол\Folder"; // Почему выводит только папку с Мувис остальное указывает как файлы? 
+        using (var person = new Person() { Name = "Иван", Age = 20 })
+        {
+            person.PrintName();
+        }
+
+        // Напишите программу, которая чистит нужную нам папку от файлов  и папок, которые не использовались более 30 минут
+        Console.WriteLine(Environment.CurrentDirectory);
+        string dirName =
+            @"C:\Users\New\Desktop\code\csharp\C-sharp_13.08.24\WorkingWithFiles\Folder"; // Почему выводит только папку с Мувис остальное указывает как файлы? 
         if (Directory.Exists(dirName))
         {
             Console.WriteLine("Папки");
-            string[] dirs = Directory.GetDirectories(dirName);
+            var dirs = Directory.GetDirectories(dirName);
 
-            foreach (string dir in dirs)
+            foreach (var dir in dirs)
             {
                 Console.WriteLine(dir);
-                Console.WriteLine();
-                Console.WriteLine("Файлы");
-                string[] files = Directory.GetFiles(dirName);
 
-                foreach (string f in files)
-                {
-                    Console.WriteLine(f);
-                }
+                Console.WriteLine("Вложенные файлы");
+                var filesInChildrenFolders = Directory.GetFiles(dir);
 
-
-
+                Console.WriteLine(string.Join(", ", filesInChildrenFolders));
             }
 
+            Console.WriteLine("Файлы");
+            var files = Directory.GetFiles(dirName);
 
+            Console.WriteLine(string.Join(", ", files));
         }
     }
+}
 
+interface IPerson
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
 
+    public void PrintName();
+}
+
+class Person : IPerson, IDisposable
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+
+    public void PrintName()
+    {
+        Console.WriteLine($"{Name}, {Age}");
+    }
+
+    public void Dispose()
+    {
+        Console.WriteLine("Объект удален из памяти");
+    }
 }

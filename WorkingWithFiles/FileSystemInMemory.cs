@@ -2,9 +2,8 @@
 
 namespace WorkingWithFiles.Model;
 
-public class Model
+public class ModelTask
 {
-
     public void GetCatalogs()
     {
         string dirName = @"C:\\";
@@ -21,18 +20,18 @@ public class Model
                 Console.WriteLine(s);
         }
     }
-    public void GetCatalogsVer2()
+
+    public static void GetCatalogsVer2()
     {
+        var createsTime = File.GetCreationTime(@"C:\Users\New\Desktop\Текстовый документ.txt");
+
         try
         {
             DirectoryInfo dirInfo = new DirectoryInfo(@"C://");
             if (dirInfo.Exists)
             {
                 Console.WriteLine(dirInfo.GetDirectories().Length + dirInfo.GetFiles().Length);
-
             }
-
-
 
             DirectoryInfo newdirInfo = new DirectoryInfo(@"C:\Users\luft");
             if (!newdirInfo.Exists)
@@ -55,7 +54,7 @@ public class Model
 
     public void GetFileInformation()
     {
-        string filePath = @"D:\\Folder\"; // не верный путь почему? 
+        string filePath = @"D:\Folder\"; // не верный путь почему? 
 
         if (!File.Exists(filePath))
         {
@@ -66,14 +65,10 @@ public class Model
                 sw.WriteLine("Ivan");
             }
         }
+
         using (StreamReader sr = File.OpenText(filePath))
         {
-            string str = ""; // Для чего так записали
-            while ((str = sr.ReadLine()) != null)
-            {
-                Console.WriteLine(str);
-
-            }
+            Console.WriteLine(sr.ReadToEnd());
         }
     }
 }
