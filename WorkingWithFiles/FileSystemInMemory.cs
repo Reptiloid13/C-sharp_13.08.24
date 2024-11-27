@@ -23,7 +23,7 @@ public class ModelTask
 
     public static void GetCatalogsVer2()
     {
-        var createsTime = File.GetCreationTime(@"C:\Users\New\Desktop\Текстовый документ.txt");
+        var createdTime = File.GetCreationTime(@$"{Environment.CurrentDirectory}\Folder\NewFile.txt");
 
         try
         {
