@@ -37,15 +37,8 @@ public class SolvingTask832()
 
     public void Task1()
     {
-        using (var person = new Person() { Name = "Иван", Age = 20 })
-        {
-            person.PrintName();
-        }
-
-        // Напишите программу, которая чистит нужную нам папку от файлов  и папок, которые не использовались более 30 минут
-        Console.WriteLine(Environment.CurrentDirectory);
-        string dirName =
-            @"C:\Users\New\Desktop\code\csharp\C-sharp_13.08.24\WorkingWithFiles\Folder"; // Почему выводит только папку с Мувис остальное указывает как файлы? 
+        //Напишите программу, которая чистит нужную нам папку от файлов  и папок, которые не использовались более 30 минут
+        string dirName = @"C:\Users\фвьшт\OneDrive\Рабочий стол\Folder";
         if (Directory.Exists(dirName))
         {
             Console.WriteLine("Папки");
@@ -53,42 +46,60 @@ public class SolvingTask832()
 
             foreach (var dir in dirs)
             {
+
                 Console.WriteLine(dir);
+                Console.WriteLine();
 
-                Console.WriteLine("Вложенные файлы");
-                var filesInChildrenFolders = Directory.GetFiles(dir);
+                //if (File.GetLastWriteTime(dir) < DateTime.Now.AddMinutes(-30))
+                //{
+                //    File.Delete(dir);
+                //}
+                Console.WriteLine($"Объем {dir.TotalSize}  Bytes");
 
-                Console.WriteLine(string.Join(", ", filesInChildrenFolders));
             }
+            Console.WriteLine("Папка очищена от файлов, которые не использовались более 30 минут");
 
+
+
+            string[] files = Directory.GetFiles(dirName);
             Console.WriteLine("Файлы");
-            var files = Directory.GetFiles(dirName);
 
-            Console.WriteLine(string.Join(", ", files));
-        }
-    }
-}
+            foreach (string f in files)
+            {
+
+                Console.WriteLine(f);
+            }
 
 interface IPerson
 {
     public string Name { get; set; }
     public int Age { get; set; }
 
-    public void PrintName();
-}
+        }
 
 class Person : IPerson, IDisposable
 {
     public string Name { get; set; }
     public int Age { get; set; }
 
-    public void PrintName()
-    {
-        Console.WriteLine($"{Name}, {Age}");
+
+
     }
 
-    public void Dispose()
+
+
+    public void Task2()
+    // Напишите программу, которая считает размер папки на диске(вместе со всеми вложенными папками и файлами).
+    // На вход метод принимает URL директории, в ответ — размер в байтах.
+
+
+
     {
-        Console.WriteLine("Объект удален из памяти");
+        string dirName = @"C:\Users\фвьшт\OneDrive\Рабочий стол\Folder";
+
+
     }
 }
+
+
+
