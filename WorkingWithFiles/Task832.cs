@@ -37,69 +37,54 @@ public class SolvingTask832()
 
     public void Task1()
     {
-        //Напишите программу, которая чистит нужную нам папку от файлов  и папок, которые не использовались более 30 минут
-        string dirName = @"C:\Users\фвьшт\OneDrive\Рабочий стол\Folder";
-        if (Directory.Exists(dirName))
+        //Напишите программу, которая чистит нужную нам папку от файлов и папок, которые не использовались более 30 минут
+        string dirName = @$"{Environment.CurrentDirectory}/Folder";
+        var span = TimeSpan.FromMinutes(30);
+        var rootDirectory = new DirectoryInfo(dirName);
+        
+        
+        
+        if (!Directory.Exists(dirName)) throw new Exception("Папка не существует");
+
+        Console.WriteLine("Папки");
+        var dirs = Directory.GetDirectories(dirName);
+
+        foreach (var dir in dirs)
         {
-            Console.WriteLine("Папки");
-            var dirs = Directory.GetDirectories(dirName);
+            Console.WriteLine(dir);
+            Console.WriteLine();
 
-            foreach (var dir in dirs)
+            if (Directory.GetLastWriteTime(dir) < DateTime.Now.AddSeconds(-1))
             {
-
-                Console.WriteLine(dir);
-                Console.WriteLine();
-
-                //if (File.GetLastWriteTime(dir) < DateTime.Now.AddMinutes(-30))
-                //{
-                //    File.Delete(dir);
-                //}
-                Console.WriteLine($"Объем {dir.TotalSize}  Bytes");
-
-            }
-            Console.WriteLine("Папка очищена от файлов, которые не использовались более 30 минут");
-
-
-
-            string[] files = Directory.GetFiles(dirName);
-            Console.WriteLine("Файлы");
-
-            foreach (string f in files)
-            {
-
-                Console.WriteLine(f);
+                // Directory.Delete(dir, true);
             }
 
-interface IPerson
-{
-    public string Name { get; set; }
-    public int Age { get; set; }
-
+            // Console.WriteLine($"Объем {dir.TotalSize}  Bytes");
         }
 
-class Person : IPerson, IDisposable
-{
-    public string Name { get; set; }
-    public int Age { get; set; }
+        Console.WriteLine("Папка очищена от файлов, которые не использовались более 30 минут");
 
-
-
+        string[] files = Directory.GetFiles(dirName);
+        Console.WriteLine(string.Join(", ", files));
+        
+        // Console.WriteLine("Файлы");
+        //
+        // foreach (string f in files)
+        // {
+        //     var fileInfo = new FileInfo(f);
+        //     if (DateTime.Now - fileInfo.LastAccessTime > span)
+        //     {
+        //         fileInfo.Delete();
+        //     }
+        //
+        //     Console.WriteLine(f);
+        // }
     }
 
-
-
-    public void Task2()
     // Напишите программу, которая считает размер папки на диске(вместе со всеми вложенными папками и файлами).
     // На вход метод принимает URL директории, в ответ — размер в байтах.
-
-
-
+    public void Task2()
     {
         string dirName = @"C:\Users\фвьшт\OneDrive\Рабочий стол\Folder";
-
-
     }
 }
-
-
-

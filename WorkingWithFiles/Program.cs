@@ -17,12 +17,12 @@ namespace WorkingWithFiles
             //var test1 = new CreateFile.Model();
             //test1.GetFile();
 
-            // var test3 = new Task832.SolvingTask832();
-            // test3.Task1();
+            var test3 = new SolvingTask832();
+            test3.Task1();
 
             // TryCatch.Start();
 
-            ModelTask.GetCatalogsVer2();
+            // ModelTask.GetCatalogsVer2();
         }
     }
 }
