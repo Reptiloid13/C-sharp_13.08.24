@@ -37,16 +37,16 @@ namespace SkillFactoryTask1
                 Console.WriteLine();
                 Console.WriteLine(file.FullName);
 
-                if (DateTime.Now - folder.LastAccessTime > span)
-                {
-                    folder.Delete(true);
+                //if (DateTime.Now - folder.LastAccessTime > span)
+                //{
+                //    folder.Delete(true);
 
 
-                    Console.WriteLine($" Folders Удалены : {folder}");
-                    Console.WriteLine();
-                    Console.WriteLine($"Files Удалены: {files}");
-                    Console.WriteLine();
-                }
+                //    Console.WriteLine($" Folders Удалены : {folder}");
+                //    Console.WriteLine();
+                //    Console.WriteLine($"Files Удалены: {files}");
+                //    Console.WriteLine();
+                //}
             }
 
 
