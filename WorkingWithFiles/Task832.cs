@@ -41,9 +41,9 @@ public class SolvingTask832()
         string dirName = @$"{Environment.CurrentDirectory}/Folder";
         var span = TimeSpan.FromMinutes(30);
         var rootDirectory = new DirectoryInfo(dirName);
-        
-        
-        
+
+
+
         if (!Directory.Exists(dirName)) throw new Exception("Папка не существует");
 
         Console.WriteLine("Папки");
@@ -62,11 +62,11 @@ public class SolvingTask832()
             // Console.WriteLine($"Объем {dir.TotalSize}  Bytes");
         }
 
-        Console.WriteLine("Папка очищена от файлов, которые не использовались более 30 минут");
+        //Console.WriteLine("Папка очищена от файлов, которые не использовались более 30 минут");
 
         string[] files = Directory.GetFiles(dirName);
         Console.WriteLine(string.Join(", ", files));
-        
+
         // Console.WriteLine("Файлы");
         //
         // foreach (string f in files)
