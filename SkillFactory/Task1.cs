@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using SkillFactory.PrintItems;
 
 namespace SkillFactoryTask1
 {
@@ -15,6 +17,10 @@ namespace SkillFactoryTask1
 
             DirectoryInfo folder = new DirectoryInfo(@"C:\Users\фвьшт\Source\Repos\C-sharp_13.08.24\SkillFactory\Folders\");
             var span = TimeSpan.FromMinutes(30);
+            PrintItems.PrintItemsMain();
+
+
+
 
 
             if (!folder.Exists) throw new Exception("Папака не существует");
