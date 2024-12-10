@@ -1,32 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using SkillFactory.PrintItems;
+﻿using SkillFactory.PrintItems;
 
 namespace SkillFactoryTask1
 {
     internal class Task1
     {
-        //Напишите программу, которая чистит нужную нам папку от файлов  и папок, которые не использовались более 30 минут
+        //Напишите программу, которая чистит нужную нам папку от файлов и папок, которые не использовались более 30 минут
         public void DeleteUnusingFiles()
         {
-
-            DirectoryInfo folder = new DirectoryInfo(@"C:\Users\фвьшт\Source\Repos\C-sharp_13.08.24\SkillFactory\Folders\");
-            var span = TimeSpan.FromMinutes(30);
-            PrintItems.PrintItemsMain();
-
-
-
-
-
-            if (!folder.Exists) throw new Exception("Папака не существует");
+            var path = Path.Combine(Environment.CurrentDirectory, "Folders");
+            var rootDir = new DirectoryInfo(path);
+            
+            if (!rootDir.Exists) throw new Exception("Папка не существует");
 
             Console.WriteLine("Folders: ");
-            var dirs = folder.GetDirectories();
+            var dirs = rootDir.GetDirectories();
 
             foreach (var dir in dirs)
             {
@@ -34,31 +21,29 @@ namespace SkillFactoryTask1
                 Console.WriteLine();
             }
 
-            Console.WriteLine("Files: ");
-
-            var files = folder.GetFiles("*", SearchOption.AllDirectories);
+            var files = rootDir.GetFiles("*", SearchOption.AllDirectories);
+            var filesForDeleting = new List<string>();
 
             foreach (var file in files)
             {
                 Console.WriteLine();
                 Console.WriteLine(file.FullName);
 
-                //if (DateTime.Now - folder.LastAccessTime > span)
-                //{
-                //    folder.Delete(true);
-
-
-                //    Console.WriteLine($" Folders Удалены : {folder}");
-                //    Console.WriteLine();
-                //    Console.WriteLine($"Files Удалены: {files}");
-                //    Console.WriteLine();
-                //}
+                if (IsLongAgoUsed(rootDir))
+                {
+                    // file.Delete();
+                    filesForDeleting.Add(file.FullName);
+                }
             }
+            
+            PrintItems.ConfirmDeleting(filesForDeleting);
+        }
 
-
+        private bool IsLongAgoUsed(DirectoryInfo rootDir)
+        {
+            // var span = TimeSpan.FromMinutes(30);
+            var span = TimeSpan.FromSeconds(1);
+            return DateTime.Now - rootDir.LastAccessTime > span;
         }
     }
-
 }
-
-

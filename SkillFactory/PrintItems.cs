@@ -8,27 +8,14 @@ namespace SkillFactory.PrintItems
 {
     internal class PrintItems
     {
-
-        public static void PrintItemsMain()
+        public static void ConfirmDeleting(List<string> fileForDeleting)
         {
-            var fileForDeleting = new List<string>();
-            var folderForDeleting = new List<string>();
-
-            fileForDeleting.Add(@"FoldersMain.txt");
-            fileForDeleting.Add(@"F1.txt");
-            fileForDeleting.Add(@"F2.txt");
-
-
-            folderForDeleting.Add(@"Folders");
-            folderForDeleting.Add(@"F1");
-            folderForDeleting.Add(@"F2");
-
-            var selectedVariant = 0;
+            var selectedVariant = 0; // 0 - не выбрано, 1 - да, 2 - нет
 
             while (true)
             {
                 Console.Clear();
-                PrintItems.PrintItemsForDeleting(fileForDeleting, folderForDeleting);
+                PrintItems.PrintItemsForDeleting(fileForDeleting);
                 PrintItems.PrintYesNo(selectedVariant);
 
                 var key = Console.ReadKey().Key;
@@ -40,28 +27,20 @@ namespace SkillFactory.PrintItems
                     selectedVariant = 1;
 
                 if (key == ConsoleKey.Enter)
+                {
                     break;
+                }
             }
-
-
-
-
         }
-        public static void PrintItemsForDeleting(List<string> filesForDeleting, List<string> foldersForDeleting)
+
+        public static void PrintItemsForDeleting(List<string> filesForDeleting)
         {
-            Console.WriteLine("Будут удалены слудующие элементы");
-            Console.WriteLine("Папки: ");
-            foreach (var folder in foldersForDeleting)
-            {
-                Console.WriteLine(folder);
-            }
-            Console.WriteLine();
-            Console.WriteLine("Файлы: ");
+            Console.WriteLine("Будут удалены следующие файлы");
+
             foreach (var files in filesForDeleting)
             {
                 Console.WriteLine(files);
             }
-
         }
 
         public static void PrintYesNo(int selectedVariant)
@@ -83,13 +62,10 @@ namespace SkillFactory.PrintItems
                 Console.ResetColor();
                 Console.Write("         ");
                 Console.Write("   NO    ");
-
             }
 
             if (selectedVariant == 2)
             {
-
-
                 Console.Write("   YES   ");
                 Console.Write("         ");
                 Console.BackgroundColor = ConsoleColor.Red;
@@ -97,7 +73,6 @@ namespace SkillFactory.PrintItems
                 Console.Write("   NO    ");
                 Console.ResetColor();
             }
-
         }
     }
 }

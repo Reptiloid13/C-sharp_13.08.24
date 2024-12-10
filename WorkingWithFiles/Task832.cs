@@ -43,7 +43,6 @@ public class SolvingTask832()
         var rootDirectory = new DirectoryInfo(dirName);
 
 
-
         if (!Directory.Exists(dirName)) throw new Exception("Папка не существует");
 
         Console.WriteLine("Папки");
