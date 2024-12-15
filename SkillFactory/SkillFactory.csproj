@@ -14,6 +14,8 @@
 	  <Content Include="Folders\**\*">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Content>
+	  <None Remove="Определения.txt" />
+	  <Content Include="Определения.txt" />
 	</ItemGroup>
 
 </Project>
