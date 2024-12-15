@@ -14,8 +14,17 @@ namespace Exception_SF.Delegate
             //Delegate.Task934();
             //Delegate.Predicate();
             //AnonymousDelegate.Task9312();
-            DZTask.Task1();
+            // DZTask.Task1();
+            DZTask.Task2();
+
+            // Sum();
+            //
+            // int Sum(int a, int b)
+            // {
+            //     return a + b;
+            // }
         }
+
 
         public static void Calculate()
         {
@@ -33,29 +42,25 @@ namespace Exception_SF.Delegate
             {
                 Console.WriteLine("Блок Finally Сработал ");
             }
-
         }
-
 
         public static int Division(int a, int b)
         {
             return a / b;
         }
 
+        // Создайте консольное решение, в котором реализуйте конструкцию Try/Catch/Finally для обработки исключения
+        // ArgumentOutOfRangeException.В случае исключения отобразите в консоль сообщение об ошибке.
         public static void Task922()
-        //Создайте консольное решение, в котором реализуйте конструкцию Try/Catch/Finally для обработки исключения
-        //ArgumentOutOfRangeException.В случае исключения отобразите в консоль сообщение об ошибке.
         {
             try
             {
                 Console.WriteLine("Try started work");
 
                 throw new Exception("Ошибка для таска 921");
-
             }
 
             catch (Exception ex) when (ex is ArgumentOutOfRangeException)
-
             {
                 Console.WriteLine("Аргумент вышел за пределы");
                 Console.WriteLine(ex.ToString);
@@ -63,21 +68,14 @@ namespace Exception_SF.Delegate
 
             finally
             {
-
                 Console.WriteLine("Сработад не нужный Файнали ");
-
-
             }
-
-
         }
 
+        // Создайте консольное решение, в котором реализуйте конструкцию Try/Catch/Finally для обработки исключения RankException.
+        // В случае исключения отобразите в консоль тип исключения(через метод GetType()).
         public static void Task923()
-        //Создайте консольное решение, в котором реализуйте конструкцию Try/Catch/Finally для обработки исключения RankException.
-        //В случае исключения отобразите в консоль тип исключения(через метод GetType()).
-
         {
-
             try
             {
                 throw new RankException("Сообщение об ошибке");
@@ -92,11 +90,6 @@ namespace Exception_SF.Delegate
             {
                 Console.Read();
             }
-
-
-
-
-
         }
     }
 }
