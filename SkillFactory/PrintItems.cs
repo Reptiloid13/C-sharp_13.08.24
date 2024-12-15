@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,7 +29,17 @@ namespace SkillFactory.PrintItems
 
                 if (key == ConsoleKey.Enter)
                 {
-                    break;
+
+                    if (selectedVariant == 1)
+                    {
+                        PrintItemsForDeleting(fileForDeleting);
+                    }
+
+                    else
+                    {
+                        break;
+                    }
+
                 }
             }
         }

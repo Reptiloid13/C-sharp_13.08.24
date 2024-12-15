@@ -1,85 +1,44 @@
+using System.Data;
+
 namespace Playground;
 
 class Program
 {
+
+
+
     public static void Main()
     {
-        var filesForDeleting = new List<string>();
-        var foldersForDeleting = new List<string>();
+        Action showMessageDelegate = ShowMessage;
+        showMessageDelegate.Invoke();
 
-        filesForDeleting.Add("1qwdwaefaer.txt");
-        filesForDeleting.Add("2.txt");
-        filesForDeleting.Add("2.txt");
+        Func<int, int, int, int> sumDelegate = Sum; // последний параметр - возвращающий
+        int result = sumDelegate.Invoke(1, 30, 120);
+        Console.WriteLine(result);
 
-        foldersForDeleting.Add("Models");
-        foldersForDeleting.Add("Photos");
+        Predicate<string> checkLengthDelegate = CheckLength;
+        bool status = checkLengthDelegate.Invoke("skill_factory");
+        Console.WriteLine(status);
 
 
 
-        var selectedVariant = 0; // 0 - не выбрано, 1 - да, 2 - нет
-
-        while (true)
-        {
-            Console.Clear(); // Зачем очищаем консоль? 
-            PrintItemsForDeleting(filesForDeleting, foldersForDeleting);
-            PrintYesNo(selectedVariant);
-            var key = Console.ReadKey().Key;
-
-            if (key == ConsoleKey.RightArrow)
-                selectedVariant = 2;
-
-            if (key == ConsoleKey.LeftArrow)
-                selectedVariant = 1;
-
-            if (key == ConsoleKey.Enter)
-                break;
-        }
     }
 
-    public static void PrintItemsForDeleting(List<string> filesForDeleting, List<string> foldersForDeleting)
+    public static void ShowMessage()
     {
-        Console.WriteLine("Будут удалены следующие элементы");
-        Console.WriteLine("Папки:");
-        foreach (var folder in foldersForDeleting)
-        {
-            Console.WriteLine(folder);
-        }
-        Console.WriteLine();
-        Console.WriteLine("Файлы:");
-        foreach (var file in filesForDeleting)
-        {
-            Console.WriteLine(file);
-        }
+        Console.WriteLine("Hello World");
     }
 
-    public static void PrintYesNo(int selectedVariant)
+
+    public static int Sum(int a, int b, int c)
     {
-        Console.WriteLine("Вы точно хотите продолжить?");
-
-        if (selectedVariant == 0)
-        {
-            Console.Write("   Да   ");
-            Console.Write("      ");
-            Console.Write("   Нет   ");
-        }
-
-        if (selectedVariant == 1)
-        {
-            Console.BackgroundColor = ConsoleColor.Green;
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.Write("   Да   ");
-            Console.ResetColor();
-            Console.Write("      ");
-            Console.Write("   Нет   ");
-        }
-
-        if (selectedVariant == 2)
-        {
-            Console.Write("   Да   ");
-            Console.ResetColor();
-            Console.Write("      ");
-            Console.BackgroundColor = ConsoleColor.Red;
-            Console.Write("   Нет   ");
-        }
+        return a + b + c;
     }
+
+    private static bool CheckLength(string _row)
+    {
+        if (_row.Length > 3) return true;
+        return false;
+    }
+
 }

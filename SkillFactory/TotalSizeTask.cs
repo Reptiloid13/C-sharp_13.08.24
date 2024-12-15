@@ -16,15 +16,15 @@ namespace SkillFactoryTotalSize
         // диске(вместе со всеми вложенными папками и файлами). На вход метод принимает URL директории, в ответ — размер в байтах.
 
         // Переименовать в Calculate
-        public void TotalSize()
+        public static void Calculate()
         {
             // var
             // Path.Combine + Environment.CurrentDirectory
             DirectoryInfo folder =
-                new DirectoryInfo(@"C:\Users\фвьшт\Source\Repos\C-sharp_13.08.24\SkillFactory\Folders\");
+                new DirectoryInfo($@"{Environment.CurrentDirectory}");
 
-            // Установить spell checker
-            if (!folder.Exists) throw new Exception("Папака не существует");
+
+            if (!folder.Exists) throw new Exception("Папка не существует");
 
             Console.WriteLine("Folders: ");
             var dirs = folder.GetDirectories();
@@ -46,7 +46,7 @@ namespace SkillFactoryTotalSize
             }
 
             // var
-            long totalFolderSize = folderSize(folder);
+            long totalFolderSize = FolderSize(folder);
 
             Console.WriteLine($"Total folders size in bytes: {totalFolderSize}");
         }
@@ -55,19 +55,19 @@ namespace SkillFactoryTotalSize
         // Методы с большой буквы
         // использовать var
         // Методы должны начинаться с глагола
-        static long folderSize(DirectoryInfo folder)
+        public static long FolderSize(DirectoryInfo folder)
         {
             // Соблюдать camelCase
             // Удалить "ofDir"
-            long totalSizeofDir = 0;
+            long totalSizeDir = 0;
 
             // Соблюдать camelCase
-            FileInfo[] allfiles = folder.GetFiles();
+            FileInfo[] allFiles = folder.GetFiles();
 
             // var
-            foreach (FileInfo file in allfiles)
+            foreach (FileInfo file in allFiles)
             {
-                totalSizeofDir += file.Length;
+                totalSizeDir += file.Length;
             }
 
             // var
@@ -76,10 +76,10 @@ namespace SkillFactoryTotalSize
             // var
             foreach (DirectoryInfo dir in subfolders)
             {
-                totalSizeofDir += folderSize(dir);
+                totalSizeDir += FolderSize(dir);
             }
 
-            return totalSizeofDir;
+            return totalSizeDir;
         }
     }
 }

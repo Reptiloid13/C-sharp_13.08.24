@@ -15,8 +15,7 @@ class SkillFactoryTasks
         var task1 = new Task1();
         task1.DeleteUnusingFiles();
 
-        //var task2 = new TotalSizeTask();
-        //task2.TotalSize();
+        TotalSizeTask.Calculate(Path.Combine + Environment.CurrentDirectory);
 
         //if(Directory.GetLastWriteTime(dir)< DateTime.Now.AddSeconds(-1))
         //   {

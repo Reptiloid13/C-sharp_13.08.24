@@ -29,7 +29,7 @@ namespace SkillFactoryTask1
                 Console.WriteLine();
                 Console.WriteLine(file.FullName);
 
-                if (IsLongAgoUsed(rootDir))
+                if (HowLongAgoUsed(rootDir))
                 {
                     // file.Delete();
                     filesForDeleting.Add(file.FullName);
@@ -39,10 +39,10 @@ namespace SkillFactoryTask1
             PrintItems.ConfirmDeleting(filesForDeleting);
         }
 
-        private bool IsLongAgoUsed(DirectoryInfo rootDir)
+        private bool HowLongAgoUsed(DirectoryInfo rootDir)
         {
-            // var span = TimeSpan.FromMinutes(30);
-            var span = TimeSpan.FromSeconds(1);
+            
+            var span = TimeSpan.FromMinutes(30);
             return DateTime.Now - rootDir.LastAccessTime > span;
         }
     }
