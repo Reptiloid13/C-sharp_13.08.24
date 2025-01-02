@@ -9,11 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SkillFactory", "SkillFactor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OOP", "OOP\OOP.csproj", "{CBA1F485-73BA-4AC1-92F2-768ACA482CC8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Random", "Random\Random.csproj", "{54F913BC-A667-4FB8-8A02-5FCF4B2AF981}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Playground2", "Random\Playground2.csproj", "{54F913BC-A667-4FB8-8A02-5FCF4B2AF981}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkingWithFiles", "WorkingWithFiles\WorkingWithFiles.csproj", "{C56E2A2E-42E0-48B1-A32F-60BC2AB36753}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exception_SF", "Exception_SF\Exception_SF.csproj", "{2C9D2CB7-30CB-4F99-9AC2-B198843A1264}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exception_SF", "Exception_SF\Exception_SF.csproj", "{2C9D2CB7-30CB-4F99-9AC2-B198843A1264}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

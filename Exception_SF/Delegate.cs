@@ -129,6 +129,16 @@ public class Delegate
         return a - b;
     }
 
+    // Написать класс Calculate  с делегатом OneResultChanged
+    // Который задается снаружи класса. В калькуляторе
+    // есть методы - Add, 
+    //Sub,Mul, Div,
+    // При вызове рузультата должен записываться в приватном поле Result
+    // Нужно сделать так, чтобы при измении резултата вызывался делегат OneResultChanged.
+    public static void ArturTask1()
+    {
+
+    }
 
 
 

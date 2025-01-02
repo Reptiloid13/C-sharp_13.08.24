@@ -5,24 +5,28 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Random.Tasks1
+namespace Playground2.Tasks1
 {
-    class Tasks1
+    class Person
     {
-        public static void GetFiles()
+        public event Action GoToSleep;
+        public event EventHandler DoWork;
+
+        public string Name { get; set; }
+
+        public void TakeTime(DateTime now)
         {
-            try
+            if (now.Hour <= 8)
             {
-                DirectoryInfo dirInfo = new DirectoryInfo("C:\\");
-                if (dirInfo.Exists)
-                {
-                    Console.WriteLine(dirInfo.GetDirectories().Length + dirInfo.GetFiles().Length);
-                }
+                GoToSleep?.Invoke();
             }
-            catch (Exception e)
+            else
             {
-                Console.WriteLine(e.Message);
+                var args = new EventArgs();
+
+                DoWork?.Invoke(this, null);
             }
+
         }
     }
 }

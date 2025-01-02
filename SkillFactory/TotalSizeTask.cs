@@ -11,7 +11,7 @@
             // var
             // Path.Combine + Environment.CurrentDirectory
             DirectoryInfo folder =
-                new DirectoryInfo($@"{Environment.CurrentDirectory}");
+                new DirectoryInfo($@"{Environment.CurrentDirectory}\Folders");
 
             if (!folder.Exists) throw new Exception("Папка не существует");
 

@@ -1,42 +1,99 @@
-﻿namespace Random.Tasks1;
+﻿using Playground2.Tasks1;
+using System;
+using System.Security.Cryptography.X509Certificates;
+namespace Playground2.Tasks1;
+
+
+
+public delegate void MyDelegate();
+
+
 
 class Program
 {
+    public delegate int ValueDelegate(int i);
+    public delegate void MyDelegate();
+    public event MyDelegate Event;
+    public event Action EventAction;
+
     public static void Main(string[] args)
     {
-        DriveInfo[] drivers = DriveInfo.GetDrives();
-        Tasks1.GetFiles();
-        GetCatalogs();
-
-        foreach (DriveInfo drive in drivers)
+        Person person = new Person
         {
-            Console.WriteLine(drive.Name);
-            Console.WriteLine(drive.DriveType);
-            if (drive.IsReady)
-            {
-                Console.WriteLine($"Объем: {drive.TotalSize}");
-                Console.WriteLine($"Свободно: {drive.TotalSize}");
-                Console.WriteLine($"Метка: {drive.VolumeLabel}");
-            }
+            Name = "Golda"
+        };
+
+        person.GoToSleep += Person_GoToSleep1;
+        person.DoWork += Person_DoWork;
+        person.TakeTime(DateTime.Parse("02.01.2025   7:27:55"));
+        person.TakeTime(DateTime.Parse("02.01.2025   16:27:55"));
+
+
+
+
+    }
+
+    private static void Person_DoWork(object? sender, EventArgs e)
+    {
+        if (sender is Person)
+        {
+            Console.WriteLine($"{((Person)sender).Name} работает работу");
         }
     }
 
-    private static void GetCatalogs()
+    private static void Person_GoToSleep1()
     {
-        string dirName = "C:\\";
-        if (Directory.Exists(dirName))
-        {
-            Console.WriteLine("Папки: ");
-            string[] dirs = Directory.GetDirectories(dirName);
+        Console.WriteLine("Человек пошел спать");
 
-            foreach (string d in dirs)
-                Console.WriteLine(d);
-            Console.WriteLine();
-            Console.WriteLine("Файлы");
-            string[] files = Directory.GetFiles(dirName);
+    }
 
-            foreach (string s in files)
-                Console.WriteLine(s);
-        }
+
+
+    public static void Task()
+    {
+        MyDelegate myDelegate = Method1;
+        myDelegate += Method4; // первый спопсоб добавление методав в делегат  
+
+        myDelegate();
+
+        MyDelegate myDelegate2 = new MyDelegate(Method4); // второй способ вызова метода в делегат 
+        myDelegate2 += Method4;
+        myDelegate2 -= Method4; // удаление Метода
+        myDelegate2.Invoke();
+
+        MyDelegate myDelegate3 = myDelegate + myDelegate2;
+        myDelegate3.Invoke();
+
+
+        var valueDelegate = new ValueDelegate(MethodValue);
+
+        valueDelegate((new Random()).Next(10, 50));
+    }
+
+    public static int MethodValue(int i)
+    {
+        Console.WriteLine(i);
+        return i;
+    }
+
+    public static void Method1()
+    {
+        Console.WriteLine("Method1");
+    }
+    public static void Method2()
+    {
+        Console.WriteLine("Method2");
+
+    }
+    public static void Method3()
+    {
+        Console.WriteLine("Method3");
+
+    }
+
+    public static void Method4()
+    {
+        Console.WriteLine("Method4");
+
     }
 }
