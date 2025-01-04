@@ -40,6 +40,7 @@ namespace Exception_SF
         public void Add(int a, int b)
         {
             result = a + b;
+
         }
 
         public void Sub(int a, int b)
