@@ -15,8 +15,9 @@ namespace Exception_SF.Delegate
             //Delegate.Predicate();
             //AnonymousDelegate.Task9312();
             // DZTask.Task1();
-            DZTask.Task2();
+            // DZTask.Delegates();
 
+            CalculatorTask.Start();
             // Sum();
             //
             // int Sum(int a, int b)

@@ -43,7 +43,7 @@ namespace Exception_SF
 
     public delegate void MyDelegate();
 
-    public class
+    // public class
 
 
 }
