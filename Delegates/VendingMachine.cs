@@ -39,7 +39,7 @@ namespace Delegates
             // Покупка уже проданного продукты для теста
 
 
-
+            // А что нужно вызывать ? 
 
 
 
@@ -103,11 +103,11 @@ namespace Delegates
             }
             private void CheckFullness()
             {
-                if (fullness == Capacity / 2 && OnRichFullness50 != null) // Почему тут не равен null
+                if (fullness == Capacity / 2 && OnRichFullness50 != null)
                 {
                     OnRichFullness50.Invoke();
                 }
-                if (fullness == Capacity / 3 && OnRichFullness33 != null) // Почему тут не равен null
+                if (fullness == Capacity / 3 && OnRichFullness33 != null)
                 {
                     OnRichFullness33.Invoke();
                 }

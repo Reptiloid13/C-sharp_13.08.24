@@ -20,6 +20,8 @@ namespace Delegates
             EventDelegate fireEvent = city.MakeFire;
             EventDelegate explosionEvent = city.MakeExplosion;
             EventDelegate accidentEvent = city.MakeAccident;
+
+
         }
     }
 
