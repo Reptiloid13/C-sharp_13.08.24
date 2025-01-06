@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Delegates
+﻿namespace Delegates
 {
     public class LibaryTask
     {
-
         public static void Start2()
         {
             var libary = new Libary() { Book = new Book() { Name = "Книга о программировании " } };
@@ -18,7 +9,6 @@ namespace Delegates
             var anna = new Person() { Name = "Anna" };
 
             libary.GiveBook(kate);
-
 
 
             // libary.OnBookReturned = ... 
@@ -32,15 +22,15 @@ namespace Delegates
 
             libary.ReturnBook(kate);
         }
-
-
     }
 
     public class Person
     {
         public string Name;
     }
+
     public delegate void OnBookReturned();
+
     public class Libary
     {
         public Book Book;
@@ -51,6 +41,7 @@ namespace Delegates
         {
             if (CurrentHolder != null)
             {
+                // Todo: Exception
                 Console.WriteLine($"Книга '{Book.Name}', находится у {CurrentHolder.Name}");
             }
             else
@@ -58,7 +49,6 @@ namespace Delegates
                 CurrentHolder = person;
                 Console.WriteLine($"{person.Name} уже держит '{Book.Name}' ");
             }
-
         }
 
         public void ReturnBook(Person person)
@@ -69,14 +59,14 @@ namespace Delegates
                 CurrentHolder = null;
                 OnBookReturned();
             }
-
-
         }
     }
+
     public class Book
     {
         public string Name;
     }
+
     public class SMS
     {
         public void Send(Person person, string message)
@@ -84,5 +74,4 @@ namespace Delegates
             Console.WriteLine($"SMS для {person.Name}: " + message);
         }
     }
-
 }

@@ -15,10 +15,10 @@ namespace Delegates
     {
         public static void Start()
         {
-            var milk = new Product() { Size = 1, Name = "Milk", Price = 10 };
+            var milk = new Product() { Size = 4, Name = "Milk", Price = 10 };
             var water = new Product() { Size = 2, Name = "Water", Price = 5 };
             var cola = new Product() { Size = 3, Name = "Cola", Price = 15 };
-            var chocolate = new Product() { Size = 4, Name = "Chocolate", Price = 20 };
+            var chocolate = new Product() { Size = 1, Name = "Chocolate", Price = 20 };
 
             var vendingMachine = new VendingMachine() { Capacity = 10 };
 
@@ -31,18 +31,13 @@ namespace Delegates
             vendingMachine.AddProduct(cola);
             vendingMachine.AddProduct(chocolate);
 
-
-            vendingMachine.Buy(milk);
-            vendingMachine.Buy(water);
-            vendingMachine.Buy(cola);
-            vendingMachine.Buy(chocolate);
-            // Покупка уже проданного продукты для теста
-
-
-            // А что нужно вызывать ? 
-
-
-
+            vendingMachine.Buy(milk); // 4
+            vendingMachine.Buy(water); // 2
+            // Console.WriteLine("Половина продуктов");
+            vendingMachine.Buy(cola); // 3
+            // Console.WriteLine("Треть продуктов");
+            vendingMachine.Buy(chocolate); // 1
+            // Console.WriteLine("Все продукты куплены и автомат пустой");
         }
 
         public class Product
@@ -59,9 +54,9 @@ namespace Delegates
             private List<Product> Products = new List<Product>();
             private int fullness = 0;
 
-            public OnFullnessChanged OnRichFullness50;
-            public OnFullnessChanged OnRichFullness33;
-            public OnFullnessChanged OnSoldOut;
+            public OnFullnessChanged OnRichFullness50 = null;
+            public OnFullnessChanged OnRichFullness33 = null;
+            public OnFullnessChanged OnSoldOut = null;
 
             public int Money = 0;
             public int Capacity;
@@ -74,46 +69,49 @@ namespace Delegates
                 {
                     throw new ProductNotFoundException("Продукт не найден");
                 }
+
                 Products.Remove(product);
-                Console.WriteLine(Products);
                 Money += product.Price;
-                Console.WriteLine(Money);
 
+                // Todo
                 fullness = Products.Count;
-                Console.WriteLine(Products.Count);
+                
                 CheckFullness();
-
-
-
             }
 
             public void AddProduct(Product product)
             {
                 // При превышении вместимости выбросить исключение  CapacityExceededException (Message = "Превышении вместимости") 
 
-                if (Products.Count >= Capacity)
+                if (fullness + product.Size > Capacity)
                 {
                     throw new CapacityExceededException("Превышение вместимости");
                 }
 
                 Products.Add(product);
-                fullness = Products.Count;
+                fullness += product.Size;
                 CheckFullness();
-
             }
+            
+
             private void CheckFullness()
             {
+                // Todo
+                // 10 -> 6 -> 4 
+                // 3.33 == 10 > 9 > 8 > 7 > 6 > 5 > 4 > 3 > 2 > 1 > 0
                 if (fullness == Capacity / 2 && OnRichFullness50 != null)
                 {
-                    OnRichFullness50.Invoke();
+                    OnRichFullness50();
                 }
+
                 if (fullness == Capacity / 3 && OnRichFullness33 != null)
                 {
-                    OnRichFullness33.Invoke();
+                    OnRichFullness33();
                 }
-                if (fullness == 0 && OnSoldOut != null) // Почему тут не равен null
+
+                if (fullness == 0 && OnSoldOut != null)
                 {
-                    OnSoldOut.Invoke();
+                    OnSoldOut();
                 }
             }
         }
@@ -121,11 +119,15 @@ namespace Delegates
 
     public class ProductNotFoundException : Exception
     {
-        public ProductNotFoundException(string message) : base(message) { }
-    }
-    public class CapacityExceededException : Exception
-    {
-        public CapacityExceededException(string message) : base(message) { }
+        public ProductNotFoundException(string message) : base(message)
+        {
+        }
     }
 
+    public class CapacityExceededException : Exception
+    {
+        public CapacityExceededException(string message) : base(message)
+        {
+        }
+    }
 }
