@@ -5,6 +5,10 @@
 
 // десь нужно писать в консоль, что все продукты куплены и автомат пустой 
 
+using System.Runtime.Intrinsics;
+using System.Security.Cryptography;
+using static Delegates.VendingMachineTask;
+
 namespace Delegates
 {
     class VendingMachineTask
@@ -26,69 +30,102 @@ namespace Delegates
             vendingMachine.AddProduct(water);
             vendingMachine.AddProduct(cola);
             vendingMachine.AddProduct(chocolate);
-            
-            var bread = new Product() { Size = 4, Name = "Хлеб", Price = 20 };
-            
-            var logger = new Logger("C:\\Users\\New");
-            var flashLogger = new Logger("F://");
-            
-            logger.Log("Продукт куплен");
-            logger.Log("Продукт куплен");
-            logger.Log("Продукт куплен");
-            logger.Log("Продукт куплен");
-            
-            flashLogger.Log("Продукт куплен");
-            flashLogger.Log("Продукт куплен");
-            flashLogger.Log("Продукт куплен");
-            flashLogger.Log("Продукт куплен");
-            
-            Logger.Log("C:\\Users\\New", "Продукт куплен");
-            Logger.Log("C:\\Users\\New", "Продукт куплен");
-            Logger.Log("C:\\Users\\New", "Продукт куплен");
 
-            Console.WriteLine();
 
-            var console = new Console();
-                
-            console.WriteLine();
-            
-            // ProductNotFoundException
-            vendingMachine.Buy(bread);
-            
-            var console = new Console()
-            console.WriteLine();
+            vendingMachine.Buy(milk);
+            vendingMachine.Buy(water);
+            vendingMachine.Buy(cola);
+            vendingMachine.Buy(chocolate);
+            // Покупка уже проданного продукты для теста
+
+
+
+
+
+
         }
-    }
 
-    class Product
-    {
-        public int Size;
-        public string Name;
-        public int Price;
-    }
-
-    public delegate void OnFullnessChanged();
-
-    class VendingMachine
-    {
-        private List<Product> Products = new List<Product>();
-        private int fullness = 0; // заполненность
-
-        public OnFullnessChanged OnRichFullness50;
-        public OnFullnessChanged OnRichFullness33;
-        public OnFullnessChanged OnSoldOut;
-
-        public int Money = 0;
-        public int Capacity; // вместимости автомата - не меняется
-
-        public void Buy(Product product)
+        public class Product
         {
-            // Если такого продукта нет, выбросить исключение - ProductNotFoundException (Message = "Продукт не найден")
+            public int Size;
+            public string Name;
+            public int Price;
         }
 
-        public void AddProduct(Product product)
+        public delegate void OnFullnessChanged();
+
+        public class VendingMachine
         {
-            // При превышении вместимости выбросить исключение  CapacityExceededException (Message = "Превышении вместимости") 
+            private List<Product> Products = new List<Product>();
+            private int fullness = 0;
+
+            public OnFullnessChanged OnRichFullness50;
+            public OnFullnessChanged OnRichFullness33;
+            public OnFullnessChanged OnSoldOut;
+
+            public int Money = 0;
+            public int Capacity;
+
+            public void Buy(Product product)
+            {
+                // Если такого продукта нет, выбросить исключение - ProductNotFoundException (Message = "Продукт не найден")
+
+                if (!Products.Contains(product))
+                {
+                    throw new ProductNotFoundException("Продукт не найден");
+                }
+                Products.Remove(product);
+                Console.WriteLine(Products);
+                Money += product.Price;
+                Console.WriteLine(Money);
+
+                fullness = Products.Count;
+                Console.WriteLine(Products.Count);
+                CheckFullness();
+
+
+
+            }
+
+            public void AddProduct(Product product)
+            {
+                // При превышении вместимости выбросить исключение  CapacityExceededException (Message = "Превышении вместимости") 
+
+                if (Products.Count >= Capacity)
+                {
+                    throw new CapacityExceededException("Превышение вместимости");
+                }
+
+                Products.Add(product);
+                fullness = Products.Count;
+                CheckFullness();
+
+            }
+            private void CheckFullness()
+            {
+                if (fullness == Capacity / 2 && OnRichFullness50 != null) // Почему тут не равен null
+                {
+                    OnRichFullness50.Invoke();
+                }
+                if (fullness == Capacity / 3 && OnRichFullness33 != null) // Почему тут не равен null
+                {
+                    OnRichFullness33.Invoke();
+                }
+                if (fullness == 0 && OnSoldOut != null) // Почему тут не равен null
+                {
+                    OnSoldOut.Invoke();
+                }
+            }
         }
     }
+
+    public class ProductNotFoundException : Exception
+    {
+        public ProductNotFoundException(string message) : base(message) { }
+    }
+    public class CapacityExceededException : Exception
+    {
+        public CapacityExceededException(string message) : base(message) { }
+    }
+
 }

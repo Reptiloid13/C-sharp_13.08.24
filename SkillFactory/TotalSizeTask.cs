@@ -35,14 +35,14 @@
             }
 
             // var
-            var totalFolderSize = FolderSize(folder);
+            var totalFolderSize = GetFolderSize(folder);
 
             Console.WriteLine($"Total folders size in bytes: {totalFolderSize}");
         }
 
         // использовать var
         // Методы должны начинаться с глагола
-        public static long FolderSize(DirectoryInfo folder)
+        public static long GetFolderSize(DirectoryInfo folder)
         {
             var totalSizeDir = (long)0;
 
@@ -50,18 +50,18 @@
             FileInfo[] allFiles = folder.GetFiles();
 
             // var
-            foreach (FileInfo file in allFiles)
+            foreach (var file in allFiles)
             {
                 totalSizeDir += file.Length;
             }
 
             // var
-            DirectoryInfo[] subfolders = folder.GetDirectories();
+            var subfolders = folder.GetDirectories();
 
             // var
-            foreach (DirectoryInfo dir in subfolders)
+            foreach (var dir in subfolders)
             {
-                totalSizeDir += FolderSize(dir);
+                totalSizeDir += GetFolderSize(dir);
             }
 
             return totalSizeDir;

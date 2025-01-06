@@ -4,7 +4,6 @@ using System.Security.Cryptography.X509Certificates;
 namespace Playground2.Tasks1;
 
 
-
 // В задаче имеется "Крикун", который будет кричать,
 // как только массив дойдет до цифры 35. 
 // Как только i = 35, мы должны вызвать событие OnScream,
@@ -12,8 +11,6 @@ namespace Playground2.Tasks1;
 
 // Как только Scream крикнул =>  мы вызываем событие
 //AskWhyScream. Которое ссылается на перезагружаемый метод Scream()
-
-
 
 class Counter
 {

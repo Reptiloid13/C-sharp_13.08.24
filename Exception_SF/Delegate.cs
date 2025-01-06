@@ -37,7 +37,7 @@ public class Delegate
     }
 
 
-    // Action - Не возвращает никако значения, может принимать до 16 вхд параметров
+    // Action - Не возвращает никакого значения, может принимать до 16 вхд параметров
     public static void Action()
     {
         Action<string>

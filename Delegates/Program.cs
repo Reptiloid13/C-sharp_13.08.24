@@ -4,7 +4,10 @@
     {
         static void Main()
         {
-            VendingMachineTask.Start();
+            //VendingMachineTask.Start();
+            //LibaryTask.Start2();
+            CityCrime.Start3();
+
         }
     }
 }
