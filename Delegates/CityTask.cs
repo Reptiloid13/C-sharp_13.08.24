@@ -11,11 +11,19 @@
         public static void Start()
         {
             var city = new City();
-            
+
             city.OnMakeCrime = () => Help.Call112(EventType.Crime);
             city.MakeCrime();
-            
-            // Todo: сделать для остальных событий
+
+            city.OnMakeFire = () => Help.Call112(EventType.Fire);
+            city.MakeFire();
+
+            city.OnMakeExplosion = () => Help.Call112(EventType.Explosion);
+            city.MakeExplosion();
+
+            city.OnMakeAccident = () => Help.Call112(EventType.Accident);
+            city.MakeAccident();
+            // Todo: сделать для остальных событий +
         }
     }
 
@@ -30,19 +38,19 @@
             Help.Call112(EventType.Crime);
             Console.WriteLine("Криминал");
         }
-
+        public OnEventStart OnMakeFire;
         public void MakeFire()
         {
             Help.Call112(EventType.Fire);
             Console.WriteLine("Пожар");
         }
-
+        public OnEventStart OnMakeExplosion;
         public void MakeExplosion()
         {
             Help.Call112(EventType.Explosion);
             Console.WriteLine("Взрыв");
         }
-
+        public OnEventStart OnMakeAccident;
         public void MakeAccident()
         {
             Help.Call112(EventType.Accident);
@@ -83,7 +91,7 @@
 
             if (type == EventType.Accident)
             {
-                Console.WriteLine($"Вызов 112 причина: Несчастие");
+                Console.WriteLine($"Вызов 112 причина: Несчастье");
             }
         }
     }

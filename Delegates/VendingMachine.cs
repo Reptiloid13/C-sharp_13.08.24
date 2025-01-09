@@ -73,9 +73,9 @@ namespace Delegates
                 Products.Remove(product);
                 Money += product.Price;
 
-                // Todo
-                fullness = Products.Count;
-                
+                // Todo+
+                fullness = product.Size;
+
                 CheckFullness();
             }
 
@@ -92,7 +92,7 @@ namespace Delegates
                 fullness += product.Size;
                 CheckFullness();
             }
-            
+
 
             private void CheckFullness()
             {

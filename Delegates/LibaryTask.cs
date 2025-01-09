@@ -42,7 +42,7 @@
             if (CurrentHolder != null)
             {
                 // Todo: Exception
-                Console.WriteLine($"Книга '{Book.Name}', находится у {CurrentHolder.Name}");
+                throw new PersonHasStillTheBookException($"Книга '{Book.Name}', находится у {CurrentHolder.Name}");
             }
             else
             {
@@ -72,6 +72,14 @@
         public void Send(Person person, string message)
         {
             Console.WriteLine($"SMS для {person.Name}: " + message);
+        }
+    }
+
+    public class PersonStillHasTheBookException : Exception
+    {
+        public PersonStillHasTheBookException(string message) : base(message)
+        {
+
         }
     }
 }

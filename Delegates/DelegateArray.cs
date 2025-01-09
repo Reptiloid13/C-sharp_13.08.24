@@ -1,0 +1,46 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Dynamic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Delegates
+{
+    // Нужно создать функцию, которая будет перебирать каждый элемент массива и вызывать делегат для него
+    // ForEach(array, delegate)
+    // ForEach([1, 2, 3], (x) => Console.WriteLine(x));
+
+    public class DelegateArray
+    {
+        public delegate void MyDelegate(int i);
+
+        public static void Start()
+        {
+            MyDelegate[] delegateArray = new MyDelegate[2]; // массив Делегатов
+
+            //присваиваю значения элементам массива
+            delegateArray[0] = GetDelegate1;
+            delegateArray[1] = GetDelegate2;
+
+            // Перебираю элементы в массиве 
+            foreach (var delegArray in delegateArray)
+            {
+                delegArray(1); // вызываем делегат для каждого элемента массива 
+
+            }
+
+        }
+        // Функция 1 
+        public static void GetDelegate1(int i)
+        {
+            Console.WriteLine("GetDelegate1 " + i);
+        }
+        //Функция 2 
+        public static void GetDelegate2(int i)
+        {
+            Console.WriteLine("GetDelegate2 " + 2 * i);
+        }
+    }
+
+}

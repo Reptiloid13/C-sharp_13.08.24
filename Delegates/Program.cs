@@ -6,8 +6,8 @@
         {
             //VendingMachineTask.Start();
             //LibaryTask.Start2();
-            
-            CityTask.Start();
+            DelegateArray2_1.Start();
+            //CityTask.Start();
         }
     }
 }
