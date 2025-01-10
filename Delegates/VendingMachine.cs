@@ -74,7 +74,7 @@ namespace Delegates
                 Money += product.Price;
 
                 // Todo+
-                fullness = product.Size;
+                fullness += product.Size;
 
                 CheckFullness();
             }
@@ -104,30 +104,39 @@ namespace Delegates
                     OnRichFullness50();
                 }
 
+
+
                 if (fullness == Capacity / 3 && OnRichFullness33 != null)
                 {
                     OnRichFullness33();
+                }
+
+                if (fullness < Capacity / 2 && fullness > Capacity / 3)
+                {
+                    Console.WriteLine($"Продуктов в автомате - {fullness}");
                 }
 
                 if (fullness == 0 && OnSoldOut != null)
                 {
                     OnSoldOut();
                 }
+
             }
         }
     }
+}
 
-    public class ProductNotFoundException : Exception
+
+public class ProductNotFoundException : Exception
+{
+    public ProductNotFoundException(string message) : base(message)
     {
-        public ProductNotFoundException(string message) : base(message)
-        {
-        }
     }
+}
 
-    public class CapacityExceededException : Exception
+public class CapacityExceededException : Exception
+{
+    public CapacityExceededException(string message) : base(message)
     {
-        public CapacityExceededException(string message) : base(message)
-        {
-        }
     }
 }

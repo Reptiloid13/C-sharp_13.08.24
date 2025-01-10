@@ -41,8 +41,8 @@
         {
             if (CurrentHolder != null)
             {
-                // Todo: Exception
-                throw new PersonHasStillTheBookException($"Книга '{Book.Name}', находится у {CurrentHolder.Name}");
+                // Todo: Exception+
+                throw new PersonStillHasTheBookException($"Книга '{Book.Name}', находится у {CurrentHolder.Name}");
             }
             else
             {
