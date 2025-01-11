@@ -10,12 +10,17 @@
             //CityTask.Start();
 
             var button1 = new Button();
-            button1.OnClick = () => Console.WriteLine("Hello");
+            button1.OnClick = () => PrintText("Hello");
         }
 
-        public static void PrintText()
+        public static void Wrapper()
         {
-            Console.WriteLine("Hello");
+            PrintText("Hello");
+        }
+
+        public static void PrintText(string text)
+        {
+            Console.WriteLine(text);
         }
     }
 
