@@ -97,14 +97,12 @@ namespace Delegates
             private void CheckFullness()
             {
                 // Todo
-                // 10 -> 6 -> 4 
+                // 100 -> 60 -> 40 
                 // 3.33 == 10 > 9 > 8 > 7 > 6 > 5 > 4 > 3 > 2 > 1 > 0
                 if (fullness == Capacity / 2 && OnRichFullness50 != null)
                 {
                     OnRichFullness50();
                 }
-
-
 
                 if (fullness == Capacity / 3 && OnRichFullness33 != null)
                 {

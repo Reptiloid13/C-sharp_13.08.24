@@ -18,7 +18,7 @@
             var city = new City();
 
             city.OnMakeCrime = PrintHello;
-            city.OnMakeCrime = () =>  Console.WriteLine("Hello");
+            city.OnMakeCrime = () => Console.WriteLine("Hello");
             city.MakeCrime();
 
             city.OnMakeFire = () => Help.Call112(EventType.Fire);

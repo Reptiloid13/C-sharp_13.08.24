@@ -7,9 +7,12 @@ using System.Threading.Tasks;
 
 namespace Delegates
 {
-    // Нужно создать функцию, которая будет перебирать каждый элемент массива и вызывать делегат для него
-    // ForEach(array, delegate)
-    // ForEach([1, 2, 3], (x) => Console.WriteLine(x));
+    // Нужно создать функцию MyForEach, которая будет перебирать каждый элемент массива и вызывать делегат для него
+    // MyForEach(array, delegate)
+    // MyForEach([1, 2, 3], (x) => Console.WriteLine(x));
+    // (1) => Console.WriteLine(1)
+    // (2) => Console.WriteLine(2)
+    // (3) => Console.WriteLine(3)
 
     public class DelegateArray
     {
