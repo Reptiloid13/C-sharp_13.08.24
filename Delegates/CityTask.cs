@@ -2,20 +2,27 @@
 {
     public class CityTask
     {
-        // 1) makeCrime()
-        // 2) OnMakeCrime() = () => Call112()
-        // 3) Call112()
+        // 1) city.OnMakeCrime = () => Call112()
+        // 2) makeCrime()
+        // 3) city.OnMakeCrime() -> Call112()
         // 4) Console.WriteLine("Криминал");
+
+        public static void PrintHello()
+        {
+            Console.WriteLine("Hello");
+        }
 
         //решить при помощи делегата 
         public static void Start()
         {
             var city = new City();
 
-            city.OnMakeCrime = () => Help.Call112(EventType.Crime);
+            city.OnMakeCrime = PrintHello;
+            city.OnMakeCrime = () =>  Console.WriteLine("Hello");
             city.MakeCrime();
 
             city.OnMakeFire = () => Help.Call112(EventType.Fire);
+            // city.OnMakeFire = Help.Call112;
             city.MakeFire();
 
             city.OnMakeExplosion = () => Help.Call112(EventType.Explosion);
@@ -31,26 +38,29 @@
 
     public class City
     {
-        public OnEventStart OnMakeCrime;
+        public OnEventStart OnMakeCrime = null;
+        public OnEventStart OnMakeFire = null;
+        public OnEventStart OnMakeExplosion = null;
+        public OnEventStart OnMakeAccident = null;
 
         public void MakeCrime()
         {
             Help.Call112(EventType.Crime);
             Console.WriteLine("Криминал");
         }
-        public OnEventStart OnMakeFire;
+        
         public void MakeFire()
         {
             Help.Call112(EventType.Fire);
             Console.WriteLine("Пожар");
         }
-        public OnEventStart OnMakeExplosion;
+        
         public void MakeExplosion()
         {
             Help.Call112(EventType.Explosion);
             Console.WriteLine("Взрыв");
         }
-        public OnEventStart OnMakeAccident;
+        
         public void MakeAccident()
         {
             Help.Call112(EventType.Accident);
