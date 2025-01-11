@@ -10,17 +10,15 @@
             //CityTask.Start();
 
             var button1 = new Button();
-            button1.OnClick = PrintTextParent;
+            button1.OnClick = () =>
+            {
+                Console.WriteLine("Hello");
+            };
         }
 
-        public static void PrintTextParent()
+        public static void PrintText()
         {
-            PrintText("Hello");
-        }
-
-        public static void PrintText(string text)
-        {
-            Console.WriteLine(text);
+            Console.WriteLine("Hello");
         }
     }
 
