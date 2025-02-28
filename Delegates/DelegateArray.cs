@@ -16,34 +16,47 @@ namespace Delegates
 
     public class DelegateArray
     {
-        public delegate void MyDelegate(int i);
+        public delegate void MyDelegate();
 
-        public static void Start()
+
+        public static void Start2()
         {
-            MyDelegate[] delegateArray = new MyDelegate[2]; // массив Делегатов
-
-            //присваиваю значения элементам массива
-            delegateArray[0] = GetDelegate1;
-            delegateArray[1] = GetDelegate2;
-
-            // Перебираю элементы в массиве 
-            foreach (var delegArray in delegateArray)
-            {
-                delegArray(1); // вызываем делегат для каждого элемента массива 
-
-            }
-
+            int[] array = { 1, 2, 3, };
         }
-        // Функция 1 
-        public static void GetDelegate1(int i)
+
+        public static void ForEach(Array, int)
         {
-            Console.WriteLine("GetDelegate1 " + i);
-        }
-        //Функция 2 
-        public static void GetDelegate2(int i)
-        {
-            Console.WriteLine("GetDelegate2 " + 2 * i);
-        }
+            public MyDelegate Arraydelegate;
+
     }
+
+
+    //public static void Start()
+    // {
+    //MyDelegate[] delegateArray = new MyDelegate[2]; // массив Делегатов
+
+    ////присваиваю значения элементам массива
+    //delegateArray[0] = GetDelegate1;
+    //delegateArray[1] = GetDelegate2;
+
+    //// Перебираю элементы в массиве 
+    //foreach (var delegArray in delegateArray)
+    //{
+    //    delegArray(1); // вызываем делегат для каждого элемента массива 
+
+    //}
+
+    // }
+    //    // Функция 1 
+    //    public static void GetDelegate1(int i)
+    //    {
+    //        Console.WriteLine("GetDelegate1 " + i);
+    //    }
+    //    //Функция 2 
+    //    public static void GetDelegate2(int i)
+    //    {
+    //        Console.WriteLine("GetDelegate2 " + 2 * i);
+    //    }
+    //}
 
 }
