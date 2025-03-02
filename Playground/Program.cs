@@ -1,4 +1,5 @@
 using System.Data;
+using System.Diagnostics.Tracing;
 
 namespace Playground;
 
@@ -10,208 +11,114 @@ class Program
     public static void Main()
     {
 
-        //BiggestElement();
-        //SmallestElement();
-        // SumElements();
-        //ReverseArray();
-        // Numbers();
-        // Multiply();
-        //PlusOne();
-        //Multiply2();
-        //ThirdDegree();
-        //UnNull();
-        OddNumbers();
+
+        GetName();
     }
-    //Создать метод для нахождения наибольшего элемента массива
-    public static void BiggestElement()
+
+    public static void GetName()
     {
-        int[] array = [1, 5, 6, 29];
+        // Необходимо создать метод, который заполняет данные с клавиатуры по пользователю (возвращает кортеж):
+        // Имя;
+        // Фамилия;
+        // Возраст;
+        // Наличие питомца;
+        // Если питомец есть, то запросить количество питомцев;
+        // Если питомец есть, вызвать метод, принимающий на вход количество питомцев и возвращающий массив их кличек (заполнение с клавиатуры); // Трудности с пониманием и реализацией доп. задачи
+        // Запросить количество любимых цветов;
+        // Вызвать метод, который возвращает массив любимых цветов по их количеству (заполнение с клавиатуры);
+        // Сделать проверку, ввёл ли пользователь корректные числа: возраст, количество питомцев, количество цветов в отдельном методе;
+        // Требуется проверка корректного ввода значений и повтор ввода, если ввод некорректен;
+        // Корректный ввод: ввод числа типа int больше 0.
+        // Метод, который принимает кортеж из предыдущего шага и показывает на экран данные.
+        // Вызов методов из метода Main.
 
-        var maxValue = 0;
 
-        for (int i = 0; i < array.Length; i++)
+        Console.Write("Ваше имя - ");
+        var name = Console.ReadLine();
+
+        Console.Write("Ваша фамилия -  ");
+        var surname = Console.ReadLine();
+
+        Console.Write("Возраст -  ");
+        var age = int.Parse(Console.ReadLine()); //Try.Parse
+
+        Console.Write("Есть питомец (yes/y/no/n) -  ");
+        var hasPet = Console.ReadLine();
+
+        while (hasPet != "yes" && hasPet != "y" && hasPet != "no" && hasPet != "n")
         {
-            if (array[i] > maxValue)
+            Console.Write("Есть питомец (yes/y/no/n) -  ");
+            hasPet = Console.ReadLine();
+        }
+
+        bool result;
+
+        if (hasPet == "yes" || hasPet == "y")
+        {
+            result = true;
+        }
+        else
+        {
+            result = false;
+        }
+
+        if (result == true)
+        {
+            Console.Write("Введите количество питомцев - ");
+            var valuePets = Convert.ToInt32(Console.ReadLine());
+
+            if (valuePets > 0)
             {
-                maxValue = array[i];
+                string[] currentPet = GetPetsNames(valuePets);
+
+                Console.WriteLine("Клички животных - ");
+
+                foreach (string pet in currentPet)
+                {
+                    Console.WriteLine(pet);
+                }
+
 
             }
 
-        }
+            Console.Write("Какое у вас количество любимых цветов - ");
+            var favColors = int.Parse(Console.ReadLine());
 
-        Console.WriteLine(maxValue);
-    }
-    // Найти наименьшее числа массива
-    public static void SmallestElement()
-    {
-        int[] array = [2, 5, 1, 29];
-        var minValue = array[0];
-
-        for (int i = 0; i < array.Length; i++)
-        {
-            if (array[i] < minValue)
+            if (favColors > 0)
             {
-                minValue = array[i];
-            }
-        }
-        Console.WriteLine(minValue);
+                string[] numbersOfColor = GetFavoriteColors(favColors);
+                Console.WriteLine("Любимые цвета - ");
 
-    }
-
-
-    //. Создать Метод для нахождения суммы всех элементов массива
-
-    public static void SumElements()
-    {
-        int[] array = [2, 5, 1, 29];
-        var sum = 0;
-
-        for (int i = 0; i < array.Length; i++)
-        {
-            sum += array[i];
-        }
-        Console.WriteLine(sum);
-    }
-
-    // Развернуть массив
-
-    public static void ReverseArray()
-    {
-        int[] array = [2, 5, 1, 29];
-        // Array.Reverse(array);
-        for (int i = array.Length - 1; i >= 0; i--)
-        {
-            Console.Write($" {array[i]}");
-        }
-
-
-    }
-
-    // На ввод подается массив, последнее число массива 0.
-    //Узнайте количество чисел в этом массиве.
-
-    public static void Numbers()
-    {
-        int[] array = [2, 5, 1, 29, 0];
-
-        for (int i = 0; i <= array.Length; i++)
-        {
-
-        }
-        Console.WriteLine(array.Length);
-
-    }
-    //Найдите произведение четных чисел в этом массиве.
-    public static void Multiply()
-    {
-
-        int[] array = [2, 3, 6, 5, 10];
-        var multiply = 1;
-
-        for (int i = 0; i < array.Length; i++) //  Почему нельзя поставить знак <=
-        {
-            if (array[i] % 2 == 0)
-            {
-                multiply = multiply * array[i];
-            }
-        }
-        Console.WriteLine(multiply);
-
-    }
-    //Увеличьте каждый четный элемент массива на единицу.
-    public static void PlusOne()
-    {
-        int[] array = [2, 3, 6, 5, 10];
-
-
-
-        for (int i = 0; i < array.Length; i++)
-        {
-            if (array[i] % 2 == 0)
-            {
-                array[i] += 1;
-            }
-        }
-        foreach (int plusOne in array) // выводит что то непонятное
-        {
-            Console.WriteLine(plusOne);
-        }
-
-    }
-
-    //   9) На ввод поступает массив размером n.
-
-    //Перемножьте каждый элемент массива на число n.
-
-    public static void Multiply2()
-    {
-        int[] array = { 2, 3, 6, 5, 10 };
-
-        var number = 5;
-
-        for (int i = 0; i < array.Length; i++)
-        {
-            array[i] *= number;
-        }
-
-        foreach (int numbers in array)
-        {
-            Console.WriteLine(numbers);
-        }
-    }
-
-    //    10) На ввод подается размер массива и сам массив.
-
-    //Перезапишите и выведите массив на печать, где каждый элемент возведён в 3ю степень
-
-    public static void ThirdDegree()
-    {
-        double[] array = { 2, 3, 6, 5, 10 };
-        // double result = 0;
-
-        for (int i = 0; i < array.Length; i++)
-        {
-            // result = Math.Pow(array[i], 3);
-            array[i] = Math.Pow(array[i], 3);
-        }
-
-
-        foreach (int numbers in array)
-        {
-            Console.WriteLine(numbers);
-        }
-    }
-
-    //  Необходимо создать массив, заполнить его числами и вывести на экран все числа этого массива, отличные от "0", разделив их пробелами.
-
-    public static void UnNull()
-    {
-        int[] array = { 0, 2, 3, 6, 5, 10 };
-
-        for (int i = 0; i < array.Length; i++)
-        {
-            if (array[i] != 0)
-            {
-                Console.WriteLine(array[i]);
+                foreach (var color in numbersOfColor)
+                {
+                    Console.WriteLine(color);
+                }
             }
         }
 
 
+
     }
-    // Необходимо вывести на экран сумму всех нечетных элементов данного массива чисел.
-    public static void OddNumbers()
+    public static string[] GetFavoriteColors(int favColors)
     {
-        int[] array = { 2, 3, 6, 5, 10 };
-        int result = 0;
-
-        for (int i = 0; i < array.Length; i++)
+        string[] numbersOfColor = new string[favColors];
+        for (int i = 0; i < numbersOfColor.Length; i++)
         {
-            if (array[i] % 2 != 0)
-            {
-                result += array[i];
-            }
-
+            Console.Write($"Введите название любимого цвета {i + 1} - ");
+            numbersOfColor[i] = Console.ReadLine();
         }
-        Console.WriteLine(result);
+        return numbersOfColor;
+
+    }
+
+    public static string[] GetPetsNames(int valuePets)
+    {
+        string[] namePet = new string[valuePets];
+        for (int i = 0; i < namePet.Length; i++)
+        {
+            Console.WriteLine($"Введите клички ваших животных{i + 1} - ");
+            namePet[i] = Console.ReadLine();
+        }
+        return namePet;
     }
 }
