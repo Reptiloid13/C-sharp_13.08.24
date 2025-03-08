@@ -1,5 +1,7 @@
+using System.Collections.Concurrent;
 using System.Data;
 using System.Diagnostics.Tracing;
+using System.Security.Cryptography;
 
 namespace Playground;
 
@@ -32,73 +34,55 @@ class Program
         // Метод, который принимает кортеж из предыдущего шага и показывает на экран данные.
         // Вызов методов из метода Main.
 
-
         Console.Write("Ваше имя - ");
         var name = Console.ReadLine();
 
         Console.Write("Ваша фамилия -  ");
         var surname = Console.ReadLine();
 
-        Console.Write("Возраст -  ");
-        var age = int.Parse(Console.ReadLine()); //Try.Parse
+        var age = GetAge("Возраст - ");
+        //var age = ReadLineInt("Возраст - ");
+        //var childrenCount = ReadLineInt("Сколько у вас детей - ");
 
-        Console.Write("Есть питомец (yes/y/no/n) -  ");
-        var hasPet = Console.ReadLine();
+        var hasPet = ReadLineBool("Есть питомец (yes/y/no/n) -  ");
 
-        while (hasPet != "yes" && hasPet != "y" && hasPet != "no" && hasPet != "n")
+        if (hasPet)
         {
-            Console.Write("Есть питомец (yes/y/no/n) -  ");
-            hasPet = Console.ReadLine();
-        }
 
-        bool result;
-
-        if (hasPet == "yes" || hasPet == "y")
-        {
-            result = true;
-        }
-        else
-        {
-            result = false;
-        }
-
-        if (result == true)
-        {
-            Console.Write("Введите количество питомцев - ");
-            var valuePets = Convert.ToInt32(Console.ReadLine());
+            var valuePets = GetNumPets("Введите количество питомцев - ");
+            //var valuePets = ReadLineInt("Введите количество питомцев - "); //  Сделать метод универсальным. 
 
             if (valuePets > 0)
             {
-                string[] currentPet = GetPetsNames(valuePets);
+                var currentPets = GetPetsNames(valuePets);
+                //var currentPets = ReadLineStrings("Введите клички животных: ", 3); // Массив строк 
 
                 Console.WriteLine("Клички животных - ");
 
-                foreach (string pet in currentPet)
+                foreach (string pet in currentPets)
                 {
                     Console.WriteLine(pet);
                 }
-
-
             }
 
-            Console.Write("Какое у вас количество любимых цветов - ");
-            var favColors = int.Parse(Console.ReadLine());
+            var favColors = GetNumFavColors("Введите количество любимых цветов - ");
+            //var favColors = ReadLineInt("Введите количество любимых цветов - "); 
 
             if (favColors > 0)
             {
-                string[] numbersOfColor = GetFavoriteColors(favColors);
+                var colors = GetFavoriteColors(favColors);
+                //var colors = ReadLineStrings("Введите любимые цвета: ", favColors); 
                 Console.WriteLine("Любимые цвета - ");
 
-                foreach (var color in numbersOfColor)
+                foreach (var color in colors)
                 {
                     Console.WriteLine(color);
                 }
             }
         }
 
-
-
     }
+
     public static string[] GetFavoriteColors(int favColors)
     {
         string[] numbersOfColor = new string[favColors];
@@ -120,5 +104,88 @@ class Program
             namePet[i] = Console.ReadLine();
         }
         return namePet;
+    }
+
+    public static int GetAge(string text)
+    {
+        int result = 0;
+
+        while (true)
+        {
+            Console.Write(text);
+            if (int.TryParse(Console.ReadLine(), out result) && result > 0)
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Введите число");
+            }
+
+
+        }
+        return result;
+    }
+
+    public static int GetNumPets(string promt) // prompt - Значит ли что то ? 
+    {
+        int result = 0;
+        while (true)
+        {
+            Console.Write(promt);
+            if (int.TryParse(Console.ReadLine(), out result) && result > 0)
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Введите количество питомцев числом - ");
+            }
+        }
+        return result;
+    }
+    public static int GetNumFavColors(string promt)
+    {
+        var result = 0;
+        while (true)
+        {
+            Console.Write(promt);
+            if (int.TryParse(Console.ReadLine(), out result) && result > 0)
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Введите цифрой");
+            }
+
+        }
+        return result;
+    }
+
+    public static bool ReadLineBool(string text)
+    {
+        var input = "";
+
+        Console.WriteLine(text);
+        while (input != "yes" && input != "y" && input != "no" && input != "n")
+        {
+            Console.Write(text);
+            input = Console.ReadLine();
+        }
+
+        var result = false;
+        bool test; // false
+
+        if (input == "yes" || input == "y")
+        {
+            result = true;
+        }
+        else
+        {
+            result = false;
+        }
+
+        return result;
     }
 }
