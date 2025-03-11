@@ -22,8 +22,11 @@ class Program
         //GetMaxElement();
         //GetSum();
         //GetMinElement();
+        ChangeTwoElements();
         //GetBigger();
-        GetModulMax();
+        // GetModulMax();
+        //GetMultiplicationTable();
+
     }
     //Напишите программу, в которую пользователь 
     //    вводит 5 целых чисел и выводит их среднее значение.
@@ -31,13 +34,7 @@ class Program
     {
         int[] array = [4, 5, 6, 3, 2];
 
-        int sum = 0;
-
-        for (int i = 0; i < array.Length; i++)
-        {
-            sum += array[i];
-
-        }
+        var sum = GetSum(array);
         var average = (double)sum / array.Length;
 
         Console.WriteLine(average);
@@ -60,16 +57,16 @@ class Program
     }
 
     //Создать функцию для нахождения суммы всех элементов массива/списка.
-    public static void GetSum()
+    public static int GetSum(int[] array)
     {
-        int[] array = [4, 2, 5, 6, 7];
+
         int sum = 0;
 
         for (int i = 0; i < array.Length; i++)
         {
             sum += array[i];
         }
-        Console.WriteLine(sum);
+        return sum;
     }
 
     //Создать функцию, которая возвращает наименьший элемент массива и его порядковый номер.
@@ -94,19 +91,18 @@ class Program
 
     //Создать функцию, которая меняет местами значения двух переменных.
 
-    public static void ChangeTwoElements()
+    public static void ChangeTwoElements() // out ref
     {
         int[] array = [4, 2, 5, 6, 7];
-        var index = 0;
+        var temp = 0;
 
         for (int i = 0; i < array.Length; i++)
         {
-            for (int j = i + 1; j < array.Length; j++)
-            {
-
-            }
+            temp = array[0];
+            array[0] = array[i];
+            array[i] = array[1];
         }
-
+        Console.WriteLine(temp);
     }
 
 
@@ -157,6 +153,40 @@ class Program
     }
 
 
+    //Найти количество перестановок для массива чисел. Пример: [20, 93, 11] -> 6
+
+    public static void GetSwapElements()
+    {
+        int[] array = { 20, 93, 11 };
+        var swap = 0;
+
+        for (int i = 0; i < array.Length; i++)
+        {
+            for (int j = i + 1; j < array.Length; j++)
+            {
+                if (array[i] != array[j])
+                {
+
+                }
+            }
+        }
+
+
+
+
+    }
+
+    // Вывести таблицу умножения
+    public static void GetMultiplicationTable()
+    {
+        for (int i = 1; i <= 9; i++)
+        {
+            for (int j = 1; j <= 9; j++)
+            {
+                Console.WriteLine($"{i} x {j} = {i * j,3}");
+            }
+        }
+    }
 
     // 1 ) Напишите программу, в которую пользователь вводит свой пол(
     //    "М" для мужского, "Ж" для женского) 

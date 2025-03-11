@@ -40,7 +40,7 @@ class Program
         Console.Write("Ваша фамилия -  ");
         var surname = Console.ReadLine();
 
-        var age = GetAge("Возраст - ");
+        var age = ReadLineInt("Возраст - ");
         //var age = ReadLineInt("Возраст - ");
         //var childrenCount = ReadLineInt("Сколько у вас детей - ");
 
@@ -49,12 +49,12 @@ class Program
         if (hasPet)
         {
 
-            var valuePets = GetNumPets("Введите количество питомцев - ");
+            var valuePets = ReadLineInt("Введите количество питомцев - ");
             //var valuePets = ReadLineInt("Введите количество питомцев - "); //  Сделать метод универсальным. 
 
             if (valuePets > 0)
             {
-                var currentPets = GetPetsNames(valuePets);
+                var currentPets = ReadLineStrings(valuePets);
                 //var currentPets = ReadLineStrings("Введите клички животных: ", 3); // Массив строк 
 
                 Console.WriteLine("Клички животных - ");
@@ -65,7 +65,7 @@ class Program
                 }
             }
 
-            var favColors = GetNumFavColors("Введите количество любимых цветов - ");
+            var favColors = ReadLineInt("Введите количество любимых цветов - ");
             //var favColors = ReadLineInt("Введите количество любимых цветов - "); 
 
             if (favColors > 0)
@@ -95,7 +95,7 @@ class Program
 
     }
 
-    public static string[] GetPetsNames(int valuePets)
+    public static string[] ReadLineStrings(int valuePets)
     {
         string[] namePet = new string[valuePets];
         for (int i = 0; i < namePet.Length; i++)
@@ -106,7 +106,7 @@ class Program
         return namePet;
     }
 
-    public static int GetAge(string text)
+    public static int ReadLineInt(string text)
     {
         int result = 0;
 
@@ -127,41 +127,43 @@ class Program
         return result;
     }
 
-    public static int GetNumPets(string promt) // prompt - Значит ли что то ? 
-    {
-        int result = 0;
-        while (true)
-        {
-            Console.Write(promt);
-            if (int.TryParse(Console.ReadLine(), out result) && result > 0)
-            {
-                break;
-            }
-            else
-            {
-                Console.WriteLine("Введите количество питомцев числом - ");
-            }
-        }
-        return result;
-    }
-    public static int GetNumFavColors(string promt)
-    {
-        var result = 0;
-        while (true)
-        {
-            Console.Write(promt);
-            if (int.TryParse(Console.ReadLine(), out result) && result > 0)
-            {
-                break;
-            }
-            else
-            {
-                Console.WriteLine("Введите цифрой");
-            }
+    //public static int GetNum(string promt)
+    //{
+    //    int result = 0;
+    //    while (true)
+    //    {
+    //        Console.Write(promt);
+    //        if (int.TryParse(Console.ReadLine(), out result) && result > 0)
+    //        {
+    //            break;
+    //        }
+    //        else
+    //        {
+    //            Console.WriteLine("Введите число цифрой ");
+    //        }
+    //    }
+    //    return result;
+    //}
 
-        }
-        return result;
-    }
+
+    //public static int GetNumFavColors(string promt)
+    //{
+    //    var result = 0;
+    //    while (true)
+    //    {
+    //        Console.Write(promt);
+    //        if (int.TryParse(Console.ReadLine(), out result) && result > 0)
+    //        {
+    //            break;
+    //        }
+    //        else
+    //        {
+    //            Console.WriteLine("Введите цифрой");
+    //        }
+
+    //    }
+    //    return result;
+    // }
 
     public static bool ReadLineBool(string text)
     {
