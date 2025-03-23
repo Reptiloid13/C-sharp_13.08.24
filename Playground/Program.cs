@@ -15,6 +15,7 @@ class Program
 
 
         GetName();
+        //Test();
     }
 
     public static void GetName()
@@ -41,21 +42,16 @@ class Program
         var surname = Console.ReadLine();
 
         var age = ReadLineInt("Возраст - ");
-        //var age = ReadLineInt("Возраст - ");
-        //var childrenCount = ReadLineInt("Сколько у вас детей - ");
 
         var hasPet = ReadLineBool("Есть питомец (yes/y/no/n) -  ");
 
         if (hasPet)
         {
+            var petsCount = ReadLineInt("Введите количество питомцев - ");
 
-            var valuePets = ReadLineInt("Введите количество питомцев - ");
-            //var valuePets = ReadLineInt("Введите количество питомцев - "); //  Сделать метод универсальным. 
-
-            if (valuePets > 0)
+            if (petsCount > 0)
             {
-                var currentPets = ReadLineStrings(valuePets);
-                //var currentPets = ReadLineStrings("Введите клички животных: ", 3); // Массив строк 
+                var currentPets = ReadLineStrings("Введите клички питомцев", petsCount);
 
                 Console.WriteLine("Клички животных - ");
 
@@ -64,46 +60,32 @@ class Program
                     Console.WriteLine(pet);
                 }
             }
+        }
 
-            var favColors = ReadLineInt("Введите количество любимых цветов - ");
-            //var favColors = ReadLineInt("Введите количество любимых цветов - "); 
+        var favColors = ReadLineInt("Введите количество любимых цветов - ");
 
-            if (favColors > 0)
+        if (favColors > 0)
+        {
+            var colors = ReadLineStrings("Введите любимые цвета: ", favColors);
+            Console.WriteLine("Любимые цвета - ");
+
+            foreach (var color in colors)
             {
-                var colors = GetFavoriteColors(favColors);
-                //var colors = ReadLineStrings("Введите любимые цвета: ", favColors); 
-                Console.WriteLine("Любимые цвета - ");
-
-                foreach (var color in colors)
-                {
-                    Console.WriteLine(color);
-                }
+                Console.WriteLine(color);
             }
         }
-
     }
 
-    public static string[] GetFavoriteColors(int favColors)
+    public static string[] ReadLineStrings(string message, int count)
     {
-        string[] numbersOfColor = new string[favColors];
-        for (int i = 0; i < numbersOfColor.Length; i++)
+        var strings = new string[count];
+        Console.WriteLine(message);
+        for (int i = 0; i < strings.Length; i++)
         {
-            Console.Write($"Введите название любимого цвета {i + 1} - ");
-            numbersOfColor[i] = Console.ReadLine();
+            Console.Write($"{i + 1}. ");
+            strings[i] = Console.ReadLine();
         }
-        return numbersOfColor;
-
-    }
-
-    public static string[] ReadLineStrings(int valuePets)
-    {
-        string[] namePet = new string[valuePets];
-        for (int i = 0; i < namePet.Length; i++)
-        {
-            Console.WriteLine($"Введите клички ваших животных{i + 1} - ");
-            namePet[i] = Console.ReadLine();
-        }
-        return namePet;
+        return strings;
     }
 
     public static int ReadLineInt(string text)
@@ -126,44 +108,6 @@ class Program
         }
         return result;
     }
-
-    //public static int GetNum(string promt)
-    //{
-    //    int result = 0;
-    //    while (true)
-    //    {
-    //        Console.Write(promt);
-    //        if (int.TryParse(Console.ReadLine(), out result) && result > 0)
-    //        {
-    //            break;
-    //        }
-    //        else
-    //        {
-    //            Console.WriteLine("Введите число цифрой ");
-    //        }
-    //    }
-    //    return result;
-    //}
-
-
-    //public static int GetNumFavColors(string promt)
-    //{
-    //    var result = 0;
-    //    while (true)
-    //    {
-    //        Console.Write(promt);
-    //        if (int.TryParse(Console.ReadLine(), out result) && result > 0)
-    //        {
-    //            break;
-    //        }
-    //        else
-    //        {
-    //            Console.WriteLine("Введите цифрой");
-    //        }
-
-    //    }
-    //    return result;
-    // }
 
     public static bool ReadLineBool(string text)
     {
@@ -190,4 +134,7 @@ class Program
 
         return result;
     }
+
+
 }
+
