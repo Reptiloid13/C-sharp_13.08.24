@@ -15,7 +15,9 @@ class Program
         //GetBook.Test();
         //GetWeather.Test();
         // GetPoints.Test();
-        GetTime.Test();
+        //GetTime.Test();
         // TransportTask.Test();
+        //Human.HumanMain();
+        Animal.GreetingsMain();
     }
 }

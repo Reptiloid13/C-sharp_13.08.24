@@ -19,7 +19,9 @@ namespace Arrays
             //FindCurrentNumber();
             // GetDifference();
             //GetPosNegArrays();
-            DeleteRepeatElements();
+            //DeleteRepeatElements();
+            Strings.FunctionWordsCount();
+            Strings.FunctionReplace();
         }
 
 

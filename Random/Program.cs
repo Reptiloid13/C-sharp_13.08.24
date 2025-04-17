@@ -1,4 +1,12 @@
-﻿namespace Playground2.Tasks1;
+﻿using System.Globalization;
+using System.Net.WebSockets;
+using System.Numerics;
+using System.Runtime.CompilerServices;
+using System.Runtime.Serialization.Formatters;
+using System.Security.Cryptography.X509Certificates;
+using System.Xml.XPath;
+
+namespace Playground2.Tasks1;
 
 class Person2
 {
@@ -87,30 +95,47 @@ class Program
 
     public static void Test()
     {
-        char c = Convert.ToChar(Console.ReadLine());
+        //        Дано два натуральных числа, не заканчивающиеся на
+        //0
+        //0.Замените каждое число на обратное и вычислите их сумму.  624  426 и 1024 4201
+
+        var num1 = Convert.ToInt32(Console.ReadLine());
+        var num2 = Convert.ToInt32(Console.ReadLine());
+
+        var result = GetReverseSum(num1, num2);
+        Console.WriteLine(result);
+
+
+    }
+
+    public static int GetReverseSum(int num1, int num2)
+    {
+        var reverseNum1 = 0;
+        var reverseNum2 = 0;
+        var result = 0;
+
+        while (num1 > 0 && num2 > 0)
+        {
+            reverseNum1 += 10;
+            reverseNum1 += num1 % 10;
+            num1 /= 10;
+
+            reverseNum2 += 10;
+            reverseNum2 += num1 % 10;
+            num2 /= 10;
+        }
+        result = num1 + num2;
+        return result;
+
 
     }
 
 
 
-    // 1 ) Напишите программу, в которую пользователь вводит свой пол(
-    //    "М" для мужского, "Ж" для женского) 
-    //    и выводит ответное сообщение "Вы мужчина" или "Вы женщина". 
-    //    В случае иного ввода программа должна вывести сообщение 
-    //    "Некорректный ввод"
 
-
-    // 2) Калькулятор времени: Напишите программу,
-    // которая принимает от пользователя количество часов и минут, а затем выводит общее количество минут.
-    //Пользователь вводит сначала число часов, потом число минут.
-    //Программа выводит лишь одно число - число минут.
-
-    // Если неправильный Time, выбросить ошибку
-
-    // new DateCounter()
-    //            ч  м  с
-    // CountDate("34:23:13", "m") // 
-    // CountDate("34:23:13", "s") // 
-    // CountDate("34:23:13", "h") // 
-    // CountDate("34:23:13", "d") // 
 }
+
+
+
+
+
