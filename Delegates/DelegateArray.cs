@@ -14,21 +14,9 @@ namespace Delegates
     // (2) => Console.WriteLine(2)
     // (3) => Console.WriteLine(3)
 
-    public class DelegateArray
-    {
-        public delegate void MyDelegate();
 
 
-        public static void Start2()
-        {
-            int[] array = { 1, 2, 3, };
-        }
 
-        public static void ForEach(Array, int)
-        {
-            public MyDelegate Arraydelegate;
-
-    }
 
 
     //public static void Start()

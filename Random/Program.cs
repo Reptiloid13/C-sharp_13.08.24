@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.ComponentModel.Design;
+using System.Globalization;
 using System.Net.WebSockets;
 using System.Numerics;
 using System.Runtime.CompilerServices;
@@ -92,45 +93,21 @@ class Program
             }
         }
     }
-
+    // есди в числе есть хотя бы 1 7 пишем Ес. Если есть 0 или  7 ки нет, то пишем Ноу 
     public static void Test()
     {
-        //        Дано два натуральных числа, не заканчивающиеся на
-        //0
-        //0.Замените каждое число на обратное и вычислите их сумму.  624  426 и 1024 4201
-
-        var num1 = Convert.ToInt32(Console.ReadLine());
-        var num2 = Convert.ToInt32(Console.ReadLine());
-
-        var result = GetReverseSum(num1, num2);
-        Console.WriteLine(result);
-
-
-    }
-
-    public static int GetReverseSum(int num1, int num2)
-    {
-        var reverseNum1 = 0;
-        var reverseNum2 = 0;
+        // По данному трехзначному числу, определите, все ли его цифры различны.
+        var n = Convert.ToInt32(Console.ReadLine());
         var result = 0;
 
-        while (num1 > 0 && num2 > 0)
+        while (n > 0)
         {
-            reverseNum1 += 10;
-            reverseNum1 += num1 % 10;
-            num1 /= 10;
-
-            reverseNum2 += 10;
-            reverseNum2 += num1 % 10;
-            num2 /= 10;
+            result = n % 10;
+            n =/ 10;
         }
-        result = num1 + num2;
-        return result;
-
-
     }
 
-
+}
 
 
 }

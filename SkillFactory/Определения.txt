@@ -52,3 +52,4 @@ foreach (string fruit in fruits)
 }
 
 Console.WriteLine () - То что пишется в круглых скобках называется аргумент или параметр 
+

@@ -16,7 +16,9 @@ namespace WorkWithClass
         {
             // GetDiskInformation.GetDisk();
             // GetDiskInformation.GetCatalogs();
-            GetDiskInformation.Task821();
+            //GetDiskInformation.Task821();
+            // GetDiskInformation.Task824();
+            GetDiskInformation.MoveToTask824();
         }
     }
 
@@ -90,7 +92,43 @@ namespace WorkWithClass
 
             Console.WriteLine(dirInfo2.GetDirectories().Length + dirInfo2.GetFiles().Length);
         }
+        //        Задание 8.2.4
+        //Создайте на рабочем столе папку testFolder.Напишите метод, с помощью которого можно будет переместить её в корзину.
 
+        public static void Task824()
+        {
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string folderPath = Path.Combine(desktopPath, "TestFolder");
+
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+                Console.WriteLine("Папка testFolder создана ");
+            }
+            else
+            {
+                Console.WriteLine(" Папка уже существует");
+            }
+
+        }
+
+        public static void MoveToTask824()
+        {
+            string folderPath = @"C:\Users\фвьшт\OneDrive\Рабочий стол\TestFolder";
+            string destDirName = @"C:\Users\фвьшт\OneDrive\Рабочий стол\Folder\Santa";
+
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+            else if (!Directory.Exists(destDirName))
+            {
+                {
+                    Directory.CreateDirectory(destDirName);
+                }
+                Directory.Move(folderPath, destDirName);
+            }
+        }
     }
 
 }

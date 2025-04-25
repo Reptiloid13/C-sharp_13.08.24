@@ -5,6 +5,8 @@
         static void Main(string[] args)
         {
             ClassesForWorkWithDisk.TestClassesforWWD();
+            //WorkWithFiles.FileWriter();
+            //WorkWithFiles.Task831();
 
 
         }
@@ -13,7 +15,7 @@
         //установленном в системе диске.
 
         //Нужны свойства, чтобы хранить: имя диска, объём, свободное место.С
-        //войства инициализируются при создании нового объекта в методе-конструкто
+        //Свойства инициализируются при создании нового объекта в методе-конструкто
 
         public class SimpleClass
         {
