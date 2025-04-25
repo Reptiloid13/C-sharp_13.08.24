@@ -83,24 +83,24 @@ public class FinallyTask()
     public static void GetSortAsc(List<Person> names)
     {
         names.Sort();
-        Console.WriteLine(string.Join(",", names));
+        PrintPeople(names);
 
 
     }
-    public static void GetSortDesc(List<Person> names)
+    public static void GetSortDesc(List<Person> names) // хотел бы вызывать через ретерн 
     {
         names.Sort();
         names.Reverse();
-        Console.WriteLine(string.Join(",", names));
+        PrintPeople(names);
 
     }
-    //public static List<string> GetSortDesc(List<Person> names)
+    //public static List<string> GetSortDesc(List<Person> names) // Хотел бы выв
     //{
     //    names.Reverse();
     //    Console.WriteLine(string.Join(",", names));
     //    return names;
     //}
-    public static void PrintPeople(List<Person> people)
+    public static void PrintPeople(List<Person> people)  // куда вывалдится данный метод?
     {
         foreach (Person person in people)
         {
