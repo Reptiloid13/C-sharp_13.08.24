@@ -94,13 +94,13 @@ public class FinallyTask()
         PrintPeople(names);
 
     }
-    //public static List<string> GetSortDesc(List<Person> names) // Хотел бы выв
+    //public static List<string> GetSortDesc(List<Person> names) //
     //{
     //    names.Reverse();
     //    Console.WriteLine(string.Join(",", names));
     //    return names;
     //}
-    public static void PrintPeople(List<Person> people)  // куда вывалдится данный метод?
+    public static void PrintPeople(List<Person> people)
     {
         foreach (Person person in people)
         {
