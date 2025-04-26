@@ -31,27 +31,34 @@ public class Person()
     public string DateOfBirth { get; set; }
 }
 
-public delegate void Notify();
+
 public class FinallyTask()
 {
-    public event Notify ProcessCompleted;
+    public delegate void GetSortAscDelegate(List<Person> names);
+    public delegate void GetSortDescDelegate(List<Person> names);
+
+    public static event GetSortAscDelegate GetSortAscEvent;
+    public static event GetSortDescDelegate GetSortDescEvent;
 
 
 
     public static void TaskDeleg()
     {
+
         List<Person> people = People();
+        GetSortAscEvent += GetSortAsc;
+        GetSortDescEvent += GetSortDesc;
 
         try
         {
             var variant = Console.ReadLine();
             if (variant == "1")
             {
-                GetSortAsc(people);
+                GetSortAscEvent?.Invoke(people);
             }
             if (variant == "2")
             {
-                GetSortDesc(people);
+                GetSortDescEvent?.Invoke(people);
             }
             else if (variant != "1" && variant != "2")
             {
@@ -62,7 +69,7 @@ public class FinallyTask()
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex);
+            Console.WriteLine(ex.Message);
         }
 
     }
@@ -73,7 +80,7 @@ public class FinallyTask()
         person.Add(new Person() { Name = "Jack", LastName = "Sorrow", DateOfBirth = "1754" });
         person.Add(new Person() { Name = "Van", LastName = "Dam", DateOfBirth = "1987" });
         person.Add(new Person() { Name = "Arnold", LastName = "Swrtz", DateOfBirth = "1976" });
-        person.Add(new Person() { Name = "Silvestr", LastName = "Stalone", DateOfBirth = "1978" });
+        person.Add(new Person() { Name = "Silvester", LastName = "Stallone", DateOfBirth = "1978" });
 
 
         return person;
@@ -82,30 +89,27 @@ public class FinallyTask()
 
     public static void GetSortAsc(List<Person> names)
     {
-        names.Sort();
+        names.Sort((x, y) => x.LastName.CompareTo(y.LastName));
         PrintPeople(names);
 
 
     }
-    public static void GetSortDesc(List<Person> names) // хотел бы вызывать через ретерн 
+    public static void GetSortDesc(List<Person> names)
     {
-        names.Sort();
-        names.Reverse();
-        PrintPeople(names);
+        {
+            names.Sort((x, y) => y.LastName.CompareTo(x.LastName));
+            PrintPeople(names);
+
+        }
+
+
 
     }
-    //public static List<string> GetSortDesc(List<Person> names) //
-    //{
-    //    names.Reverse();
-    //    Console.WriteLine(string.Join(",", names));
-    //    return names;
-    //}
     public static void PrintPeople(List<Person> people)
     {
         foreach (Person person in people)
         {
-            Console.WriteLine($"{person.LastName}, {person.Name} ({person.DateOfBirth}");
+            Console.WriteLine($"{person.LastName}, {person.Name} {person.DateOfBirth}");
         }
     }
-
 }
