@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Concurrent;
+using System.ComponentModel.DataAnnotations;
+using System.Data;
 using System.Diagnostics.Tracing;
 using System.Globalization;
 using System.Reflection;
@@ -25,9 +27,9 @@ internal class Program
         //Strings.FunctionWordsCount();
         //Strings.FunctionReplace();
         StepicTask();
+
+
     }
-
-
     //нахождения всех максимальных или минимальных чисел в массиве
 
     public static void MaxAndMinElements()
@@ -357,64 +359,21 @@ internal class Program
 
     public static void StepicTask()
     {
-        // Напишите программу, которая переставляет соседние элементы массива(1 - й элемент поменять с 2 - м, 3 - й с 4 - м и т.д.Если элементов нечетное число, то последний элемент остается на своем месте
 
 
 
         var array = CreateArray();
-        for (int i = 0; i < array.Length - 1; i += 2)
-        {
-            if (array.Length % 2 == 0)
-            {
-                int temp = array[i];
-                array[i] = array[i + 1];
+        Test(array);
 
-                array[i + 1] = temp;
-                i++;
-            }
-        }
-        for (int i = 0; i < array.Length; i++)
+
+        foreach (var num in array)
         {
-            Console.Write(array[i] + " ");
+            Console.Write(num + " ");
         }
 
-
-
-        //int[] array = { 9, 4, 5, 2, 3 };
-        //PrintArray(array);
-        //var result = ChangeElements(array);
-        //Console.WriteLine(result);
 
 
     }
-
-    //public static int ChangeElements(int[] array)
-    //{
-    //    var lastElevtn = array.Length - 1;
-    //    for (int i = 0; i < array.Length - 1; i += 2)
-    //    {
-    //        if (array.Length % 2 == 0)
-    //        {
-    //            int temp = array[i];
-    //            array[i] = array[i + 1];
-
-    //            array[i + 1] = temp;
-    //            i++;
-    //        }
-
-
-    //    }
-
-    //    if (array.Length % 2 != 0)
-    //    {
-    //        for (int i = 0; i <= array.Length - 1; i++)
-    //        {
-
-    //        }
-    //    }
-
-
-    //}
     public static int[] CreateArray()
     {
         var n = Convert.ToInt32(Console.ReadLine());
@@ -426,6 +385,38 @@ internal class Program
             numbers[i] = Convert.ToInt32(ss[i]);
         }
         return numbers;
+    }
+
+    //Дан массив, состоящий из целых чисел.
+    //    Напишите программу, которая вычитает из всех элементов массива минимальный элемент.
+
+    public static void Test(int[] array)
+    {
+
+        var min = array[0];
+
+        for (int i = 0; i < array.Length; i++)
+        {
+            if (array[i] < min)
+            {
+                min = array[i];
+
+
+            }
+
+
+        }
+        for (int i = 0; i < array.Length; i++)
+        {
+            array[i] = array[i] - min;
+
+
+        }
+
+
+
+
+
     }
 
 }
