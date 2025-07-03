@@ -387,9 +387,7 @@ internal class Program
         return numbers;
     }
 
-    //Дан массив, состоящий из целых чисел.
-    //    Напишите программу, которая вычитает из всех элементов массива минимальный элемент.
-
+ 
     public static void Test(int[] array)
     {
 
