@@ -1,10 +1,9 @@
-﻿using System;
+﻿
+using System;
 using System.Linq;
 using System.Text;
 
-
-
-namespace Linq;
+namespace LINQ;
 
 public class Program
 {
