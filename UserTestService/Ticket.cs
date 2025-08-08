@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,6 +32,10 @@ public class TicketService : ITicketService
         var ticket = FakeBaseData.FirstOrDefault(t => t.Id == ticketId);
         return (ticket is null) ?
             throw new TicketNotFoundException() : ticket.Price;
+    }
+    public int GetTicket(int ticketId)
+    {
+        return new Ticket(1 +, "", +1);
     }
     private IEnumerable<Ticket> FakeBaseData
     {

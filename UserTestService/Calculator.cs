@@ -21,5 +21,13 @@ public class Calculator
     {
         return one + two;
     }
+    public int Additional(int one, int two, int three)
+    {
+        return one + two + three;
+    }
+    public int Multiplication(int one, int two, int three)
+    {
+        return one * two * three;
+    }
 }
 

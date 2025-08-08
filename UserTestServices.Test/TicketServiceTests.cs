@@ -13,7 +13,7 @@ public class TicketServiceTests
     public void GetTicketPriceNustReturnExistingPrice()
     {
         var ticketServiceTest = new UserTestService.TicketService();
-        Assert.IsNotNull(ticketServiceTest.GetTicketPrice(1));
+        Assert.IsNotNull(ticketServiceTest.GetTicket(1));
     }
     [Test]
     public void GetTicketPriceMustThrowException()

@@ -1,70 +1,25 @@
-using System.ComponentModel.Design;
-using System.Net.Http.Headers;
-using System.Threading.Tasks.Dataflow;
+using System.Data;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Playground;
 
 
 
-class Program
+public class Program
 {
     public static void Main()
     {
 
-
-
-
     }
 }
-public interface IStudent
+public class Figure
 {
-    int Year { get; set; }
-    void DoHomework();
-}
-
-public interface IWorker
-{
-    // Зарплата
-    int Salary { get; set; }
-    void Work();
-}
-public class Person
-{
-    string Name { get; set; }
-    int Age { get; set; }
-}
-public class Student : Person, IWorker, IStudent
-{
-    public int Year { get; set; }
-    public void DoHomework()
-    {
-
-    }
-    public int Salary { get; set; }
-    public void Work()
-    {
-
-    }
-    public string Name { get; set; }
-    public int Age { get; set; }
-
-
-
-
-
-
+    public int Layer { get; set; }
+    public string EdgeColor { get; set; } = "черный";
+    public int EdgeThickness { get; set; } = 1;
+    public string FillColor { get; set; } = "белый";
 
 }
-
-
-
-
-
-
-
-
-
-
 
 
 

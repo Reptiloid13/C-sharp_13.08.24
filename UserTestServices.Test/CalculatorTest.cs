@@ -42,5 +42,20 @@ namespace UserTestServices.Test
             var ticketPriceTest = new TicketPrice(mockTicketService.Object);
             Assert.That(ticketPriceTest.MakeTicketPrice(3) == 7800);
         }
+
+        [Test]
+        public void AdditionalMustReturnCorrectValue()
+        {
+            var calculator = new UserTestService.Calculator();
+            int result = calculator.Additional(50, 10, 34);
+            Assert.That(result, Is.EqualTo(94));
+        }
+        [Test]
+        public void MultiplicationMustReturnCorrectValue()
+        {
+            var calculator = new UserTestService.Calculator();
+            int result = calculator.Multiplication(3, 2, 20);
+            Assert.That(result, Is.EqualTo(120));
+        }
     }
 }
